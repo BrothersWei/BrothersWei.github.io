@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>什么是Actor</title>
+<link href="../css/monokai_sublime.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/heightlength.css">
+<link rel="stylesheet" href="../css/mxjs.css">
+<link rel="stylesheet" href="../css/font.css">
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="jsbg">
+    <div class="col-lg-12 mxlength">
+      <div class="mx-1"> 
+			<h1>&emsp;&emsp;什么是Actor ：</h1>
+		  <br>
+		  <p class="FontH">&emsp;&emsp;Actor 是 Unreal 中最基本的一种类型，字面上的意思是演员，但是在 Unreal 中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆 Actor，它是所有游戏场景中的所有物体的基础的类，是由 AActor 类派生而来的类的实例。</p>
+		  <p class="FontH">&emsp;&emsp;但是，一个门可以说是 Actor，但是用于控制开门关门的锁芯一般不叫作 Actor，一般视为 Actor 中的组件，也就是说，Actor 一般是为一个整体物体或实体，而这个整体物体或实体里面的部件一般为 Actor 的组件。</p>
+		  <br>
+		  <p class="FontH">&emsp;&emsp;<font class="Function">以下为与 Actor 相关的函数</font></p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">BeginPlay</font>：Actor 生成并初始化完成以后，首先调用的就是这个函数，并且只调用这一次，一般用于设置基本的逻辑，或更改一些属性。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">Tick</font>：Actor 生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个Actor被销毁为止。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">EndPlay</font>：当这个 Actor 被销毁时，运行的函数。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">GetComponentByClass</font>：根据指定的类型来寻找这个 Actor 组件下所有这个类型的组件，注意，返回的是所有。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">GetActorLocation</font>：获得这个 Actor 的 Location 信息等。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">SetActorLocation</font>：显而易见，有 Get 就必然有 Set，那么 Set 就是设置这个 Actor 的 Location 等信息属性了。</p>
+		  <br>
+		  <h1>&emsp;&emsp;什么是组件 ：</h1>
+		  <br>
+		  <p class="FontH">&emsp;&emsp;既然一辆车是 Actor，而车轮和车门是 Actor 的组件，那么显而易见，组件一般作为 Actor 的子对象使用，简单来说就是添加在这个 Actor 上面的东西，它可以让这个 Actor 拥有特定的行为或者功能。例如，一辆车和一辆飞机的移动和控制的方式显然是不同的，那么这个都是为移动的不同的方式，那就可以由组件来完成。</p>
+		  <p class="FontH">&emsp;&emsp;其中，ActorComponent 是组件的基础类，常见的组件有：StaticMeshComponent，CharactrMovement，SphereComponent 等等等等。</p>
+		  <p class="FontH">&emsp;&emsp;我们可以使用 <font class="Function">CreatDefaultSubobject</font> 方法来创建一个组件，代码如下：</p>
+		  <div class="col-lg-12  ">
+			  <pre class="mScroll">
+			  <code class="lang-javascript">
+      <font><font class="Variables">Camera</font> = <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt;(TEXT("Camera"));</font>
+			  </code>
+			  </pre>
+		  </div>
+		  <p class="FontH">
+		  &emsp;&emsp;其意思为，我们在程序里面有一个叫 <font class="Variables">Camera</font> 的类，但是没有指定它的值，用 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt; 为它指定了一个刚刚创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件，他对应的C++类为<font class="Class"> UCameraComponent</font>，这个时候我们要引用这个我们新创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件则直接引用 <font class="Variables">Camera</font> 即可，而后面的 <font class="TETXText">TEXT</font>(<font class="StringText">"Camera"</font>) 的意义为为这个组件在虚幻引擎编辑器的可视化窗口下这个 <font class="PreprocessorMacros">Actor</font> 属性下的这个 <font class="PreprocessorMacros">CameraComponent</font> 组件的名字，注意，这个 <font class="StringText">"Camera"</font> 名字与程序里面引用的 <font class="Variables">Camera</font> 这两个名字是截然不同的。如下图显示。
+		</p>
+		  <center><img src="img/actor/1.png"></center>
+		  <p class="FontH">&emsp;&emsp;这个 <font class="PreprocessorMacros">Actor</font> 下的 <font class="PreprocessorMacros">MeshComponent</font> 啊，<font class="PreprocessorMacros">MovemenComponent</font> 啊，<font class="PreprocessorMacros">Grabber</font> 啊等等这些，所显示出来的这些名字，就是程序里面 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">T</font>&gt;(<font class="TETXText">TEXT</font>(<font class="StringText">"This Component name"</font>))里面的这个 <font class="TETXText">TEXT</font> 后所指定的名字。其中，<font class="Class">T</font> 代表所要创建的组件的对应 C++ 类，一般是所创建的组件类型前面加一个 U 即为对应的 C++ 类。</p>
+	  </div>
+    </div>
+  </div>	
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> 
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script> 
+<script src="../js/smoothscroll.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<script src="../js/mking.js"></script>
+</body>
+</html>

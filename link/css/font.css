@@ -20,7 +20,11 @@
 
 .KeyWord{color:blue}
 
-pre{
+.TETXText{color:#f92672}
+
+.StringText{color:#d69d85}
+
+.preclass{
 	color: white;
 	font-size: 17px
 }
