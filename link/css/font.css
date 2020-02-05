@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.Class{color: gold}
+
+.Struct{color: gold}
+
+.Interfaces{color:gold}
+
+.Namespace{color:gold}
+
+.Typedef{color:gold}
+
+.Variables{color:darkkhaki}
+
+.Enum{color:#BD63C5}
+
+.PreprocessorMacros{color:#BD63C5}
+
+.Function{color:#FF8000}
+
+.KeyWord{color:blue}
+
+pre{
+	color: white;
+	font-size: 17px
+}
+
+.FontH{
+	font-size: 20px
+}
