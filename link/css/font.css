@@ -1,32 +1,120 @@
 @charset "utf-8";
 
-.Class{color: gold}
+.Class{
+	color: gold;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Struct{color: gold}
+.Struct{
+	color: gold;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Interfaces{color:gold}
+.Interfaces{
+	color:gold;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Namespace{color:gold}
+.Namespace{
+	color:gold;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Typedef{color:gold}
+.Typedef{
+	color:gold;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Variables{color:darkkhaki}
+.Variables{
+	color:darkkhaki;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Enum{color:#BD63C5}
+.Enum{
+	color:#BD63C5;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.PreprocessorMacros{color:#BD63C5}
+.PreprocessorMacros{
+	color:#BD63C5;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.Function{color:#FF8000}
+.Function{
+	color:#FF8000;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.KeyWord{color:blue}
+.KeyWord{
+	color:blue;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.TETXText{color:#f92672}
+.TETXText{
+	color:#f92672;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
 
-.StringText{color:#d69d85}
+.StringText{
+	color:#d69d85;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;}
 
 .preclass{
 	color: white;
-	font-size: 17px
+	font-size: 17px;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
 }
 
 .FontH{
