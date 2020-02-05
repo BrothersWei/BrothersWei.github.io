@@ -28,3 +28,8 @@ pre{
 .FontH{
 	font-size: 20px
 }
+
+.FontHRad{
+	font-size: 20px;
+	color: red;
+}
