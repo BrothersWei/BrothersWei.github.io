@@ -25,7 +25,7 @@
 		  <br>
 		  <p class="FontH">&emsp;&emsp;<font class="Function">以下为与 Actor 相关的函数</font></p>
 		  <p>&emsp;&emsp;&emsp;<font class="Function">BeginPlay</font>：Actor 生成并初始化完成以后，首先调用的就是这个函数，并且只调用这一次，一般用于设置基本的逻辑，或更改一些属性。</p>
-		  <p>&emsp;&emsp;&emsp;<font class="Function">Tick</font>：Actor 生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个Actor被销毁为止。</p>
+		  <p>&emsp;&emsp;&emsp;<font class="Function">Tick</font>：Actor 生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个 Actor 被销毁为止。</p>
 		  <p>&emsp;&emsp;&emsp;<font class="Function">EndPlay</font>：当这个 Actor 被销毁时，运行的函数。</p>
 		  <p>&emsp;&emsp;&emsp;<font class="Function">GetComponentByClass</font>：根据指定的类型来寻找这个 Actor 组件下所有这个类型的组件，注意，返回的是所有。</p>
 		  <p>&emsp;&emsp;&emsp;<font class="Function">GetActorLocation</font>：获得这个 Actor 的 Location 信息等。</p>
@@ -38,8 +38,7 @@
 		  <p class="FontH">&emsp;&emsp;我们可以使用 <font class="Function">CreatDefaultSubobject</font> 方法来创建一个组件，代码如下：</p>
 		  <div class="col-lg-12  ">
 			  <pre class="mScroll">
-			  <code class="lang-javascript">
-      <font><font class="Variables">Camera</font> = <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt;(TEXT("Camera"));</font>
+			  <code class="lang-javascript"><font>&emsp;&emsp;&emsp;&emsp;<font class="Variables">Camera</font> = <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt;(TEXT("Camera"));</font>
 			  </code>
 			  </pre>
 		  </div>

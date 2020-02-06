@@ -82,7 +82,16 @@
 }
 
 .KeyWord{
-	color:blue;
+	color:#569CD6;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
+
+.Notes{
+	color:#57A64A;
 	width: 100%;
 	height: auto;
 	word-wrap:break-word;
@@ -105,7 +114,8 @@
 	height: auto;
 	word-wrap:break-word;
 	word-break:break-all;
-	overflow: hidden;}
+	overflow: hidden;
+}
 
 .preclass{
 	color: white;
@@ -117,8 +127,26 @@
 	overflow: hidden;
 }
 
+.Preprocess{
+	color:#B4B4B4;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
+
+.YellowFont{
+	color:yellow;
+	width: 100%;
+	height: auto;
+	word-wrap:break-word;
+	word-break:break-all;
+	overflow: hidden;
+}
+
 .FontH{
-	font-size: 20px;
+	font-size: 17px;
 	width: 100%;
 	height: auto;
 	word-wrap:break-word;
@@ -127,11 +155,15 @@
 }
 
 .FontHRad{
-	font-size: 20px;
+	font-size: 17px;
 	color: red;
 	width: 100%;
 	height: auto;
 	word-wrap:break-word;
 	word-break:break-all;
 	overflow: hidden;
+}
+
+.WhiteP{
+	color: white
 }
