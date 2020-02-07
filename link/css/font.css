@@ -120,11 +120,6 @@
 .preclass{
 	color: white;
 	font-size: 17px;
-	width: 100%;
-	height: auto;
-	word-wrap:break-word;
-	word-break:break-all;
-	overflow: hidden;
 }
 
 .Preprocess{
@@ -170,4 +165,12 @@
 
 .GoldP{
 	color:gold
+}
+
+img{
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	position: absolute;
+	overflow: hidden;
 }
