@@ -1,6 +1,0 @@
-<font class="KeyWord"
-<font class="PreprocessorMacros"
-<font class="Variables"
-<font class="Function"
-<font class="Class"
-<font class="StringText"

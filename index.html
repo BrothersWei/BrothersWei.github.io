@@ -1,86 +1,145 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Milestone">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Milestone">
+<meta name="theme-color" content="#4C7FF0">
 <title>我的学习笔记</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<!-- VENDOR CSS -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap3.3.7/css/bootstrap.css">
-<link rel="stylesheet" href="css/main.css">
-<link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-<div id="loading">
-   	 <div></div>
-	 <div></div>
-	 <span></span>
-</div>
-<!-- WRAPPER -->
-<div id="wrapper"> 
-  <!-- NAVBAR -->
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="brand"> <a href="index.html"><img src="img/logo-dark.png" alt="Klorofil Logo" class="img-responsive logo"></a> </div>
-    <div class="container-fluid">
-      <div class="navbar-btn" style="padding: 0; padding-top: 10px;">
-        <button type="button" class="btn-toggle-fullwidth btn-toggle-mx"><img src="img/left.png" height="40px" alt=""></button>
+<!-- build:css({.tmp,app}) styles/app.min.css -->
+<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css"/>
+<link rel="stylesheet" href="styles/app.css" id="load_styles_before"/>
+<link rel="stylesheet" href="styles/app.skins.css"/>
+<!-- endbuild -->
+  </head>
+  <body>
+
+    <div class="app">
+      <!--sidebar panel-->
+      <div class="sidebar-panel">
+        <div class="brand"> 
+            <!-- /toggle offscreen menu --> 
+            <!-- logo --> 
+            <a class="brand-logo" href="index.html"> <img class="expanding-hidden" src="images/logo-dark.png" alt=""/> </a> 
+            <!-- /logo --> 
+        </div>
+        <!-- main navigation -->
+        <nav class="menu">
+            <hr>
+            <ul class="nav">
+                <!-- 主页 -->
+                <p class="nav-title">主页</p>
+                <li> <a href="index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <hr>
+                <p class="nav-title">UnrealEngine 4</p>
+                <!-- /主页 --> 
+                <!-- UnrealEngine4 -->
+                <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="link/UnrealEngine/actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="link/UnrealEngine/inputcomponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="link/UnrealEngine/gameplay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /UnrealEngine4 -->
+            </ul>
+            <hr>
+            <p class="nav-title">其他</p>
+            <ul class="nav">
+                <!-- OpenGL -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="#"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /OpenGL --> 
+                <!-- 设计模式 -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="#"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">工厂模式</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /设计模式 -->
+                <li>
+                    <hr/>
+                </li>
+                <!-- static -->
+                <p class="nav-title">关于我</p>
+                <li> <a href="#"> <span class="nav-menutext">&emsp;&emsp;个人简历</span> </a> </li>
+                <!-- /static -->
+            </ul>
+        </nav>
+        <!-- /main navigation --> 
+    </div>
+      <!-- /sidebar panel -->
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons"><img src="images/button-1.png"></i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo -->
+				<spen class="spenMenu">&ensp;首页</spen>
+              <!-- /logo -->
+            </div>
+              <span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span>
+          </div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <div class="main-content">
+          <div class="content-view">
+			  <div class="row">
+  				<div class="col-xs-1"></div>
+  				<div class="col-xs-10">
+					<br><br>
+					<h1 class="FontTitle">简介</h1><br>
+				  	<p class="FontParagraph">&emsp;&emsp;我是来自西北民族大学2016级数字媒体技术班的一名学生，这个博客将会记录我的学习过程，例如 UnrealEngine 中的：Actor 的介绍，GameMode 游戏框架的简介，插件，Slate 框架，一些游戏实例功能的应用等，OpenGL 中的环境搭配及其应用，还有一些与 GitHub 有关的知识，以及一些部分的琐碎的知识点，希望各位浏览的大佬如果有错误的地方，轻喷，我都会纠正的。</p>
+					<br><br>
+					<h1 class="FontTitle">博客介绍</h1><br>
+				  	<p class="FontParagraph">&emsp;&emsp;本博客在 GitHub 和码云上均建立了仓库，两个页面是同步推送的，但是本人优先推送 GitHub，没有“加速器”的朋友浏览码云的地址网速会更快，两个地址的内容是相同的哦。</p><br>
+		  			<pre class="preclass">GitHub版本博客地址：<a class="aclass" href = "https://brotherswei.github.io/" >https://brotherswei.github.io/</a><br>码云版本博客地址：<a class="aclass" href = "http://brother_wei.gitee.io/pages/" >&emsp;&emsp;http://brother_wei.gitee.io/pages/</a></pre>
+		  			<br>
+		  			<p class="FontParagraph">&emsp;&emsp;如果发现错误，请在我的 GitHub 项目或者码云项目中给我发 Issue 方便我和你讨论并即使进行修正，或者直接添加我的联系方式也可以。联系方式在下面的个人介绍中。</p>
+					<br>
+					<pre class="preclass">这个项目的 GitHub 链接：<a class="aclass" href = "https://github.com/BrothersWei/BrothersWei.github.io" target="_blank">点击这里</a><br>或者码云的链接：<a class="aclass" href = "https://gitee.com/brother_wei/Pages" target="_blank">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;点击这里</a></pre>
+					<br><br>
+					<h1 class="FontTitle">个人介绍</h1><br>
+					<pre class="preclass"> 姓名：韦景严<br> 就读学校：西北民族大学<br> 专业：数字媒体技术<br> QQ：875835487<br> WeChat：weinm123456<br> Facebook：<a href="https://www.facebook.com/profile.php?id=100023959996769" target="_blank">https://www.facebook.com/profile.php?id=100023959996769</a><br> Twitter：<a href="https://twitter.com/Wei_Jingyan" target="_blank">https://twitter.com/Wei_Jingyan</a><br> Instagram：<a href="https://www.instagram.com/jingyan.wei/" target="_blank">https://www.instagram.com/jingyan.wei/</a>
+		  			</pre>
+				  </div>
+				  <div class="col-xs-1"></div>
+			</div>
+				  
+          </div>
+        </div>
+        <!-- /main area -->
       </div>
+      <!-- /content panel -->
     </div>
-  </nav>
-  <!-- END NAVBAR --> 
-  <!--_________________________________________________________________________________________--> 
-  <!-- LEFT SIDEBAR -->
-  <div id="sidebar-nav" class="sidebar">
-    <div class="sidebar-scroll">
-      <nav>
-        <ul class="nav">
-          <li><a href="link/index/index.html" target="_blank" class="iframe_link"><span>首页</span></a>
-		  </li>
-		  <li>
-			  <a href="javascript:;" class="nav-togg"><span>UnrealEngine4基础</span></a>
-			  <div>
-				  <ul>
-					  <li><a href="link/unreal/actor.html" target="_blank" class="iframe_link"><span>什么是Actor</span></a></li>
-					  <li><a href="link/unreal/inputcomponent.html" target="_blank" class="iframe_link"><span>输入组件</span></a></li>
-					  <li><a href="link/unreal/gameplay.html" target="_blank" class="iframe_link"><span>UE4中的GamePlay框架</span></a></li>
-					  <li><a href="" target="_blank" class="iframe_link"><span>UE4中的宏定义</span></a></li>
-				  </ul>
-			  </div>
-		  </li>
-		   <li>
-			  <a href="javascript:;" class="nav-togg"><span>OpenGL学习笔记</span></a>
-			  <div>
-				  <ul>
-					  <li><a href="" target="_blank" class="iframe_link"><span>环境搭建</span></a></li>
-					  <li><a href="" target="_blank" class="iframe_link"><span>第二种环境搭建的方法</span></a></li>
-					  <li><a href="" target="_blank" class="iframe_link"><span>GLFW与GLEW</span></a></li>
-				  </ul>
-			  </div>
-		  </li>
-			<li>
-			  <a href="javascript:;" class="nav-togg"><span>设计模式</span></a>
-			  <div>
-				  <ul>
-					  <li><a href="" target="_blank" class="iframe_link"><span>单例模式</span></a></li>
-					  <li><a href="" target="_blank" class="iframe_link"><span>工厂模式</span></a></li>
-				  </ul>
-			  </div>
-		  </li>
-        </ul>
-      </nav>
-    </div>
-  </div>
-  <div class="main">
-    <div class="main-content" style="height: 100%;">
-      <iframe src="link/index/index.html" class="iframe_mx uicss-cn"></iframe>
-    </div>
-  </div>
-</div>
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/jquery.slimscroll.min.js"></script>
-<script src="js/klorofil-common.js" ></script> 
 
-</body>
+    <!-- build:js({.tmp,app}) scripts/app.min.js --> 
+<script src="vendor/jquery/dist/jquery.js"></script> 
+<script src="vendor/bootstrap/dist/js/bootstrap.js"></script> 
+<script src="scripts/constants.js"></script> 
+<script src="scripts/main.js"></script> 
+<!-- endbuild -->
+  </body>
 </html>

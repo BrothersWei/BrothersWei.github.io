@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Milestone">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Milestone">
+<meta name="theme-color" content="#4C7FF0">
+<title>什么是Actor</title>
+
+<!-- build:css({.tmp,app}) styles/app.min.css -->
+<link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css"/>
+<link rel="stylesheet" href="../../styles/app.css" id="load_styles_before"/>
+<link rel="stylesheet" href="../../styles/app.skins.css"/>
+<link rel="stylesheet" href="../../styles/Myhighlight.css">
+<link rel="stylesheet" href="../../vendor/highlight/styles/vs2015.css">
+<!-- endbuild -->
+  </head>
+  <body>
+
+    <div class="app">
+      <!--sidebar panel-->
+      <div class="sidebar-panel">
+        <div class="brand"> 
+            <!-- /toggle offscreen menu --> 
+            <!-- logo --> 
+            <a class="brand-logo" href="../../index.html"> <img class="expanding-hidden" src="../../images/logo-dark.png" alt=""/> </a> 
+            <!-- /logo --> 
+        </div>
+        <!-- main navigation -->
+        <nav class="menu">
+            <hr>
+            <ul class="nav">
+                <!-- 主页 -->
+                <p class="nav-title">主页</p>
+                <li> <a href="../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <hr>
+                <p class="nav-title">UnrealEngine 4</p>
+                <!-- /主页 --> 
+                <!-- UnrealEngine4 -->
+                <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="inputcomponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="gameplay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /UnrealEngine4 -->
+            </ul>
+            <hr>
+            <p class="nav-title">其他</p>
+            <ul class="nav">
+                <!-- OpenGL -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="#"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /OpenGL --> 
+                <!-- 设计模式 -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="#"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <li> <a href="#"> <span class="nav-buttontext">工厂模式</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /设计模式 -->
+                <li>
+                    <hr/>
+                </li>
+                <!-- static -->
+                <p class="nav-title">关于我</p>
+                <li> <a href="#"> <span class="nav-menutext">&emsp;&emsp;个人简历</span> </a> </li>
+                <!-- /static -->
+            </ul>
+        </nav>
+        <!-- /main navigation --> 
+    </div>
+      <!-- /sidebar panel -->
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons"><img src="../../images/button-1.png"></i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo -->
+				<spen class="spenMenu">&ensp;什么是Actor</spen>
+              <!-- /logo -->
+            </div>
+              <span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">什么是Actor</span>
+          </div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <div class="main-content">
+          <div class="content-view">
+			  <div class="row">
+  				<div class="col-xs-1"></div>
+  				<div class="col-xs-10">
+					<br><br>
+					<h1 class="FontTitle">什么是Actor</h1>
+					<br>
+				  	<p class="FontParagraph">&emsp;&emsp;Actor 是 Unreal 中最基本的一种类型，字面上的意思是演员，但是在 Unreal 中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆 Actor，它是所有游戏场景中的所有物体的基础的类，是由 AActor 类派生而来的类的实例。</p>
+					<p class="FontParagraph">&emsp;&emsp;但是，一个门可以说是 Actor，但是用于控制开门关门的锁芯一般不叫作 Actor，一般视为 Actor 中的组件，也就是说，Actor 一般是为一个整体物体或实体，而这个整体物体或实体里面的部件一般为 Actor 的组件。</p>
+					<br>
+					<p class="FontParagraph">&emsp;&emsp;<font class="Function">以下为与 Actor 相关的函数</font></p>
+					<div class="row">
+						<div class="col-xs-1"></div>
+						<div class="col-xs-10">
+							<p class="FontString"><font class="Function">BeginPlay</font>：Actor 生成并初始化完成以后，首先调用的就是这个函数，并且只调用这一次，一般用于设置基本的逻辑，或更改一些属性。</p>
+		  					<p class="FontString"><font class="Function">Tick</font>：Actor 生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个 Actor 被销毁为止。</p>
+							<p class="FontString"><font class="Function">EndPlay</font>：当这个 Actor 被销毁时，运行的函数。</p>
+							<p class="FontString"><font class="Function">GetComponentByClass</font>：根据指定的类型来寻找这个 Actor 组件下所有这个类型的组件，注意，返回的是所有。</p>
+							<p class="FontString"><font class="Function">GetActorLocation</font>：获得这个 Actor 的 Location 信息等。</p>
+							<p class="FontString"><font class="Function">SetActorLocation</font>：显而易见，有 Get 就必然有 Set，那么 Set 就是设置这个 Actor 的 Location 等信息属性了。</p>
+						</div>
+						<div class="col-xs-1"></div>
+					</div>
+					<br><br>
+					<h1 class="FontTitle">什么是组件</h1>
+					<br>
+		  			<p class="FontParagraph">&emsp;&emsp;既然一辆车是 Actor，而车轮和车门是 Actor 的组件，那么显而易见，组件一般作为 Actor 的子对象使用，简单来说就是添加在这个 Actor 上面的东西，它可以让这个 Actor 拥有特定的行为或者功能。例如，一辆车和一辆飞机的移动和控制的方式显然是不同的，那么这个都是为移动的不同的方式，那就可以由组件来完成。</p>
+		  			<p class="FontParagraph">&emsp;&emsp;其中，ActorComponent 是组件的基础类，常见的组件有：StaticMeshComponent，CharactrMovement，SphereComponent 等等等等。</p>
+		  			<p class="FontParagraph">&emsp;&emsp;我们可以使用 <font class="Function">CreatDefaultSubobject</font> 方法来创建一个组件，代码如下（代码可以左滑查看全部）：</p>
+					<div class="col-lg-12">
+					<pre ><code><font>&emsp;&emsp;&emsp;&emsp;<font class="Variables">Camera</font> = <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt;(<font class="TETXText">TEXT</font>("Camera"));</font>
+					</code></pre>
+					</div>
+					<br>
+					<p class="FontParagraph">&emsp;&emsp;其意思为，我们在程序里面有一个叫 <font class="Variables">Camera</font> 的类，但是没有指定它的值，用 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt; 为它指定了一个刚刚创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件，他对应的C++类为<font class="Class"> UCameraComponent</font>，这个时候我们要引用这个我们新创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件则直接引用 <font class="Variables">Camera</font> 即可，而后面的 <font class="TETXText">TEXT</font>(<font class="StringText">"Camera"</font>) 的意义为为这个组件在虚幻引擎编辑器的可视化窗口下这个 <font class="PreprocessorMacros">Actor</font> 属性下的这个 <font class="PreprocessorMacros">CameraComponent</font> 组件的名字，注意，这个 <font class="StringText">"Camera"</font> 名字与程序里面引用的 <font class="Variables">Camera</font> 这两个名字是截然不同的。如下图显示。
+					</p>
+					<center><img src="img/actor/1.png" style=""></center>
+					<br>
+					<p class="FontParagraph">&emsp;&emsp;这个 <font class="PreprocessorMacros">Actor</font> 下的 <font class="PreprocessorMacros">MeshComponent</font> 啊，<font class="PreprocessorMacros">MovemenComponent</font> 啊，<font class="PreprocessorMacros">Grabber</font> 啊等等这些，所显示出来的这些名字，就是程序里面 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">T</font>&gt;(<font class="TETXText">TEXT</font>(<font class="StringText">"This Component name"</font>))里面的这个 <font class="TETXText">TEXT</font> 后所指定的名字。其中，<font class="Class">T</font> 代表所要创建的组件的对应 C++ 类，一般是所创建的组件类型前面加一个 U 即为对应的 C++ 类。</p>
+				  </div>
+				  <div class="col-xs-1"></div>
+			</div>
+				  
+          </div>
+        </div>
+        <!-- /main area -->
+      </div>
+      <!-- /content panel -->
+    </div>
+
+    <!-- build:js({.tmp,app}) scripts/app.min.js --> 
+<script src="../../vendor/jquery/dist/jquery.js"></script> 
+<script src="../../vendor/bootstrap/dist/js/bootstrap.js"></script> 
+<script src="../../scripts/constants.js"></script> 
+<script src="../../scripts/main.js"></script> 
+<script src="../../vendor/highlight/highlight.pack.js"></script>
+<script>hljs.initHighlighting()();</script>
+<!-- endbuild -->
+  </body>
+</html>
