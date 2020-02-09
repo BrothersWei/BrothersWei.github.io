@@ -112,14 +112,14 @@
   				<div class="col-xs-1"></div>
   				<div class="col-xs-10">
 					<br><br>
-					<h1 class="FontTitle">简介</h1><br>
+					<h3 class="FontTitle">输入组件</h3><br>
 				  	<p class="FontParagraph">&emsp;&emsp;一个 Actor 是怎么接收键盘或者游戏手柄等硬件的输入的呢，那很简单，这个 Actor 里面会有一个组件用来接收来自对应硬件的输入。硬件输入通常包括键盘按键，鼠标点击或鼠标移动，以及手柄控制器按钮按下或手柄操纵杆移动等等。</p>
 					<h3 class="FontTitle">PlayerInput 组件</h3>
 					<p class="FontParagraph">&emsp;&emsp;PlayerInput 是 PlayerController 中的一个组件，他定义了两个事件，一个是 FInputActionKeyMapping ，它定义了一个 ActionMapping 即按键映射。另一个是 FInputAxisKeyMapping ，它定义了一个 AxisMapping 即轴映射。</p>
 					<br>
-					<h4 class="FontLiftTitle">&emsp;&emsp;什么是按键映射（ActionMapping）：</h4>
+					<h5 class="FontLiftTitle">&emsp;&emsp;什么是按键映射（ActionMapping）：</h5>
 		  			<p class="FontParagraph">&emsp;&emsp;按键映射是指例如有一个跳跃动作，这个动作称之为事件，那么这个动作是通过一个按键来触发的，例如按下空格键，也就是说，通过硬件的的按钮的按下的瞬间或者松开的瞬间会触发的事件就称为按键映射</p>
-		  			<h4 class="FontLiftTitle">&emsp;&emsp;什么是轴映射（AxisMapping）：</h4>
+		  			<h5 class="FontLiftTitle">&emsp;&emsp;什么是轴映射（AxisMapping）：</h5>
 		  			<p class="FontParagraph">&emsp;&emsp;轴映射与按键映射不同之处在于，它定义了返回值，而且事件的触发不再是按下瞬间或者是松开瞬间，轴映射事件只要按着所定义的按键就会一直触发，其返回值一般用于表示方向，例如有个 MoveForward 轴映射事件，定义了 W 键返回 1，S 键返回 -1，那么在使用的时候会利用这个返回只乘上前进方向的方向向量就会获得我们对应按键对应的移动方向，即 W 为前进正方向，S 为前进反方向，即向后移动。</p>
 					<br>
 		  			<p class="FontParagraph">&emsp;&emsp;不管是按键映射还是轴映射，我们都不用去写他的代码，因为 UE4 已经将接口帮我们写好了，我们只需在菜单栏中点击 Edit(编辑)-&gt;Project Settings(项目设置)中的输入一栏中设置即可，如下图：</p>
