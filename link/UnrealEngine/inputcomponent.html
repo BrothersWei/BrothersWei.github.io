@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +93,7 @@
             <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
               <!-- toggle offscreen menu -->
               <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
-                <i class="material-icons"><img src="../../images/button-1.png"></i>
+                <i class="material-icons"><img src="../../images/button-1.png" style=""></i>
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo -->
@@ -122,7 +122,7 @@
 		  			<h4 class="FontLiftTitle">&emsp;&emsp;什么是轴映射（AxisMapping）：</h4>
 		  			<p class="FontParagraph">&emsp;&emsp;轴映射与按键映射不同之处在于，它定义了返回值，而且事件的触发不再是按下瞬间或者是松开瞬间，轴映射事件只要按着所定义的按键就会一直触发，其返回值一般用于表示方向，例如有个 MoveForward 轴映射事件，定义了 W 键返回 1，S 键返回 -1，那么在使用的时候会利用这个返回只乘上前进方向的方向向量就会获得我们对应按键对应的移动方向，即 W 为前进正方向，S 为前进反方向，即向后移动。</p>
 					<br>
-		  			<p class="FontParagraph">&emsp;&emsp;不管是按键映射还是轴映射，我们都不用去写他的代码，因为 UE4 已经将接口帮我们写好了，我们只需在菜单栏中点击 Edit(编辑)->Project Settings(项目设置)中的输入一栏中设置即可，如下图：</p>
+		  			<p class="FontParagraph">&emsp;&emsp;不管是按键映射还是轴映射，我们都不用去写他的代码，因为 UE4 已经将接口帮我们写好了，我们只需在菜单栏中点击 Edit(编辑)-&gt;Project Settings(项目设置)中的输入一栏中设置即可，如下图：</p>
 					<center><img src="img/inputcomponent/1.png" style=""></center>
 		  			<center><p class="YellowFont">点击加号即可进行相对应的设置</p></center>
 					<br>
@@ -133,24 +133,24 @@
     void <font class="Class">AMyCharacter</font>::<font class="Function">SetupPlayerInputComponent</font>(<font class="KeyWord">class</font> <font class = "Class">UInputComponent</font>* <font class="Variables">InputComponent</font>) {        
         <font class="Function">check</font>(<font class="Variables">InputComponent</font>));
         // 以上内容是自带的，下面这句才是你要写的
-        <font class="Variables">InputComponent</font>-><font class="Function">BindAction</font>("Jump", <font class="PreprocessorMacros">IE_Pressed</font>, this, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font>);
+        <font class="Variables">InputComponent</font>-&gt;<font class="Function">BindAction</font>("Jump", <font class="PreprocessorMacros">IE_Pressed</font>, this, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font>);
     }
     void <font class="Class">AMyCharacter</font>::<font class="Function">Jump</font>() {
         // Jump 函数内的对应定义部分，就不具体写了
     }</code></pre>
-					<p class="FontParagraph">&emsp;&emsp; <font class="Variables">InputComponent</font>-><font class="Function">BindAction</font>(<font class="StringText">"Jump"</font>, <font class="PreprocessorMacros">IE_Pressed</font>, <font class="KeyWord">this</font>, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font>); 这句话的意思是，我给这个 <font class="PreprocessorMacros">Character</font> 绑定了一个我之前设置好的 Jump 按键映射，<font class="PreprocessorMacros">IE_Pressed</font> 是按下按下的时候触发，若为 <font class="PreprocessorMacros">IE_Pressed</font> 则是按键弹起也就是松开的时候触发，这个 <font class="KeyWord">this</font> 一般不用管，指的是作用于哪个 <font class="PreprocessorMacros">Actor</font>，很明显，一般都是作用于自己本身，所以一般不用管，而后面的 &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font> 指你这个按键映射触发的时候对应的函数，这个函数为 <font class="Class">AMyCharacter</font> 内的 <font class="Function">Jump</font> 函数。</p>
+					<p class="FontParagraph">&emsp;&emsp; <font class="Variables">InputComponent</font>-&gt;<font class="Function">BindAction</font>(<font class="StringText">"Jump"</font>, <font class="PreprocessorMacros">IE_Pressed</font>, <font class="KeyWord">this</font>, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font>); 这句话的意思是，我给这个 <font class="PreprocessorMacros">Character</font> 绑定了一个我之前设置好的 Jump 按键映射，<font class="PreprocessorMacros">IE_Pressed</font> 是按下按下的时候触发，若为 <font class="PreprocessorMacros">IE_Pressed</font> 则是按键弹起也就是松开的时候触发，这个 <font class="KeyWord">this</font> 一般不用管，指的是作用于哪个 <font class="PreprocessorMacros">Actor</font>，很明显，一般都是作用于自己本身，所以一般不用管，而后面的 &amp;<font class="Class">AMyCharacter</font>::<font class="Function">Jump</font> 指你这个按键映射触发的时候对应的函数，这个函数为 <font class="Class">AMyCharacter</font> 内的 <font class="Function">Jump</font> 函数。</p>
 					<br><br>
-		  			<p class="FontParagraph">如要绑定的是轴映射，则具体步骤如下（代码可以左滑查看全部）：</p>
+		  			<p class="FontParagraph">&emsp;&emsp;如要绑定的是轴映射，则具体步骤如下（代码可以左滑查看全部）：</p>
 					<pre><code class="language-c++"><p>在 AMyCharacter.cpp 中，</p>
     void <font class="Class">AMyCharacter</font>::<font class="Function">SetupPlayerInputComponent</font>(<font class="KeyWord">class</font> <font class="Class">UInputComponent</font>* <font class="Variables">InputComponent</font>) {        
         <font class="Function">check</font>(<font class="Variables">InputComponent</font>);
         // 同理以上内容是自带的，下面这句才是你要写的
-        <font class="Variables">InputComponent</font>-><font class="Function">BindAxis</font>("MoveForward", this, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">MoveForward</font>);
+        <font class="Variables">InputComponent</font>-&gt;<font class="Function">BindAxis</font>("MoveForward", this, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">MoveForward</font>);
     }
     void <font class="Class">AMyCharacter</font>::<font class="Function">MoveForward</font>(float <font class="Variables">Value</font>) {
         // MoveForward 函数内的定义部分，就不具体写了
     }</code></pre>
-					<p class="FontParagraph">与按键映射不同，轴映射是有一个返回值的，所以他的对应函数是要传入一个值来判断我这个轴的方向的，所以我们的 <font class="Function">MoveForward</font> 函数是要传入一个 <font class="KeyWord">float</font> 的数值，这个数值就是我们所按下的按键所返回的值，这些都是在我们的 Project Settings 中设置好的，例如，w 是 1 ，s 是 -1，则触发这个轴映射的时候，按下 w 的时候我们的 <font class="Function">MoveForward</font> 函数传入的 <font class="Variables">Value</font> 的值是 1，同理，按下 s 的时候为 -1。与按键映射不同，绑定轴映射用的是 <font class="Variables">InputComponent</font>-><font class="Function">BindAxis</font>(<font class="StringText">"MoveForward"</font>, <font class="KeyWord">this</font>, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">MoveForward</font>); 与按键映射相比，少了那个写 <font class="PreprocessorMacros">IE_Pressed</font> 或 <font class="PreprocessorMacros">IE_Released</font> 的地方，其余位置对应的意思与按键映射的绑定是几乎一样的，就不重复介绍了。</p>
+					<p class="FontParagraph">&emsp;&emsp;与按键映射不同，轴映射是有一个返回值的，所以他的对应函数是要传入一个值来判断我这个轴的方向的，所以我们的 <font class="Function">MoveForward</font> 函数是要传入一个 <font class="KeyWord">float</font> 的数值，这个数值就是我们所按下的按键所返回的值，这些都是在我们的 Project Settings 中设置好的，例如，w 是 1 ，s 是 -1，则触发这个轴映射的时候，按下 w 的时候我们的 <font class="Function">MoveForward</font> 函数传入的 <font class="Variables">Value</font> 的值是 1，同理，按下 s 的时候为 -1。与按键映射不同，绑定轴映射用的是 <font class="Variables">InputComponent</font>-&gt;<font class="Function">BindAxis</font>(<font class="StringText">"MoveForward"</font>, <font class="KeyWord">this</font>, &amp;<font class="Class">AMyCharacter</font>::<font class="Function">MoveForward</font>); 与按键映射相比，少了那个写 <font class="PreprocessorMacros">IE_Pressed</font> 或 <font class="PreprocessorMacros">IE_Released</font> 的地方，其余位置对应的意思与按键映射的绑定是几乎一样的，就不重复介绍了。</p>
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>

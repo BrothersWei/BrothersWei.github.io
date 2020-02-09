@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -123,19 +123,20 @@
 							<p><font class="GoldFont">4. Game State Class，即游戏状态类</font></p>
 							<p><font class="GoldFont">5. Player State Class，即玩家状态类</font></p>
 							<p><font class="GoldFont">6. Spectator Class，即观众类</font></p>
-							<p class="FontParagraph">&emsp;&emsp;我们可以在 World Settings 即世界设置里面指定我们这个游戏所运行的 GameMode 类，如下图</p>
-							<center><img src="img/gameplay/1.jpg" style=""></center>
+							
 						</div>
 					</div>
+					<p class="FontParagraph">&emsp;&emsp;我们可以在 World Settings 即世界设置里面指定我们这个游戏所运行的 GameMode 类，如下图</p>
+					<center><img src="img/gameplay/1.jpg" style=""></center>
 					<br><br>
 					<p class="FontParagraph">&emsp;&emsp;而在 GameMode 类的C++代码中，我们要先引用我们所创建的以上类型的头文件方可使用代码指定</p>
 		  			<p class="FontParagraph">&emsp;&emsp;例如：</p>
 		  			<p class="FontParagraph">&emsp;&emsp;我们有一个 <font class="Class">Controller</font> 类，它的名字为 <font class="PreprocessorMacros">MyPlayerController</font>，其在C++代码中指定的方法如下（滑动代码可以查看全部）：</p>
 		  			<pre><code class="language-c++"><div class="WhiteFont">
-引入这个类的头文件：<font class="Preprocess">#include</font> <font class="StringText">"MyPlayerController.h"</font>
-在这个 <font class="Class">GameMode</font> 的构造函数内添加：<font class="Variables">PlayerControllerClass</font> = <font class="Class">AMyPlayerController</font>::<font class="Function">StaticClass</font>();
-这样我们就用C++代码将我们的 <font class="Class">Controller</font> 指定在我们这个 <font class="Class">GameMode</font> 内了
-同理其他的类型也是这样指定进 <font class="Class">GameMode</font> 中的。</div>
+	引入这个类的头文件：<font class="Preprocess">#include</font> <font class="StringText">"MyPlayerController.h"</font>
+	在这个 <font class="Class">GameMode</font> 的构造函数内添加：<font class="Variables">PlayerControllerClass</font> = <font class="Class">AMyPlayerController</font>::<font class="Function">StaticClass</font>();
+	这样我们就用C++代码将我们的 <font class="Class">Controller</font> 指定在我们这个 <font class="Class">GameMode</font> 内了
+	同理其他的类型也是这样指定进 <font class="Class">GameMode</font> 中的。</div>
 					</code></pre>
 					<br><br>
 					<h1 class="FontTitle">什么是Pawn</h1>

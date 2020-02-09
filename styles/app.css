@@ -9751,6 +9751,7 @@ img{
 
 
 .spenMenu{
+	padding-top: 5px;
 	left: 50px;
 	display: table-cell;
     height: 59px;
