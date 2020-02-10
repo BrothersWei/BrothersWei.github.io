@@ -9923,6 +9923,7 @@ img{
   padding-left: 2px;
   padding-top: 10px;
   width: 60px !important;
+  height: auto;!important;
 }
 .program.program-schedule h3 {
 }
