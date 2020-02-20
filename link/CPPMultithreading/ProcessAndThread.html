@@ -21,6 +21,10 @@
 <link rel="stylesheet" href="../../styles/Myhighlight.css">
 <link rel="stylesheet" href="../../vendor/highlight/styles/vs2015.css">
 <!-- endbuild -->
+	
+	<style type="text/css">
+		img{width: 400px;}
+    </style>
   </head>
   <body>
 
@@ -119,8 +123,28 @@
   				<div class="col-xs-1"></div>
   				<div class="col-xs-10">
 					<br><br>
-					<h3 class="FontTitle">简介</h3>
-				  	<p class="FontParagraph">This is Hello World</p>
+					<h3 class="FontTitle">什么是进程</h3>					
+					<div class="row">
+						<div class="col-xs-6"></div>
+						<div class="col-xs-4"></div>
+					</div>
+					<p class="FontParagraph">&emsp;&emsp;进程是我们计算机中运行的一个一个的程序，如图，我们Windows系统的任务管理器里面所显示的正在运行的程序都是进程，也可以说，进程就是程序的实体。</p>
+					<center><img src="img/ProcessAndThread/1.png" alt=""></center><br><br>
+					<p class="FontParagraph">&emsp;&emsp;从严格意义上来说，CPU在任何时候都只运行一个线程，只不过它快速切换（几毫秒的时间）进程营造了并行处理的假象</p>
+					<p class="FontParagraph">&emsp;&emsp;每个进程都有自己的虚拟地址空间和控制线程。线程是操作系统调度器，分配处理器时间的基础单元。我们可以把系统看作是运行在准并行的环境中的集合。在操作系统启动后，会创建多个进程。有一些是前台的进程，与用户交互，并根据用户的要求执行操作。有一些是后台的进程，执行特定的功能，与用户是不相关的。</p>
+					<br><br>
+					<h3 class="FontTitle">什么是线程</h3>
+				  	<p class="FontParagraph">&emsp;&emsp;通常在一个进程中可以包含若干个线程，一个进程可以有很多线程，每条线程并行执行不同的任务。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程。</p>
+					<p class="FontParagraph">&emsp;&emsp;下图演示了执行4个程序调度的一个单核CPU多任务处理系统和一个执行4个进程的一个多核CPU多任务处理系统，每个进程单独运行，各有一个控制流</p>
+					<div class="row">
+						<div class="col-xs-6"><center><img src="img/ProcessAndThread/2.png" alt=""></center></div>
+						<div class="col-xs-6"><center><img src="img/ProcessAndThread/3.png" alt=""></center></div>
+					</div>
+					
+					
+					
+					
+					
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>

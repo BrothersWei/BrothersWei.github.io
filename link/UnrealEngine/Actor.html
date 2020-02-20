@@ -150,7 +150,7 @@
 					<br>
 					<p class="FontParagraph">&emsp;&emsp;其意思为，我们在程序里面有一个叫 <font class="Variables">Camera</font> 的类，但是没有指定它的值，用 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt; 为它指定了一个刚刚创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件，他对应的C++类为<font class="Class"> UCameraComponent</font>，这个时候我们要引用这个我们新创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件则直接引用 <font class="Variables">Camera</font> 即可，而后面的 <font class="TETXText">TEXT</font>(<font class="StringText">"Camera"</font>) 的意义为为这个组件在虚幻引擎编辑器的可视化窗口下这个 <font class="PreprocessorMacros">Actor</font> 属性下的这个 <font class="PreprocessorMacros">CameraComponent</font> 组件的名字，注意，这个 <font class="StringText">"Camera"</font> 名字与程序里面引用的 <font class="Variables">Camera</font> 这两个名字是截然不同的。如下图显示。
 					</p>
-					<center><img src="img/Actor/1.png" style=""></center>
+					<center><img src="img/Actor/1.png" alt=""></center>
 					<br>
 					<p class="FontParagraph">&emsp;&emsp;这个 <font class="PreprocessorMacros">Actor</font> 下的 <font class="PreprocessorMacros">MeshComponent</font> 啊，<font class="PreprocessorMacros">MovemenComponent</font> 啊，<font class="PreprocessorMacros">Grabber</font> 啊等等这些，所显示出来的这些名字，就是程序里面 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">T</font>&gt;(<font class="TETXText">TEXT</font>(<font class="StringText">"This Component name"</font>))里面的这个 <font class="TETXText">TEXT</font> 后所指定的名字。其中，<font class="Class">T</font> 代表所要创建的组件的对应 C++ 类，一般是所创建的组件类型前面加一个 U 即为对应的 C++ 类。</p>
 				  </div>
