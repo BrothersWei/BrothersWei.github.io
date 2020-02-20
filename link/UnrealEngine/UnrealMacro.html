@@ -12,7 +12,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
-<title>什么是Actor</title>
+<title>UE4中的宏定义</title>
 
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css"/>
@@ -104,10 +104,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo -->
-				<spen class="spenMenu">&ensp;什么是Actor</spen>
+				<spen class="spenMenu">&ensp;UE4中的宏定义</spen>
               <!-- /logo -->
             </div>
-              <span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">什么是Actor</span>
+              <span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">UE4中的宏定义</span>
           </div>
         </nav>
         <!-- /top header -->
@@ -119,40 +119,8 @@
   				<div class="col-xs-1"></div>
   				<div class="col-xs-10">
 					<br><br>
-					<h3 class="FontTitle">什么是Actor</h3>
-					<br>
-				  	<p class="FontParagraph">&emsp;&emsp;Actor 是 Unreal 中最基本的一种类型，字面上的意思是演员，但是在 Unreal 中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆 Actor，它是所有游戏场景中的所有物体的基础的类，是由 AActor 类派生而来的类的实例。</p>
-					<p class="FontParagraph">&emsp;&emsp;但是，一个门可以说是 Actor，但是用于控制开门关门的锁芯一般不叫作 Actor，一般视为 Actor 中的组件，也就是说，Actor 一般是为一个整体物体或实体，而这个整体物体或实体里面的部件一般为 Actor 的组件。</p>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;<font class="Function">以下为与 Actor 相关的函数</font></p>
-					<div class="row">
-						<div class="col-xs-1"></div>
-						<div class="col-xs-10">
-							<p class="FontString"><font class="Function">BeginPlay</font>：Actor 生成并初始化完成以后，首先调用的就是这个函数，并且只调用这一次，一般用于设置基本的逻辑，或更改一些属性。</p>
-		  					<p class="FontString"><font class="Function">Tick</font>：Actor 生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个 Actor 被销毁为止。</p>
-							<p class="FontString"><font class="Function">EndPlay</font>：当这个 Actor 被销毁时，运行的函数。</p>
-							<p class="FontString"><font class="Function">GetComponentByClass</font>：根据指定的类型来寻找这个 Actor 组件下所有这个类型的组件，注意，返回的是所有。</p>
-							<p class="FontString"><font class="Function">GetActorLocation</font>：获得这个 Actor 的 Location 信息等。</p>
-							<p class="FontString"><font class="Function">SetActorLocation</font>：显而易见，有 Get 就必然有 Set，那么 Set 就是设置这个 Actor 的 Location 等信息属性了。</p>
-						</div>
-						<div class="col-xs-1"></div>
-					</div>
-					<br><br>
-					<h3 class="FontTitle">什么是组件</h3>
-					<br>
-		  			<p class="FontParagraph">&emsp;&emsp;既然一辆车是 Actor，而车轮和车门是 Actor 的组件，那么显而易见，组件一般作为 Actor 的子对象使用，简单来说就是添加在这个 Actor 上面的东西，它可以让这个 Actor 拥有特定的行为或者功能。例如，一辆车和一辆飞机的移动和控制的方式显然是不同的，那么这个都是为移动的不同的方式，那就可以由组件来完成。</p>
-		  			<p class="FontParagraph">&emsp;&emsp;其中，ActorComponent 是组件的基础类，常见的组件有：StaticMeshComponent，CharactrMovement，SphereComponent 等等等等。</p>
-		  			<p class="FontParagraph">&emsp;&emsp;我们可以使用 <font class="Function">CreatDefaultSubobject</font> 方法来创建一个组件，代码如下（代码可以左滑查看全部）：</p>
-					<div class="col-lg-12">
-					<pre ><code><font>&emsp;&emsp;&emsp;&emsp;<font class="Variables">Camera</font> = <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt;(<font class="TETXText">TEXT</font>("Camera"));</font>
-					</code></pre>
-					</div>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;其意思为，我们在程序里面有一个叫 <font class="Variables">Camera</font> 的类，但是没有指定它的值，用 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">UCameraComponent</font>&gt; 为它指定了一个刚刚创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件，他对应的C++类为<font class="Class"> UCameraComponent</font>，这个时候我们要引用这个我们新创建的 <font class="PreprocessorMacros">CameraComponent</font> 组件则直接引用 <font class="Variables">Camera</font> 即可，而后面的 <font class="TETXText">TEXT</font>(<font class="StringText">"Camera"</font>) 的意义为为这个组件在虚幻引擎编辑器的可视化窗口下这个 <font class="PreprocessorMacros">Actor</font> 属性下的这个 <font class="PreprocessorMacros">CameraComponent</font> 组件的名字，注意，这个 <font class="StringText">"Camera"</font> 名字与程序里面引用的 <font class="Variables">Camera</font> 这两个名字是截然不同的。如下图显示。
-					</p>
-					<center><img src="img/Actor/1.png" style=""></center>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;这个 <font class="PreprocessorMacros">Actor</font> 下的 <font class="PreprocessorMacros">MeshComponent</font> 啊，<font class="PreprocessorMacros">MovemenComponent</font> 啊，<font class="PreprocessorMacros">Grabber</font> 啊等等这些，所显示出来的这些名字，就是程序里面 <font class="Function">CreatDefaultSubobject</font>&lt;<font class="Class">T</font>&gt;(<font class="TETXText">TEXT</font>(<font class="StringText">"This Component name"</font>))里面的这个 <font class="TETXText">TEXT</font> 后所指定的名字。其中，<font class="Class">T</font> 代表所要创建的组件的对应 C++ 类，一般是所创建的组件类型前面加一个 U 即为对应的 C++ 类。</p>
+					<h3 class="FontTitle">简介</h3>
+				  	<p class="FontParagraph">This is Hello World</p>
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>
