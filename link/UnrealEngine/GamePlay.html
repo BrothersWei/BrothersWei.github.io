@@ -140,11 +140,11 @@
 					<p class="FontParagraph">&emsp;&emsp;而在 GameMode 类的C++代码中，我们要先引用我们所创建的以上类型的头文件方可使用代码指定</p>
 		  			<p class="FontParagraph">&emsp;&emsp;例如：</p>
 		  			<p class="FontParagraph">&emsp;&emsp;我们有一个 Controller 类，它的名字为 MyPlayerController，其在C++代码中指定的方法如下（滑动代码可以查看全部）：</p>
-		  			<pre><code class="language-c++"><div class="WhiteFont">
+		  			<pre><code class="language-c++">
   引入这个类的头文件：#include "MyPlayerController.h"
   在这个 GameMode 的构造函数内添加：PlayerControllerClass = AMyPlayerController::StaticClass();
   这样我们就用C++代码将我们的 Controller 指定在我们这个 GameMode 内了
-  同理其他的类型也是这样指定进 GameMode 中的。</div>
+  同理其他的类型也是这样指定进 GameMode 中的。
 					</code></pre>
 					<br><br>
 					<h3 class="FontTitle">什么是Pawn</h3>
