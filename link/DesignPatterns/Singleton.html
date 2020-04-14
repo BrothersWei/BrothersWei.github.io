@@ -120,7 +120,7 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">什么是单例模式</h3>
+                        <h3 class="FontTitle">什么是单例模式</h3><br>
                         <p class="FontParagraph">&emsp;&emsp;单例模式最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
 						<p class="FontParagraph">&emsp;&emsp;这种模式涉及到一个单一的类，该类负责创建自己的对象，同时确保只有单个对象被创建。这个类提供了一种访问其唯一的对象的方式，可以直接访问，不需要实例化该类的对象。</p>
 						<p class="FontParagraph">&emsp;&emsp;我们需要注意以下几点：</p>
@@ -131,21 +131,21 @@
 						<p><font class="GoldFont">&emsp;&emsp;当一个类在整个项目中都需要频繁的访问（全局访问），在每次调用时都要创建一次对象（频繁创建），在每次调用完后都要销毁一次（频繁销毁），那么对性能的负担特别大，这个时候，我们的单例模式就需要用在这种环境下。</font></p>
 						<p class="FontParagraph">&emsp;&emsp;单例模式的实例代码如下（代码可以左滑查看全部）：</p>
 						<pre><code class="language-c++">
-    新建一个类 Singleton（以UE4 C++为例），在 Singleton.h中：
-    class 项目名_API Singleton{
+    新建一个类 Singleton，在 Singleton.h中：
+    class Singleton{
     public:
       //构造函数
       Singleton();
       //初始化单例
       static void Initialize();
       // 供外部获取的指针
-      static TSharedPtr&lt;Singleton&gt; Get();
+      static Singleton *Get();
     private:
       // 创建单例
-      static TSharedRef&lt;Singleton&gt; Create();
+      static Singleton &amp;Create();
     private:
       // 指向单例本身的静态指针
-      static TSharedPtr&lt;Singleton&gt; SingletonPtr;
+      static Singleton *SingletonPtr;
     }
     
     在 Singleton.cpp中
@@ -153,28 +153,28 @@
     #include "Singleton.h"
     
     // 单例的实现
-    TSharedPtr&lt;Singleton&gt;Singleton::SingletonPtr = NULL;
+    Singleton::SingletonPtr = NULL;
     void Initialize(){
         // 检查指针是否存在
-        if (!SingletonPtr.IsValid()) {
+        if (SingletonPtr == NULL) {
           // 不存在就创建
           SingletonPtr = Create();
         }
     }
-    TSharedPtr&lt;Singleton&gt;Singleton::Get() {
+    Singleton::Get() {
         // 初始化单例
         Initialize();
         // 返回这个指针
         return SingletonPtr;
     }
-    TSharedPtr&lt;Singleton&gt;Singleton::Get() {
+    Singleton::Create() {
         // 创建这个单例
-        TSharedRef&lt;Singleton&gt; SingletonRef = MakeShareable(new Singleton());
+        Singleton &amp;SingletonRef = new Singleton();
         // 返回这个单例
         return SingletonRef;
     }
 					</code></pre>
-					<p class="FontParagraph">&emsp;&emsp;我们在调用这个单例的时候只需调用这个单例的 Get() 函数即可</p>	
+					<p class="FontParagraph">&emsp;&emsp;我们在调用这个单例的时候只需调用这个单例的 Get() 函数即可。</p>	
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
