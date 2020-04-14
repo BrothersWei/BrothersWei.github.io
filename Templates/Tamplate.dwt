@@ -1,5 +1,5 @@
 <!doctype html>
-<html><!-- InstanceBegin template="/Templates/Tamplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<html>
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +12,15 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
-<!-- InstanceBeginEditable name="doctitle" -->
-<title>OpenGL环境搭建</title>
-<!-- InstanceEndEditable -->
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>我的学习笔记</title>
+<!-- TemplateEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
-<link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
-<link rel="stylesheet" href="../../styles/app.css" id="load_styles_before" runat="server"/>
-<link rel="stylesheet" href="../../styles/app.skins.css" runat="server"/>
-<link rel="stylesheet" href="../../styles/Myhighlight.css" runat="server"/>
-<link rel="stylesheet" href="../../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
+<link rel="stylesheet" href="../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
+<link rel="stylesheet" href="../styles/app.css" id="load_styles_before" runat="server"/>
+<link rel="stylesheet" href="../styles/app.skins.css" runat="server"/>
+<link rel="stylesheet" href="../styles/Myhighlight.css" runat="server"/>
+<link rel="stylesheet" href="../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
 <!-- endbuild -->
 </head>
   <body>
@@ -31,7 +31,7 @@
         <div class="brand"> 
             <!-- /toggle offscreen menu --> 
             <!-- logo --> 
-            <a class="brand-logo" href="../../index.html"> <img class="expanding-hidden" src="../../images/logo-dark.png" alt=""/> </a> 
+            <a class="brand-logo" href="../index.html"> <img class="expanding-hidden" src="../images/logo-dark.png" alt=""/> </a> 
             <!-- /logo --> 
         </div>
         <!-- main navigation -->
@@ -40,17 +40,17 @@
             <ul class="nav">
                 <!-- 主页 -->
                 <p class="nav-title">主页</p>
-                <li> <a href="../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <li> <a href="../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
                 <hr>
                 <p class="nav-title">UnrealEngine 4</p>
                 <!-- /主页 --> 
                 <!-- UnrealEngine4 -->
                 <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
-                        <li> <a href="../UnrealEngine/InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
-                        <li> <a href="../UnrealEngine/GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
-                        <li> <a href="../UnrealEngine/UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+                        <li> <a href="../link/UnrealEngine/Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="../link/UnrealEngine/InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="../link/UnrealEngine/GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="../link/UnrealEngine/UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -61,23 +61,23 @@
                 <!-- OpenGL -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
-                        <li> <a href="GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                        <li> <a href="../link/OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="../link/OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /OpenGL --> 
                 <!-- 设计模式 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
-                        <li> <a href="../DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>
+                        <li> <a href="../link/DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <li> <a href="../link/DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /设计模式 -->
 				<!-- C++多线程 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;C++多线程编程</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
+                        <li> <a href="../link/CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /C++多线程 -->
@@ -101,19 +101,19 @@
             <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
               <!-- toggle offscreen menu -->
               <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
-                <i class="material-icons"><img src="../../images/button-1.png"></i>
+                <i class="material-icons"><img src="../images/button-1.png"></i>
               </a>
               <!-- /toggle offscreen menu -->
-              <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;OpenGL环境搭建</spen>
-              <!-- InstanceEndEditable --><!-- /logo -->
+              <!-- logo --><!-- TemplateBeginEditable name="title1" -->
+              <spen class="spenMenu">&ensp;首页</spen>
+              <!-- TemplateEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">OpenGL环境搭建</span><!-- InstanceEndEditable --></div>
+            <!-- TemplateBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- TemplateEndEditable --></div>
         </nav>
         <!-- /top header -->
 
         <!-- main area -->
-        <!-- InstanceBeginEditable name="main" -->
+        <!-- TemplateBeginEditable name="main" -->
         <div class="main-content">
             <div class="content-view">
                 <div class="row">
@@ -127,18 +127,18 @@
                 </div>
             </div>
         </div>
-        <!-- InstanceEndEditable --><!-- /main area -->
+        <!-- TemplateEndEditable --><!-- /main area -->
       </div>
       <!-- /content panel -->
     </div>
 
     <!-- build:js({.tmp,app}) scripts/app.min.js --> 
-<script src="file:///C|/Users/acmwd/Desktop/BrothersWei.github.io/vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
-<script src="file:///C|/Users/acmwd/Desktop/BrothersWei.github.io/vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
-<script src="file:///C|/Users/acmwd/Desktop/BrothersWei.github.io/scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
-<script src="file:///C|/Users/acmwd/Desktop/BrothersWei.github.io/scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
-<script src="file:///C|/Users/acmwd/Desktop/BrothersWei.github.io/vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
+<script src="../vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
+<script src="../vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
+<script src="../scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
+<script src="../scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
+<script src="../vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
 <script>hljs.initHighlighting()();</script>
 <!-- endbuild -->
   </body>
-<!-- InstanceEnd --></html>
+</html>

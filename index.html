@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html><!-- InstanceBegin template="/Templates/Tamplate.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,14 +12,17 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
+<!-- InstanceBeginEditable name="doctitle" -->
 <title>我的学习笔记</title>
-
+<!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
-<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css"/>
-<link rel="stylesheet" href="styles/app.css" id="load_styles_before"/>
-<link rel="stylesheet" href="styles/app.skins.css"/>
+<link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
+<link rel="stylesheet" href="styles/app.css" id="load_styles_before" runat="server"/>
+<link rel="stylesheet" href="styles/app.skins.css" runat="server"/>
+<link rel="stylesheet" href="styles/Myhighlight.css" runat="server"/>
+<link rel="stylesheet" href="vendor/highlight/styles/sunburst.css" runat="server"/>
 <!-- endbuild -->
-  </head>
+</head>
   <body>
 
     <div class="app">
@@ -92,6 +95,26 @@
       <!-- /sidebar panel -->
       <!-- content panel -->
       <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons"><img src="images/button-1.png"></i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo --><!-- InstanceBeginEditable name="title1" -->
+              <spen class="spenMenu">&ensp;首页</spen>
+              <!-- InstanceEndEditable --><!-- /logo -->
+            </div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <!-- InstanceBeginEditable name="main" -->
+        <div class="main-panel">
         <!-- top header -->
         <nav class="header navbar">
           <div class="header-inner">
@@ -250,14 +273,18 @@
 			
           </div>
         </div>
-        <!-- /main area -->
+        <!-- InstanceEndEditable --><!-- /main area -->
       </div>
       <!-- /content panel -->
+    </div>
+
     <!-- build:js({.tmp,app}) scripts/app.min.js --> 
-<script src="vendor/jquery/dist/jquery.js"></script> 
-<script src="vendor/bootstrap/dist/js/bootstrap.js"></script> 
-<script src="scripts/constants.js"></script> 
-<script src="scripts/main.js"></script> 
+<script src="vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
+<script src="vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
+<script src="scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
+<script src="scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
+<script src="vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
+<script>hljs.initHighlighting()();</script>
 <!-- endbuild -->
   </body>
-</html>
+<!-- InstanceEnd --></html>
