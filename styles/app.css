@@ -9730,22 +9730,47 @@ td.align-middle {
 
 @font-face{
      font-family: 'OCR-B'; 
-     src: url(' ../fonts/OCR-B.ttf') format('truetype'),
+     src: url('../fonts/OCR-B/OCR-B.eot');
+	 src: url('../fonts/OCR-B/OCR-B.ttf') format('truetype'),
+		  url('../fonts/OCR-B/OCR-B.woff') format('woff'),
+		  url('../fonts/OCR-B/OCR-B.woff2') format('woff2'),
+		  url('../fonts/OCR-B/OCR-B.svg') format('svg');
+}
+
+@font-face{
+     font-family: 'Inconsolata'; 
+	 src: url('../fonts/Inconsolata/Inconsolata.eot');
+     src: url('../fonts/Inconsolata/Inconsolata.ttf') format('truetype'),
+		  url('../fonts/Inconsolata/Inconsolata.woff') format('woff'),
+		  url('../fonts/Inconsolata/Inconsolata.woff2') format('woff2'),
+		  url('../fonts/Inconsolata/Inconsolata.svg') format('svg');
 }
 
 @font-face{
      font-family: 'Inconsolata-Bold'; 
-     src: url(' ../fonts/Inconsolata-Bold.ttf') format('truetype'),
+	 src: url('../fonts/Inconsolata-Bold/Inconsolata-Bold.eot');
+     src: url('../fonts/Inconsolata-Bold/Inconsolata-Bold.ttf') format('truetype'),
+		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.woff') format('woff'),
+		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.woff2') format('woff2'),
+		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.svg') format('svg');
 }
 
 @font-face{
      font-family: 'Inconsolata-Regular'; 
-     src: url(' ../fonts/Inconsolata-Regular.ttf') format('truetype'),
+	 src: url('../fonts/Inconsolata-Regular/Inconsolata-Regular.eot');
+     src: url('../fonts/Inconsolata-Regular/Inconsolata-Regular.ttf') format('truetype'),
+		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.woff') format('woff'),
+		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.woff2') format('woff2'),
+		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.svg') format('svg');
 }
 
 @font-face{
      font-family: 'YaHeiConsolas'; 
-     src: url(' ../fonts/YaHeiConsolas.ttf') format('truetype'),
+	 src: url('../fonts/YaHeiConsolas/YaHeiConsolas.eot');
+     src: url('../fonts/YaHeiConsolas/YaHeiConsolas.ttf') format('truetype'),
+		  url('../fonts/YaHeiConsolas/YaHeiConsolas.woff') format('woff'),
+		  url('../fonts/YaHeiConsolas/YaHeiConsolas.woff2') format('woff2'),
+		  url('../fonts/YaHeiConsolas/YaHeiConsolas.svg') format('svg');
 }
 
 img{
@@ -9781,7 +9806,7 @@ img{
 	word-wrap:break-word;
 	word-break:break-all;
 	overflow: hidden;
-	font-family:"OCR-B";
+	font-family:"Inconsolata";
 	font-weight:bold;
 	color:aliceblue;
 	text-align:center;
@@ -9793,7 +9818,7 @@ img{
 	word-wrap:break-word;
 	word-break:break-all;
 	overflow: hidden;
-	font-family:"OCR-B";
+	font-family:"Inconsolata";
 	font-weight:bold;
 	color:aliceblue;
 	text-align:left;
@@ -9806,7 +9831,7 @@ img{
 	word-wrap:break-word;
 	word-break:break-all;
 	overflow: hidden;
-	font-family:"OCR-B";
+	font-family:"Inconsolata";
 	font-weight:bold;
 	color:aliceblue;
 	text-align:left;
@@ -9861,7 +9886,7 @@ img{
 	word-wrap:break-word;
 	word-break:break-all;
 	overflow: hidden;
-	font-family:"OCR-B";
+	font-family:"Inconsolata";
 	font-weight:bold;
 	color:black;
 	text-align:left;
