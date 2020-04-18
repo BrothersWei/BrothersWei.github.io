@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>工厂模式</title>
+<title>UE4中的碰撞</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -47,12 +47,12 @@
                 <!-- UnrealEngine4 -->
                 <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
-                        <li> <a href="../UnrealEngine/InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
-                        <li> <a href="../UnrealEngine/GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
-                        <li> <a href="../UnrealEngine/UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
-						<li> <a href="../UnrealEngine/Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
-						<li> <a href="../UnrealEngine/LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+                        <li> <a href="Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
+						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -71,8 +71,8 @@
                 <!-- 设计模式 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
-                        <li> <a href="Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>
+                        <li> <a href="../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <li> <a href="../DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /设计模式 -->
@@ -107,10 +107,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;工厂模式</spen>
+              <spen class="spenMenu">&ensp;UE4中的碰撞</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">工厂模式</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">UE4中的碰撞</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -122,8 +122,33 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3>
-                        <p class="FontParagraph">This is Hello World</p>
+                        <h3 class="FontTitle">UE4中碰撞相关设置</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们在 UE4 中设置碰撞相关的属性，可以在项目设置中的引擎（Engine）项中找到碰撞（Collision），打开后就是下图的界面，我们可以对其中进行编辑，使用我们需要的碰撞类型。</p>
+						<center><img src="img/Collision/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;其中，分为以下几个部分：</p>
+						<p><font class="GoldFont">&emsp;&emsp;Object Channels：对象通道，相对于我们每一个可以碰撞物体的类，用这个来区分。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Trace Channels：踪迹通道，一般用于类似于射线之类的对象。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Preset：配置文件，相对于碰撞的规则，对象与对象之间如何碰撞，对象与踪迹之间如何碰撞，都由这个文件定义。</font></p>
+						<hr>
+						<h5 class="FontTitle">&emsp;&emsp;碰撞的反应类型</h5>
+						<p class="FontParagraph">&emsp;&emsp;无论是 Object 还是 Trace，都有碰撞的默认反应，我们的碰撞有三种反应，区别如下：</p>
+						<p><font class="GoldFont">&emsp;&emsp;Block（区块）：即阻挡类型碰撞，代表着两个物体之间不能相互穿越（穿模）只有表面发生碰撞，碰撞后产生碰撞交互事件。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Overlap（重叠）：代表两个物体之间可以互相穿越（穿模）并且产生碰撞重叠交互事件。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Ignore（忽略）：两个物体之间的碰撞直接忽略，直接可以穿越（穿模），不产生任何碰撞交互事件。</font></p>
+						<p class="FontParagraph">&emsp;&emsp;在新建 Object 或者 Trace 时，我们要指定他们的默认反应，如下图：</p>
+						<center><img src="img/Collision/2.png" alt=""></center><br><br><hr>
+						<h5 class="FontTitle">&emsp;&emsp;碰撞配置文件</h5>
+						<p class="FontParagraph">&emsp;&emsp;碰撞的配置文件建立后，参数如下：</p>
+						<center><img src="img/Collision/3.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;名称为这个配置文件的名字。</p>
+						<p class="FontParagraph">&emsp;&emsp;已启用碰撞有以下几种类型：</p>
+						<p><font class="GoldFont">&emsp;&emsp;No Collision（没有碰撞）：在物理引擎中此形体将不具有任何表示。不可用于空间查询（光线投射、Sweep、重叠）或模拟（刚体、约束）。此设置可提供最佳性能，尤其是对于移动对象。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Query Only（仅查询无物理碰撞）：此形体仅可用于空间查询（光线投射、Sweep和重叠）。不可用于模拟（刚体、约束）。对于角色运动和不需要物理模拟的对象，此设置非常有用。通过缩小物理模拟树中的数据来实现一些性能提升。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Physics Only（仅碰撞无物理查询）：此形体仅可用于物理模拟（刚体、约束）。不可用于空间查询（光线投射、Sweep、重叠）。对于角色上不需要按骨骼进行检测的模拟次级运动，此设置非常有用。通过缩小查询树中的数据来实现一些性能提升。</font></p>
+						<p><font class="GoldFont">&emsp;&emsp;Collision Enabled（启用碰撞物理和查询）：此形体可用于空间查询（光线投射、Sweep、重叠）和模拟（刚体、约束）。</font></p>
+						<p class="FontParagraph">&emsp;&emsp;对象类型为这个碰撞配置文件所对应的 Object Channels。</p>
+						<p class="FontParagraph">&emsp;&emsp;描述即为注释。</p>
+						<p class="FontParagraph">&emsp;&emsp;碰撞响应所调节的就是这个碰撞文件对应的 Object Channels 和其他的 Object Channels 或者 Trace Channels 所产生的碰撞的规则，这个规则的忽略，重叠，区块于上述描述的相同。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
