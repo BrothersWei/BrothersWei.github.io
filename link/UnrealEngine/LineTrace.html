@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>OpenGL环境搭建</title>
+<title>射线绘制和射线检测</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -47,11 +47,11 @@
                 <!-- UnrealEngine4 -->
                 <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
-                        <li> <a href="../UnrealEngine/InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
-                        <li> <a href="../UnrealEngine/GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
-                        <li> <a href="../UnrealEngine/UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
-						<li> <a href="../UnrealEngine/LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+                        <li> <a href="Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -62,8 +62,8 @@
                 <!-- OpenGL -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
-                        <li> <a href="GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                        <li> <a href="../OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="../OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /OpenGL --> 
@@ -106,10 +106,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;OpenGL环境搭建</spen>
+              <spen class="spenMenu">&ensp;射线绘制和射线检测</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">OpenGL环境搭建</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">射线绘制和射线检测</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -121,8 +121,54 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3>
-                        <p class="FontParagraph">This is Hello World</p>
+                        <h3 class="FontTitle">射线的绘制</h3>
+                        <p class="FontParagraph">&emsp;&emsp;在 UE4 中，提供了一个 DrawDebugLine() 方法来帮助我们在游戏窗口中绘制我们的射线，这个方法定义在 DrawDebugHelpers.h 文件下，我们如果需要使用这个方法，则需要导入 DrawDebugHelpers.h 头文件。</p>
+						<p class="FontParagraph">&emsp;&emsp;我们在浏览源代码时发现，这个函数，我们需要传入的参数如下：</p>
+						<pre><code class="language-c++">
+    void DrawDebugLine(
+        const UWorld* InWorld,     // 传入的世界
+        FVector const&amp; LineStart,  // 射线的起点
+        FVector const&amp; LineEnd,    // 射线的终点
+        FColor const&amp; Color,       // 射线的颜色
+        bool bPersistentLines,     // 是否一直显示
+        float LifeTime,            // 显示的持续时间
+        uint8 DepthPriority,       // 深度优先？没看懂，一般使用时写0即可
+        float Thickness            // 射线有多粗
+    );
+						</code></pre>
+						<br>
+						<hr>
+						<h3 class="FontTitle">射线的碰撞检测</h3>
+                        <p class="FontParagraph">&emsp;&emsp;一般射线的绘制只是帮我们在游戏窗口中 Debug 调试使用，在正式的成品中，我们是一般是不显示这个射线的，那么又如何去获取到我们这个射线碰撞到的物体呢，同样，UE4 为我们定义了一个 LineTraceSingleByObjectType() 函数，这个函数是在 GetWorld() 下，使用的方法如下：</p>
+						<pre><code class="language-c++">
+    // 设置查询参数，是否与模型进行复杂碰撞，ture 为复杂碰撞
+    FCollisionQueryParams TraceParameters(FName(TEXT("")), false, GetOwner());
+    // 设置碰撞物体
+    FHitResult Hit;
+    // 调用这个函数
+    GetWorld()->LineTraceSingleByObjectType(
+        Hit,             // 射线碰撞到的物体，返回引用
+        LineTraceStart,  // 射线的起点
+        LineTraceEnd,    // 射线的终点
+        FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody),// 射线的碰撞类型，在项目设置的碰撞中可以修改
+        TraceParameters  // 查询参数，使用我们之前定义的那个即可
+    );
+    // 通过 GetActor() 方法即可获取碰撞的物体
+    AActor *ActorHit = Hit.GetActor();
+						</code></pre>
+						<hr>
+						<p class="FontParagraph">&emsp;&emsp;其源代码定义在 World.h 中如下：</p>
+						<pre><code class="language-c++">
+    // 传入的参数即为上述例子中的一致
+    bool LineTraceSingleByObjectType(
+        struct FHitResult&amp; OutHit,
+        const FVector&amp; Start,
+        const FVector&amp; End,
+        const FCollisionObjectQueryParams&amp; ObjectQueryParams, 
+        const FCollisionQueryParams&amp; Params = FCollisionQueryParams::DefaultQueryParam
+    ) const;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们看到 OutHit 传入的是一个引用，所以我们只需定义 Hit 传入这个函数，即可返回这个碰撞的属性 Hit，再通过 Hit.GetActor() 即可获取到我们碰撞的物体（在我们的 ObjectQueryParams 碰撞规则下）</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
