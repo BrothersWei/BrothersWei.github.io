@@ -343,12 +343,12 @@ code {
 }
 .sidebar-panel .nav-menutext{
 	font-size: 16px;
-	font-weight:bold;
+	font-weight:600;
 	font-family:"YaHeiConsolas";
 }
 .sidebar-panel .nav-buttontext{
 	font-size: 14px;
-	font-weight: bold;
+	font-weight: 600;
 	font-family:"Inconsolata-Regular";
 }
   .sidebar-panel .nav-profile {
@@ -9731,46 +9731,51 @@ td.align-middle {
 @font-face{
      font-family: 'OCR-B'; 
      src: url('../fonts/OCR-B/OCR-B.eot');
-	 src: url('../fonts/OCR-B/OCR-B.ttf') format('truetype'),
+	 src: url('../fonts/OCR-B/OCR-B.eot?#iefix') format('embedded-opentype'),
+		  url('../fonts/OCR-B/OCR-B.ttf') format('truetype'),
 		  url('../fonts/OCR-B/OCR-B.woff') format('woff'),
 		  url('../fonts/OCR-B/OCR-B.woff2') format('woff2'),
-		  url('../fonts/OCR-B/OCR-B.svg') format('svg');
+		  url('../fonts/OCR-B/OCR-B.svg#OCR-B') format('svg');
 }
 
 @font-face{
      font-family: 'Inconsolata'; 
 	 src: url('../fonts/Inconsolata/Inconsolata.eot');
-     src: url('../fonts/Inconsolata/Inconsolata.ttf') format('truetype'),
+     src: url('../fonts/Inconsolata/Inconsolata.eot?#iefix') format('embedded-opentype'),
+		  url('../fonts/Inconsolata/Inconsolata.ttf') format('truetype'),
 		  url('../fonts/Inconsolata/Inconsolata.woff') format('woff'),
 		  url('../fonts/Inconsolata/Inconsolata.woff2') format('woff2'),
-		  url('../fonts/Inconsolata/Inconsolata.svg') format('svg');
+		  url('../fonts/Inconsolata/Inconsolata.svg#Inconsolata') format('svg');
 }
 
 @font-face{
      font-family: 'Inconsolata-Bold'; 
 	 src: url('../fonts/Inconsolata-Bold/Inconsolata-Bold.eot');
-     src: url('../fonts/Inconsolata-Bold/Inconsolata-Bold.ttf') format('truetype'),
+     src: url('../fonts/Inconsolata-Bold/Inconsolata-Bold.eot?#iefix') format('embedded-opentype'),
+		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.ttf') format('truetype'),
 		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.woff') format('woff'),
 		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.woff2') format('woff2'),
-		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.svg') format('svg');
+		  url('../fonts/Inconsolata-Bold/Inconsolata-Bold.svg#Inconsolata-Bold') format('svg');
 }
 
 @font-face{
      font-family: 'Inconsolata-Regular'; 
 	 src: url('../fonts/Inconsolata-Regular/Inconsolata-Regular.eot');
-     src: url('../fonts/Inconsolata-Regular/Inconsolata-Regular.ttf') format('truetype'),
+     src: url('../fonts/Inconsolata-Regular/Inconsolata-Regular.eot?#iefix') format('embedded-opentype'),
+		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.ttf') format('truetype'),
 		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.woff') format('woff'),
 		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.woff2') format('woff2'),
-		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.svg') format('svg');
+		  url('../fonts/Inconsolata-Regular/Inconsolata-Regular.svg#Inconsolata-Regular') format('svg');
 }
 
 @font-face{
      font-family: 'YaHeiConsolas'; 
 	 src: url('../fonts/YaHeiConsolas/YaHeiConsolas.eot');
-     src: url('../fonts/YaHeiConsolas/YaHeiConsolas.ttf') format('truetype'),
+     src: url('../fonts/YaHeiConsolas/YaHeiConsolas.eot?#iefix') format('embedded-opentype'),
+		  url('../fonts/YaHeiConsolas/YaHeiConsolas.ttf') format('truetype'),
 		  url('../fonts/YaHeiConsolas/YaHeiConsolas.woff') format('woff'),
 		  url('../fonts/YaHeiConsolas/YaHeiConsolas.woff2') format('woff2'),
-		  url('../fonts/YaHeiConsolas/YaHeiConsolas.svg') format('svg');
+		  url('../fonts/YaHeiConsolas/YaHeiConsolas.svg#YaHeiConsolas') format('svg');
 }
 
 img{
@@ -9819,7 +9824,7 @@ img{
 	word-break:break-all;
 	overflow: hidden;
 	font-family:"Inconsolata";
-	font-weight:bold;
+	font-weight:600;
 	color:aliceblue;
 	text-align:left;
 }
@@ -9832,9 +9837,10 @@ img{
 	word-break:break-all;
 	overflow: hidden;
 	font-family:"Inconsolata";
-	font-weight:bold;
+	font-weight:500;
 	color:aliceblue;
 	text-align:left;
+	letter-spacing:2px;
 }
 
 .FontString{
@@ -9887,9 +9893,10 @@ img{
 	word-break:break-all;
 	overflow: hidden;
 	font-family:"Inconsolata";
-	font-weight:bold;
+	font-weight:600;
 	color:black;
 	text-align:left;
+	letter-spacing:2px;
 }
 
 /**/
@@ -9929,7 +9936,8 @@ img{
 .MenuTitilFont{
 	margin:auto;
 	font-size: 20px;
-	font-weight:bold;
+	font-weight:600;
+	text-align:center;
 }
 
 .program.program-schedule {
@@ -9939,7 +9947,7 @@ img{
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
-  border-radius: 4px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   height: 90px;
@@ -9949,7 +9957,8 @@ img{
   padding-left: 2px;
   padding-top: 10px;
   width: 60px !important;
-  height: auto;!important;
+  height: auto!important;
+  /*float: left;*/
 }
 .program.program-schedule h3 {
 }

@@ -53,6 +53,7 @@
                         <li> <a href="UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
 						<li> <a href="Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
 						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+						<li> <a href="Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -61,27 +62,27 @@
             <p class="nav-title">其他</p>
             <ul class="nav">
                 <!-- OpenGL -->
-                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
-                        <li> <a href="../OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                        <li> <a href="../link/OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="../link/OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
                     </ul>
-                </li>
+                </li>-->
                 <!-- /OpenGL --> 
                 <!-- 设计模式 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
                     <ul class="sub-menu">
                         <li> <a href="../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
-                        <li> <a href="../DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>
+                        <!--<li> <a href="../link/DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>-->
                     </ul>
                 </li>
                 <!-- /设计模式 -->
 				<!-- C++多线程 -->
-                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;C++多线程编程</span> </a>
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;C++多线程编程</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
+                        <li> <a href="../link/CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
                     </ul>
-                </li>
+                </li>-->
                 <!-- /C++多线程 -->
                 <li>
                     <hr/>
@@ -124,12 +125,12 @@
   				<div class="col-xs-10">
 					<br><br>
 					<h3 class="FontTitle">什么是GameMode</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;GameMode 指的是游戏模式，代表着游戏的类型，它指定了我们的玩家，我们控制的模型等等，相当于游戏的规则。而 GameMode 包括一下几类最基础的内容：</p>
+					<p class="FontParagraph">&emsp;&emsp;GameMode指的是游戏模式，代表着游戏的类型，它指定了我们的玩家，我们控制的模型等等，相当于游戏的规则。而GameMode包括一下几类最基础的内容：</p>
 					<div class="row">
 						<div class="col-xs-1"></div>
 						<div class="col-xs-10">
-							<p><font class="GoldFont">1. Default Pwan Class，即默认的 Pawn 或 Character</font></p>
-							<p><font class="GoldFont">2. HUD Class，即所显示的 HUD 类</font></p>
+							<p><font class="GoldFont">1. Default Pwan Class，即默认的Pawn或Character</font></p>
+							<p><font class="GoldFont">2. HUD Class，即所显示的HUD类</font></p>
 							<p><font class="GoldFont">3. Player Controller Class，即玩家的控制器</font></p>
 							<p><font class="GoldFont">4. Game State Class，即游戏状态类</font></p>
 							<p><font class="GoldFont">5. Player State Class，即玩家状态类</font></p>
@@ -137,12 +138,12 @@
 							
 						</div>
 					</div>
-					<p class="FontParagraph">&emsp;&emsp;我们可以在 World Settings 即世界设置里面指定我们这个游戏所运行的 GameMode 类，如下图</p>
+					<p class="FontParagraph">&emsp;&emsp;我们可以在World Settings即世界设置里面指定我们这个游戏所运行的GameMode类，如下图</p>
 					<center><img src="img/GamePlay/1.jpg" alt=""></center>
 					<br><br>
-					<p class="FontParagraph">&emsp;&emsp;而在 GameMode 类的C++代码中，我们要先引用我们所创建的以上类型的头文件方可使用代码指定</p>
+					<p class="FontParagraph">&emsp;&emsp;而在GameMode类的C++代码中，我们要先引用我们所创建的以上类型的头文件方可使用代码指定</p>
 		  			<p class="FontParagraph">&emsp;&emsp;例如：</p>
-		  			<p class="FontParagraph">&emsp;&emsp;我们有一个 Controller 类，它的名字为 MyPlayerController，其在C++代码中指定的方法如下（滑动代码可以查看全部）：</p>
+		  			<p class="FontParagraph">&emsp;&emsp;我们有一个Controller类，它的名字为MyPlayerController，其在C++代码中指定的方法如下（滑动代码可以查看全部）：</p>
 		  			<pre><code class="language-c++">
   引入这个类的头文件：#include "MyPlayerController.h"
   在这个 GameMode 的构造函数内添加：PlayerControllerClass = AMyPlayerController::StaticClass();
@@ -151,17 +152,17 @@
 					</code></pre>
 					<br><br>
 					<h3 class="FontTitle">什么是Pawn</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Pawn 就是 Actor 的一个子类，这个类是可以由玩家或者 AI 控制，在我们在没有指定默认的 Pawn 时，UE4会自动帮我们生成一个 Default Pawn，它包括了一个球体组件，即 CollisionComponent 和一个默认的模型组件，即 StaticMeshComponent 和一个控制移动的 DefaultPawnMovementComponent 组件和一个 CameraComponent 摄像机组件.</p>
+					<p class="FontParagraph">&emsp;&emsp;Pawn就是Actor的一个子类，这个类是可以由玩家或者AI控制，在我们在没有指定默认的Pawn时，UE4会自动帮我们生成一个Default Pawn，它包括了一个球体组件，即CollisionComponent和一个默认的模型组件，即StaticMeshComponent和一个控制移动的DefaultPawnMovementComponent组件和一个CameraComponent摄像机组件.</p>
 					<br><br>
 					<h3 class="FontTitle">什么是Charater</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Charater 是一个特殊的 Pawn ，其实也没有多特殊，无非就是在 Pawn 的基础上加上了 CharacterMovementComponent，CapsuleComponent 和 SkeletalMesh 这三个组件。（官方文档的解释，实质上两者没有多大区别，无非就是 Pawn 是 Charater 的父类罢了，在组件合适的情况下，Pawn 也可以完完全全属于 Charater）习惯上，一般 Charater用于类人形角色，而 Pawn 用于非人形角色</p>
-					<p class="FontParagraph">&emsp;&emsp;其中，SkeletalMesh 为骨架网络物体，它与 StaticMesh 不同，StaticMesh 为静态网络物体，是没有骨架的物体，而 SkeletalMesh 是绑定了骨骼骨架的物体。</p>
+					<p class="FontParagraph">&emsp;&emsp;Charater是一个特殊的Pawn ，其实也没有多特殊，无非就是在Pawn的基础上加上了CharacterMovementComponent，CapsuleComponent 和SkeletalMesh这三个组件。（官方文档的解释，实质上两者没有多大区别，无非就是Pawn是Charater的父类罢了，在组件合适的情况下，Pawn也可以完完全全属于Charater）习惯上，一般Charater用于类人形角色，而Pawn用于非人形角色</p>
+					<p class="FontParagraph">&emsp;&emsp;其中，SkeletalMesh为骨架网络物体，它与StaticMesh不同，StaticMesh为静态网络物体，是没有骨架的物体，而SkeletalMesh是绑定了骨骼骨架的物体。</p>
 					<br><br>
 					<h3 class="FontTitle">什么是Controller</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Controller 就是控制器，它是用来控制 Pawn 的，并且，Controller 可以允许操控一个 Pawn 或 Charater 并控制它，一般有两种控制器，一个是 PlayerController，即玩家控制器，另外一个是AIController，即 AI 控制器。我们可以这样子去理解，Controller 就是大脑，用于发出指令，而 Pawn 或 Charater 就是身体，用于接收指令并作出相应的动作。</p>
+					<p class="FontParagraph">&emsp;&emsp;Controller就是控制器，它是用来控制Pawn的，并且，Controller可以允许操控一个Pawn或Charater并控制它，一般有两种控制器，一个是PlayerController，即玩家控制器，另外一个是AIController，即AI控制器。我们可以这样子去理解，Controller就是大脑，用于发出指令，而Pawn或Charater就是身体，用于接收指令并作出相应的动作。</p>
 					<br><br>
 					<h3 class="FontTitle">什么是HUD</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;HUD 其实很简单，就是一种平面的信息显示，属于 UI 的一种，例如生命值，血条能量条，弹药数量，十字准星等 UI 相关的信息显示，都是 HUD 的范畴。换句话说，所有的 UI 界面都是绑定在 HUD 这个类上，由这个类进行显示的。</p>
+					<p class="FontParagraph">&emsp;&emsp;HUD其实很简单，就是一种平面的信息显示，属于UI的一种，例如生命值，血条能量条，弹药数量，十字准星等UI相关的信息显示，都是HUD的范畴。换句话说，所有的UI界面都是绑定在HUD这个类上，由这个类进行显示的。</p>
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>

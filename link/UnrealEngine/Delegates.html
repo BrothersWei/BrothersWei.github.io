@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>什么是Actor</title>
+<title>UE4中的委托</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -109,60 +109,77 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;什么是Actor</spen>
+              <spen class="spenMenu">&ensp;UE4中的委托</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">什么是Actor</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">UE4中的委托</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
         <!-- main area -->
         <!-- InstanceBeginEditable name="main" -->
         <div class="main-content">
-          <div class="content-view">
-			  <div class="row">
-  				<div class="col-xs-1"></div>
-  				<div class="col-xs-10">
-					<br><br>
-					<h3 class="FontTitle">什么是Actor</h3>
-					<br>
-				  	<p class="FontParagraph">&emsp;&emsp;Actor是Unreal中最基本的一种类型，字面上的意思是演员，但是在Unreal中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆Actor，它是所有游戏场景中的所有物体的基础的类，是由AActor类派生而来的类的实例。</p>
-					<p class="FontParagraph">&emsp;&emsp;但是，一个门可以说是Actor，但是用于控制开门关门的锁芯一般不叫作Actor，一般视为Actor中的组件，也就是说，Actor一般是为一个整体物体或实体，而这个整体物体或实体里面的部件一般为Actor的组件。</p>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;<font class="Function">以下为与Actor相关的函数</font></p>
-					<div class="row">
-						<div class="col-xs-1"></div>
-						<div class="col-xs-10">
-							<p class="FontString"><font class="Function">BeginPlay</font>：Actor生成并初始化完成以后，首先调用的就是这个函数，并且只调用这一次，一般用于设置基本的逻辑，或更改一些属性。</p>
-		  					<p class="FontString"><font class="Function">Tick</font>：Actor生成以后，在游戏场景中，每一帧都会调用一次Tick函数，直到这个Actor被销毁为止。</p>
-							<p class="FontString"><font class="Function">EndPlay</font>：当这个Actor被销毁时，运行的函数。</p>
-							<p class="FontString"><font class="Function">GetComponentByClass</font>：根据指定的类型来寻找这个Actor组件下所有这个类型的组件，注意，返回的是所有。</p>
-							<p class="FontString"><font class="Function">GetActorLocation</font>：获得这个Actor的Location信息等。</p>
-							<p class="FontString"><font class="Function">SetActorLocation</font>：显而易见，有Get就必然有Set，那么Set就是设置这个Actor的Location等信息属性了。</p>
-						</div>
-						<div class="col-xs-1"></div>
-					</div>
-					<br><br>
-					<h3 class="FontTitle">什么是组件</h3>
-					<br>
-		  			<p class="FontParagraph">&emsp;&emsp;既然一辆车是Actor，而车轮和车门是Actor的组件，那么显而易见，组件一般作为Actor的子对象使用，简单来说就是添加在这个Actor上面的东西，它可以让这个Actor拥有特定的行为或者功能。例如，一辆车和一辆飞机的移动和控制的方式显然是不同的，那么这个都是为移动的不同的方式，那就可以由组件来完成。</p>
-		  			<p class="FontParagraph">&emsp;&emsp;其中，ActorComponent是组件的基础类，常见的组件有：StaticMeshComponent，CharactrMovement，SphereComponent等等等等。</p>
-		  			<p class="FontParagraph">&emsp;&emsp;我们可以使用<font class="Function">CreatDefaultSubobject</font>方法来创建一个组件，代码如下（代码可以左滑查看全部）：</p>
-					<div class="col-lg-12">
-					<pre ><code><font>&emsp;&emsp;&emsp;&emsp;Camera = CreatDefaultSubobject&lt;UCameraComponent&gt;(TEXT("Camera"));</font>
+            <div class="content-view">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10"> <br>
+                        <br>
+                        <h3 class="FontTitle">为什么使用委托</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;UE4中的委托使得在UE4中不同类之间相互调用其方法变得更加方便和通用，而在UE4中，已经为我们声明好了许多的宏定义来让我们来声明这些委托。而声明的委托方法有以下两种情况。</p>
+						<br><hr>
+						<h5 class="FontLiftTitle">绑定的函数没有返回值：</h5>
+						<p class="FontParagraph">&emsp;&emsp;若函数不需要传入参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE(DelegateName)</font>，其中，DelegateName为委托的名字。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入一个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_OneParam(DelegateName, Param1Type)</font>，其中，DelegateName为委托的名字，Param1Type为传入的参数。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入两个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_TwoParams(DelegateName, Param1Type, Param2Type)</font>，其中，DelegateName为委托的名字，Param1Type，Param2Type为传入的参数。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入多个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_Params(DelegateName, Param1Type, Param2Type, ... )</font>，其中，DelegateName为委托的名字，Param1Type，Param2Type，... 为传入的参数。</p>
+						<br>
+						<h5 class="FontLiftTitle">绑定的函数有返回值：</h5>
+						<p class="FontParagraph">&emsp;&emsp;若函数不需要传入参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_RetVal(RetValType, DelegateName)</font>，其中，RetValType为绑定的函数返回值的类型，DelegateName为委托的名字。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入一个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_RetVal_OneParam(RetValType, DelegateName, Param1Type)</font>，其中，RetValType为绑定的函数返回值的类型，DelegateName为委托的名字，Param1Type为传入的参数。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入两个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_RetVal_TwoParams(RetValType, DelegateName, Param1Type, Param2Type)</font>，其中，RetValType为绑定的函数返回值的类型，DelegateName为委托的名字，Param1Type，Param2Type为传入的参数。</p>
+						<p class="FontParagraph">&emsp;&emsp;若函数需要传入多个参数，则使用：<font class="PreprocessorMacros">DECLARE_DELEGATE_RetVal_Params(RetValType, DelegateName, Param1Type, Param2Type, ... )</font>，其中，RetValType为绑定的函数返回值的类型，DelegateName为委托的名字，Param1Type，Param2Type，... 为传入的参数。</p>
+						<br><hr>
+						<h5 class="FontLiftTitle">委托的绑定方法如下：</h5>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindRaw()：</font>绑定原始的C++指针，需要传入绑定的类的指针和这个类下要绑定的方法的引用。</p>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindUObject()：</font>绑定UObject对象指针，即任何一个UE4类的指针，需要传入绑定的类的指针和这个类下要绑定的方法的引用。</p>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindUFunction()：</font>当绑定的方法是由<font class="PreprocessorMacros">UFUNCTION()</font>声明的时候，我们可以使用UE4的反射机制来绑定这个委托，这个时候需要传入任何一个UE4类的指针和方法的名称(FName)进行反射机制的调用。</p>
+						<br><hr>
+						<h5 class="FontLiftTitle">如何去调用一个委托：</h5>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">Execute()：</font>不进行检测是否绑定，直接调用，括号内传入的参数要与委托绑定的参数类型和数量一致。</p>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">ExecuteIfBound()：</font>进行检测是否绑定，绑定后才调用，括号内传入的参数要与委托绑定的参数类型和数量一致。</p>
+						<br><hr>
+						<h5 class="FontLiftTitle">如何去检测一个委托是否绑定：</h5>
+						<p class="FontParagraph">&emsp;&emsp;直接调用<font class="Function">IsBound()</font>即可</p>
+						<br><br><hr>
+						<h5 class="FontLiftTitle">使用案例：</h5>
+						<p class="FontParagraph">&emsp;&emsp;我们在MyClassB类中有一个函数BFunction(int i);但是我们想让这个BFunction让MyClassA调用，于是我们需要在MyClassA类的头文件中声明和定义这个委托：</p>
+						<pre><code class="language-c++">
+  // 声明这个委托					
+  DECLARE_DELEGATE_OneParam(FMyClassADelegate, int)
+  
+  UCLASS()
+  class COURSE_API AMyClassA : public AActor {
+      pubilc:
+          // 委托的定义
+          FMyClassADelegate MyClassADeleate;
+  }
 					</code></pre>
-					</div>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;其意思为，我们在程序里面有一个叫Camera的类，但是没有指定它的值，用CreatDefaultSubobject&lt;UCameraComponent&gt; 为它指定了一个刚刚创建的CameraComponent组件，他对应的C++类为UCameraComponent，这个时候我们要引用这个我们新创建的CameraComponent组件则直接引用Camera即可，而后面的TEXT("Camera")的意义为为这个组件在虚幻引擎编辑器的可视化窗口下这个Actor属性下的这个CameraComponent组件的名字，注意，这个"Camera"名字与程序里面引用的Camera这两个名字是截然不同的。如下图显示。
-					</p>
-					<center><img src="img/Actor/1.png" alt=""></center>
-					<br>
-					<p class="FontParagraph">&emsp;&emsp;这个Actor下的MeshComponent啊，MovemenComponent啊，Grabber啊等等这些，所显示出来的这些名字，就是程序里面CreatDefaultSubobject&lt;T&gt;(TEXT("This Component name"))里面的这个TEXT后所指定的名字。其中，T代表所要创建的组件的对应C++类，一般是所创建的组件类型前面加一个U即为对应的C++ 类。</p>
-				  </div>
-				  <div class="col-xs-1"></div>
-			</div>
-				  
-          </div>
+						<p class="FontParagraph">&emsp;&emsp;于是我们可以在项目的任意位置在调用这个委托之前的位置绑定这个委托对应的函数</p>
+						<pre><code class="language-c++">
+  // 绑定这个委托			
+  AMyClassA* ClassA;
+  ClassA->MyClassADeleate.BindUObject(ClassA, &amp;MyClassB::BFunction);
+					</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;这个时候我们在MyClassA.cpp中的任意位置就可以调用这个委托，并且可以不用了解MyClassB类中的任何信息。</p>
+						<pre><code class="language-c++">
+  // 调用这个委托，只需传入的参数一致即可
+  int i = 0;
+  MyClassADeleate.ExecuteIfBound(i);
+					</code></pre>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </div>
         </div>
         <!-- InstanceEndEditable --><!-- /main area -->
       </div>
