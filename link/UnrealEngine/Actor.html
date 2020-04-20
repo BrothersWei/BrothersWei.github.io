@@ -55,6 +55,7 @@
 						<li> <a href="Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
 						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
 						<li> <a href="Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
+						<li> <a href="SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -127,7 +128,7 @@
 					<br><br>
 					<h3 class="FontTitle">什么是Actor</h3>
 					<br>
-				  	<p class="FontParagraph">&emsp;&emsp;Actor是Unreal中最基本的一种类型，字面上的意思是演员，但是在Unreal中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆Actor，它是所有游戏场景中的所有物体的基础的类，是由AActor类派生而来的类的实例。</p>
+				  	<p class="FontParagraph">&emsp;&emsp;Actor是Unreal中最基本的一种类型，字面上的意思是演员，但是在Unreal中，不是会动的会表演的东西才叫做“演员”，在游戏场景中，一切物体皆是“演员”，也就是说，万物皆Actor，它是所有游戏场景中的所有物体的基础的类，是由AActor类派生而来的类的实例。所有可以拖入场景中的物体，都是又Actor继承而来的。</p>
 					<p class="FontParagraph">&emsp;&emsp;但是，一个门可以说是Actor，但是用于控制开门关门的锁芯一般不叫作Actor，一般视为Actor中的组件，也就是说，Actor一般是为一个整体物体或实体，而这个整体物体或实体里面的部件一般为Actor的组件。</p>
 					<br>
 					<p class="FontParagraph">&emsp;&emsp;<font class="Function">以下为与Actor相关的函数</font></p>
@@ -147,6 +148,7 @@
 					<h3 class="FontTitle">什么是组件</h3>
 					<br>
 		  			<p class="FontParagraph">&emsp;&emsp;既然一辆车是Actor，而车轮和车门是Actor的组件，那么显而易见，组件一般作为Actor的子对象使用，简单来说就是添加在这个Actor上面的东西，它可以让这个Actor拥有特定的行为或者功能。例如，一辆车和一辆飞机的移动和控制的方式显然是不同的，那么这个都是为移动的不同的方式，那就可以由组件来完成。</p>
+					<p class="FontParagraph">&emsp;&emsp;<font class="GoldFont">注意，Actor是可以直接拖入场景中的，但是ActorComponent是不能直接拖入场景中的，ActorComponent是要依附于所对应的Actor才能出现在场景中，相对于这个Actor身上的一部分。</font></p>
 		  			<p class="FontParagraph">&emsp;&emsp;其中，ActorComponent是组件的基础类，常见的组件有：StaticMeshComponent，CharactrMovement，SphereComponent等等等等。</p>
 		  			<p class="FontParagraph">&emsp;&emsp;我们可以使用<font class="Function">CreatDefaultSubobject</font>方法来创建一个组件，代码如下（代码可以左滑查看全部）：</p>
 					<div class="col-lg-12">
@@ -159,7 +161,7 @@
 					<center><img src="img/Actor/1.png" alt=""></center>
 					<br>
 					<p class="FontParagraph">&emsp;&emsp;这个Actor下的MeshComponent啊，MovemenComponent啊，Grabber啊等等这些，所显示出来的这些名字，就是程序里面CreatDefaultSubobject&lt;T&gt;(TEXT("This Component name"))里面的这个TEXT后所指定的名字。其中，T代表所要创建的组件的对应C++类，一般是所创建的组件类型前面加一个U即为对应的C++类。</p>
-					<p class="FontParagraph">&emsp;&emsp;<font class="GoldFont">注意，Actor是可以直接拖入场景中的，但是ActorComponent是不能直接拖入场景中的，ActorComponent是要依附于所对应的Actor才能出现在场景中，相对于这个Actor身上的一部分。</font></p>
+					
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>

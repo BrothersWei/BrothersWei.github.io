@@ -329,8 +329,8 @@ code {
     visibility: hidden; }
   .sidebar-panel .nav-title {
 	font-weight:bold;
-    font-size: 20px;
-	font-family:"Inconsolata-Bold";
+    font-size: 21px;
+	font-family:"Inconsolata";
     position: relative;
     display: table;
     clear: both;
@@ -339,17 +339,18 @@ code {
     margin: 0;
     padding: 0.4rem 1.5rem;
     white-space: nowrap;
-    letter-spacing: .01rem; 
+    letter-spacing: .01rem;
 }
 .sidebar-panel .nav-menutext{
-	font-size: 16px;
-	font-weight:600;
-	font-family:"YaHeiConsolas";
+	font-size: 17px;
+	font-weight:700;
+	font-family:"YaHeiConsolas";	
 }
 .sidebar-panel .nav-buttontext{
-	font-size: 14px;
-	font-weight: 600;
+	font-size: 15px;
+	font-weight: 700;
 	font-family:"Inconsolata-Regular";
+	color: black;
 }
   .sidebar-panel .nav-profile {
     position: relative;
