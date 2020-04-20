@@ -51,6 +51,7 @@
                         <li> <a href="InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
                         <li> <a href="GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
                         <li> <a href="UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
 						<li> <a href="Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
 						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
 						<li> <a href="Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
@@ -157,7 +158,8 @@
 					</p>
 					<center><img src="img/Actor/1.png" alt=""></center>
 					<br>
-					<p class="FontParagraph">&emsp;&emsp;这个Actor下的MeshComponent啊，MovemenComponent啊，Grabber啊等等这些，所显示出来的这些名字，就是程序里面CreatDefaultSubobject&lt;T&gt;(TEXT("This Component name"))里面的这个TEXT后所指定的名字。其中，T代表所要创建的组件的对应C++类，一般是所创建的组件类型前面加一个U即为对应的C++ 类。</p>
+					<p class="FontParagraph">&emsp;&emsp;这个Actor下的MeshComponent啊，MovemenComponent啊，Grabber啊等等这些，所显示出来的这些名字，就是程序里面CreatDefaultSubobject&lt;T&gt;(TEXT("This Component name"))里面的这个TEXT后所指定的名字。其中，T代表所要创建的组件的对应C++类，一般是所创建的组件类型前面加一个U即为对应的C++类。</p>
+					<p class="FontParagraph">&emsp;&emsp;<font class="GoldFont">注意，Actor是可以直接拖入场景中的，但是ActorComponent是不能直接拖入场景中的，ActorComponent是要依附于所对应的Actor才能出现在场景中，相对于这个Actor身上的一部分。</font></p>
 				  </div>
 				  <div class="col-xs-1"></div>
 			</div>

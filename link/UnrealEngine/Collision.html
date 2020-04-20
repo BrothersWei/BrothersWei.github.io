@@ -51,6 +51,7 @@
                         <li> <a href="InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
                         <li> <a href="GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
                         <li> <a href="UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
 						<li> <a href="Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
 						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
 						<li> <a href="Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
@@ -151,6 +152,7 @@
 						<p class="FontParagraph">&emsp;&emsp;对象类型为这个碰撞配置文件所对应的Object Channels。</p>
 						<p class="FontParagraph">&emsp;&emsp;描述即为注释。</p>
 						<p class="FontParagraph">&emsp;&emsp;碰撞响应所调节的就是这个碰撞文件对应的Object Channels和其他的Object Channels或者Trace Channels所产生的碰撞的规则，这个规则的忽略，重叠，区块于上述描述的相同。</p>
+						<font class="GoldFont">&emsp;&emsp;注意，当物体的碰撞预设都将对方设为Block时才会发生相互阻挡，只要有一方将对方设为Overlap，那么将会互相穿越对方，而不发生阻挡。以上两种都会触发碰撞事件，但是只要有一方将对方设为Ignore，那么将会互相穿越对方，并且不触发碰撞事件。</font>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
