@@ -132,100 +132,100 @@
 						<center><img src="img/SimpleMove/1.png" alt=""></center><br>
 						<p class="FontParagraph">&emsp;&emsp;然后我们需要创建一个Pawn类，命名为MyPawn，在MyPawn.h中，我们写入以下声明：</p>
 						<pre><code class="language-c++">
-	public:
-	    // 虚拟根组件
-	    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-	        USceneComponent* OurVisibleComponent;
-	    // 静态模型组件
-	    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-	        UStaticMeshComponent* StaticMesh;
-	    // 摄像机手臂
-	    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-	        class USpringArmComponent* CameraBoom;
-	    // 摄像机组件
-	    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
-	        class UCameraComponent* FollowCamera;
+    public:
+        // 虚拟根组件
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+            USceneComponent* OurVisibleComponent;
+        // 静态模型组件
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+            UStaticMeshComponent* StaticMesh;
+        // 摄像机手臂
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+            class USpringArmComponent* CameraBoom;
+        // 摄像机组件
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
+            class UCameraComponent* FollowCamera;
 
-	private:
-	    // 当前的速度向量
-	    UPROPERTY(EditAnywhere)
-	        FVector CurrentVelocity;
-	    // 当前的速度值
-	    UPROPERTY(EditAnywhere)
-	        float MaxSpeed;
+    private:
+        // 当前的速度向量
+        UPROPERTY(EditAnywhere)
+            FVector CurrentVelocity;
+        // 当前的速度值
+        UPROPERTY(EditAnywhere)
+            float MaxSpeed;
 
-	private:
-	    // 前后移动的函数，由InputComponent绑定
-	    void MoveForward(float value);
-	    // 左右移动的函数，由InputComponent绑定
-	    void MoveRight(float value);
+    private:
+        // 前后移动的函数，由InputComponent绑定
+        void MoveForward(float value);
+        // 左右移动的函数，由InputComponent绑定
+        void MoveRight(float value);
 						</code></pre>
 						<p class="FontParagraph">&emsp;&emsp;在其MyPawn.cpp中，我们写入以下定义：</p>
 						<pre><code class="language-c++">
-	// 构造函数
-	AMyPawn::AMyPawn() {
-	    // 允许Tick函数运行
-	    PrimaryActorTick.bCanEverTick = true;
-	    // 实例化根组件并绑定
-	    OurVisibleComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-	    RootComponent = OurVisibleComponent;
-	    // 实例化模型组件并绑定在根组件下
-	    StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StiticMesh"));
-	    StaticMesh->SetupAttachment(RootComponent);
+    // 构造函数
+    AMyPawn::AMyPawn() {
+        // 允许Tick函数运行
+        PrimaryActorTick.bCanEverTick = true;
+        // 实例化根组件并绑定
+        OurVisibleComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
+        RootComponent = OurVisibleComponent;
+        // 实例化模型组件并绑定在根组件下
+        StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StiticMesh"));
+        StaticMesh->SetupAttachment(RootComponent);
 	
-	    // 实例化摄像机手臂并绑定在根组件下
-	    CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
-	    CameraBoom->SetupAttachment(RootComponent);
-	    // 设置摄像机手臂的参数设置
-	    CameraBoom->TargetArmLength = 300.f;
-	    CameraBoom->TargetOffset = FVector(0.f, 0.f, 60.f);
-	    // 摄像机手臂允许与Controller旋转
-	    CameraBoom->bUsePawnControlRotation = true;
+        // 实例化摄像机手臂并绑定在根组件下
+        CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
+        CameraBoom->SetupAttachment(RootComponent);
+        // 设置摄像机手臂的参数设置
+        CameraBoom->TargetArmLength = 300.f;
+        CameraBoom->TargetOffset = FVector(0.f, 0.f, 60.f);
+        // 摄像机手臂允许与Controller旋转
+        CameraBoom->bUsePawnControlRotation = true;
 
-	    // 实例化摄像机并绑定在摄像机手臂上
-	    FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
-	    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
-	    // 摄像机的参数设置
-	    FollowCamera->AddLocalOffset(FVector(0.f, 0.f, 60.f));
-	    FollowCamera->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
-	    // 由于父组件摄像机手臂已经和Controller一起旋转，所以我们的Camera没必要与Controller一起旋转
-	    FollowCamera->bUsePawnControlRotation = false;
+        // 实例化摄像机并绑定在摄像机手臂上
+        FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
+        FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+        // 摄像机的参数设置
+        FollowCamera->AddLocalOffset(FVector(0.f, 0.f, 60.f));
+        FollowCamera->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
+        // 由于父组件摄像机手臂已经和Controller一起旋转，所以我们的Camera没必要与Controller一起旋转
+        FollowCamera->bUsePawnControlRotation = false;
 	    
-	    // 初始化速度向量和速度的值
-	    CurrentVelocity = FVector(0);
-	    MaxSpeed = 100.f;
-	    // 设置为Player0，即为当前玩家控制的物体
-	    AutoPossessPlayer = EAutoReceiveInput::Player0;
-	}
+        // 初始化速度向量和速度的值
+        CurrentVelocity = FVector(0);
+        MaxSpeed = 100.f;
+        // 设置为Player0，即为当前玩家控制的物体
+        AutoPossessPlayer = EAutoReceiveInput::Player0;
+    }
 	
-	// 前后移动函数
-	void AMyPawn::MoveForward(float value) {
-	    // 通过轴映射传入的值判断方向的前后，并设置当前状态下速度的向量
-	    CurrentVelocity.X = value * MaxSpeed;
-	}
+    // 前后移动函数
+    void AMyPawn::MoveForward(float value) {
+        // 通过轴映射传入的值判断方向的前后，并设置当前状态下速度的向量
+        CurrentVelocity.X = value * MaxSpeed;
+    }
 	
-	// 左右移动的函数
-	void AMyPawn::MoveRight(float value) {
-	    // 通过轴映射传入的值判断方向的左右，并设置当前状态下速度的向量
-	    CurrentVelocity.Y = value * MaxSpeed;
-	}
+    // 左右移动的函数
+    void AMyPawn::MoveRight(float value) {
+        // 通过轴映射传入的值判断方向的左右，并设置当前状态下速度的向量
+        CurrentVelocity.Y = value * MaxSpeed;
+    }
 	
-	// 绑定输入函数
-	void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
-	    Super::SetupPlayerInputComponent(PlayerInputComponent);
-	    // 绑定轴映射对应的函数
-	    PlayerInputComponent->BindAxis("MoveForward", this, &amp;AMyPawn::MoveForward);
-	    PlayerInputComponent->BindAxis("MoveRight", this, &amp;AMyPawn::MoveRight);
-	}
+    // 绑定输入函数
+    void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) {
+        Super::SetupPlayerInputComponent(PlayerInputComponent);
+        // 绑定轴映射对应的函数
+        PlayerInputComponent->BindAxis("MoveForward", this, &amp;AMyPawn::MoveForward);
+        PlayerInputComponent->BindAxis("MoveRight", this, &amp;AMyPawn::MoveRight);
+    }
 	
-	// 每帧运行的函数Tick，DeltaTime为时间
-	void AMyPawn::Tick(float DeltaTime) {
-	    Super::Tick(DeltaTime);
-	    // 定义新的位置坐标，速度乘以时间即为位移，用当位置加上位移量，即为移动后的位置
-	    FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
-	    // 设置新的位置
-	    SetActorLocation(NewLocation);
-	}
+    // 每帧运行的函数Tick，DeltaTime为时间
+    void AMyPawn::Tick(float DeltaTime) {
+        Super::Tick(DeltaTime);
+        // 定义新的位置坐标，速度乘以时间即为位移，用当位置加上位移量，即为移动后的位置
+        FVector NewLocation = GetActorLocation() + CurrentVelocity * DeltaTime;
+        // 设置新的位置
+        SetActorLocation(NewLocation);
+    }
 						</code></pre>
 						<p class="FontParagraph">&emsp;&emsp;编译后，我们继承于我们的MyPawn新建一个蓝图类，命名为BP_Pawn，打开并指定我们BP_Pawn蓝图，选中StaticMesh组件，并绑定StiticMesh组件的模型，如下图：</p>
 						<center><img src="img/SimpleMove/2.png" alt=""><img src="img/SimpleMove/3.png" alt=""></center><br>
