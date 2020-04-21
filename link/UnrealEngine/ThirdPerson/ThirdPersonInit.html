@@ -1,0 +1,191 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/Tamplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Milestone">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Milestone">
+<meta name="theme-color" content="#4C7FF0">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>第三人称模板项目初始化设置</title>
+<!-- InstanceEndEditable -->
+<!-- build:css({.tmp,app}) styles/app.min.css -->
+<link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.css" id="load_styles_before" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.skins.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/Myhighlight.css" runat="server"/>
+<link rel="stylesheet" href="../../../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
+<!-- endbuild -->
+</head>
+  <body>
+
+    <div class="app">
+      <!--sidebar panel-->
+      <div class="sidebar-panel">
+        <div class="brand"> 
+            <!-- /toggle offscreen menu --> 
+            <!-- logo --> 
+            <a class="brand-logo" href="../../../index.html"> <img class="expanding-hidden" src="../../../images/logo-dark.png" alt=""/> </a> 
+            <!-- /logo --> 
+        </div>
+        <!-- main navigation -->
+        <nav class="menu">
+            <hr>
+            <ul class="nav">
+                <!-- 主页 -->
+                <p class="nav-title">主页</p>
+                <li> <a href="../../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <hr>
+                <p class="nav-title">UnrealEngine 4</p>
+                <!-- /主页 --> 
+                <!-- UnrealEngine4 -->
+                <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="../InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="../GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="../UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="../ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
+						<li> <a href="../Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
+						<li> <a href="../LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+						<li> <a href="../Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
+						<li> <a href="../SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
+						<li> <a href="../SimpleTurn.html"> <span class="nav-buttontext">简单的视野转动</span> </a> </li>
+                    </ul>
+                </li>
+				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第三人称模板</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
+						<li> <a href="ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /UnrealEngine4 -->
+            </ul>
+            <hr>
+            <p class="nav-title">其他</p>
+            <ul class="nav">
+                <!-- OpenGL -->
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../link/OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="../link/OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                    </ul>
+                </li>-->
+                <!-- /OpenGL --> 
+                <!-- 设计模式 -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <!--<li> <a href="../link/DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>-->
+                    </ul>
+                </li>
+                <!-- /设计模式 -->
+				<!-- C++多线程 -->
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;C++多线程编程</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../link/CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
+                    </ul>
+                </li>-->
+                <!-- /C++多线程 -->
+                <li>
+                    <hr/>
+                </li>
+                <!-- static -->
+                <p class="nav-title">关于我</p>
+                <li> <a href="#"> <span class="nav-menutext">&emsp;&emsp;个人简历</span> </a> </li>
+				<li> <a href="../../AboutMe/AboutBlog.html"> <span class="nav-menutext">&emsp;&emsp;关于博客</span> </a> </li>
+                <!-- /static -->
+            </ul>
+        </nav>
+        <!-- /main navigation --> 
+    </div>
+      <!-- /sidebar panel -->
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons"><img src="../../../images/button-1.png"></i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo --><!-- InstanceBeginEditable name="title1" -->
+              <spen class="spenMenu">&ensp;项目初始化设置</spen>
+              <!-- InstanceEndEditable --><!-- /logo -->
+            </div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">项目初始化设置</span><!-- InstanceEndEditable --></div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <!-- InstanceBeginEditable name="main" -->
+        <div class="main-content">
+            <div class="content-view">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10"> <br>
+                        <br>
+                        <h3 class="FontTitle">UE4的第三人称模板做了什么</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们的UE4为我们提供第三人称模板来让我们进行学习和二次开发，现在我们来看一下第三人称模板都做了什么。我们在新建第三人称模板的时候可以看到UE4官方对第三人称模板的解释，如下图：</p>
+						<center><img src="img/ThirdPersonInit/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;不难看出，我们主要使用了Character来作为我们的主角，那么这一节将会记录Character的一些设置。</p>
+						<p class="FontParagraph">&emsp;&emsp;新建打开我们的第三人称项目，在这里我命名为ThirdProject，打开我们的Visual Studio工程，打开我们的ThirdProjectCharacter，这个就是我们的主角，我们来看在ThirdProjectCharacter.h中为我们定义了什么组件。</p>
+						<pre><code class="language-c++">
+    // 摄像机手臂组件
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+        class USpringArmComponent* CameraBoom;
+    // 摄像机组件
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+        class UCameraComponent* FollowCamera;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;由于Character这个类已经为我们定义了一个胶囊体组件作为根组件，其下有一个骨骼模型组件，方向箭头组件，所以有些基础的东西不需要我们继续定义，我们来看看在ThirdProjectCharacter.cpp中的构造函数下为我们实例化了什么。</p>
+						<pre><code class="language-c++">
+    // 设置胶囊体的大小，使其适配我们的模型
+    GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+    
+    // 实例化摄像机手臂
+    CameraBoom = CreateDefaultSubobject&lt;USpringArmComponent&gt;(TEXT("CameraBoom"));
+    // 将摄像机手臂绑定在根组件上
+    CameraBoom->SetupAttachment(RootComponent);
+    // 摄像机手臂的长度
+    CameraBoom->TargetArmLength = 300.0f;
+    // 这里使用Controller的旋转来控制镜头旋转，与之前的简单旋转逻辑不一样，这里允许摄像机手臂跟随Controller旋转
+    CameraBoom->bUsePawnControlRotation = true;
+	
+    // 实例化摄像机
+    FollowCamera = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT("FollowCamera"));
+    // 将摄像机绑定在摄像机手臂上
+    FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
+    // 由于摄像机手臂已经跟随Controller旋转，所以摄像机是没有必要跟随旋转的
+    FollowCamera->bUsePawnControlRotation = false;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们看到，这样子我们就实例化了一个Character，并且实例化了一些组件，且这些组件我们都很熟悉，但是我们又发现，他的摄像机和摄像机手臂是跟随Controller旋转的而不是我们的角色，这是另外一种思路，因为我们的Character并不是我们直接控制的，而是通过Controller这个控制器作为中介，将我们的硬件输入传入Character中，再进行对应的操作，所以说，我们可以想象为，Character是我们的身体，用于做出各种的动作，而Controller是我们的大脑，用于发出各种的指令并控制我们的身体。而在我们没有指定Controller的时候，UE4会自动为我们指定一个默认的Controller，而我们的第三人称模板使用的就是默认的Controller，因为只有简单的移动和跳跃等逻辑，没有复杂的操作，所以默认的Controller即可胜任，我们无需另外创建。</p>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </div>
+        </div>
+        <!-- InstanceEndEditable --><!-- /main area -->
+      </div>
+      <!-- /content panel -->
+    </div>
+
+    <!-- build:js({.tmp,app}) scripts/app.min.js --> 
+<script src="../../../vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
+<script src="../../../vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
+<script src="../../../scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
+<script src="../../../scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
+<script src="../../../vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
+<script language="javascript" type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<!-- endbuild -->
+  </body>
+<!-- InstanceEnd --></html>

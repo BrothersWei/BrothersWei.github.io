@@ -1,0 +1,229 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/Tamplate.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1"/>
+<meta name="msapplication-tap-highlight" content="no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Milestone">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Milestone">
+<meta name="theme-color" content="#4C7FF0">
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>第三人称模板中的移动</title>
+<!-- InstanceEndEditable -->
+<!-- build:css({.tmp,app}) styles/app.min.css -->
+<link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.css" id="load_styles_before" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.skins.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/Myhighlight.css" runat="server"/>
+<link rel="stylesheet" href="../../../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
+<!-- endbuild -->
+</head>
+  <body>
+
+    <div class="app">
+      <!--sidebar panel-->
+      <div class="sidebar-panel">
+        <div class="brand"> 
+            <!-- /toggle offscreen menu --> 
+            <!-- logo --> 
+            <a class="brand-logo" href="../../../index.html"> <img class="expanding-hidden" src="../../../images/logo-dark.png" alt=""/> </a> 
+            <!-- /logo --> 
+        </div>
+        <!-- main navigation -->
+        <nav class="menu">
+            <hr>
+            <ul class="nav">
+                <!-- 主页 -->
+                <p class="nav-title">主页</p>
+                <li> <a href="../../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <hr>
+                <p class="nav-title">UnrealEngine 4</p>
+                <!-- /主页 --> 
+                <!-- UnrealEngine4 -->
+                <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="../InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="../GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="../UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="../ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
+						<li> <a href="../Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
+						<li> <a href="../LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+						<li> <a href="../Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
+						<li> <a href="../SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
+						<li> <a href="../SimpleTurn.html"> <span class="nav-buttontext">简单的视野转动</span> </a> </li>
+                    </ul>
+                </li>
+				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第三人称模板</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
+						<li> <a href="ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
+                    </ul>
+                </li>
+                <!-- /UnrealEngine4 -->
+            </ul>
+            <hr>
+            <p class="nav-title">其他</p>
+            <ul class="nav">
+                <!-- OpenGL -->
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../link/OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+                        <li> <a href="../link/OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                    </ul>
+                </li>-->
+                <!-- /OpenGL --> 
+                <!-- 设计模式 -->
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <!--<li> <a href="../link/DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>-->
+                    </ul>
+                </li>
+                <!-- /设计模式 -->
+				<!-- C++多线程 -->
+                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;C++多线程编程</span> </a>
+                    <ul class="sub-menu">
+                        <li> <a href="../link/CPPMultithreading/ProcessAndThread.html"> <span class="nav-buttontext">进程和线程</span> </a> </li>
+                    </ul>
+                </li>-->
+                <!-- /C++多线程 -->
+                <li>
+                    <hr/>
+                </li>
+                <!-- static -->
+                <p class="nav-title">关于我</p>
+                <li> <a href="#"> <span class="nav-menutext">&emsp;&emsp;个人简历</span> </a> </li>
+				<li> <a href="../../AboutMe/AboutBlog.html"> <span class="nav-menutext">&emsp;&emsp;关于博客</span> </a> </li>
+                <!-- /static -->
+            </ul>
+        </nav>
+        <!-- /main navigation --> 
+    </div>
+      <!-- /sidebar panel -->
+      <!-- content panel -->
+      <div class="main-panel">
+        <!-- top header -->
+        <nav class="header navbar">
+          <div class="header-inner">
+            <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
+              <!-- toggle offscreen menu -->
+              <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
+                <i class="material-icons"><img src="../../../images/button-1.png"></i>
+              </a>
+              <!-- /toggle offscreen menu -->
+              <!-- logo --><!-- InstanceBeginEditable name="title1" -->
+              <spen class="spenMenu">&ensp;第三人称模板的移动功能</spen>
+              <!-- InstanceEndEditable --><!-- /logo -->
+            </div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板的移动功能</span><!-- InstanceEndEditable --></div>
+        </nav>
+        <!-- /top header -->
+
+        <!-- main area -->
+        <!-- InstanceBeginEditable name="main" -->
+        <div class="main-content">
+            <div class="content-view">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10"> <br>
+                        <br>
+                        <h3 class="FontTitle">移动介绍</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们的第三人称模板的移动功能的思路与我们的简单移动中的思路又稍微有些不一样，他是直接调用了一些Characetr中内置好的移动函数来直接实现，首先，我们依旧要设置好项目的轴输入。</p>
+						<center><img src="img/ThirdPersonMove/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;然后在ThirdProjectCharacter.h中声明我们的两个移动函数</p>
+						<pre><code class="language-c++">
+    protected:
+        // 前后移动函数
+        void MoveForward(float Value);
+        // 左右移动函数
+        void MoveRight(float Value);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;然后在ThirdProjectCharacter.cpp的SetupPlayerInputComponent中进行绑定</p>
+						<pre><code class="language-c++">
+    PlayerInputComponent->BindAxis("MoveForward", this, &amp;AThirdProjectCharacter::MoveForward);
+    PlayerInputComponent->BindAxis("MoveRight", this, &amp;AThirdProjectCharacter::MoveRight);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;接下来，重头戏，我们写入那两个函数的定义</p>
+						<pre><code class="language-c++">
+    // 前后移动函数
+    void AThirdProjectCharacter::MoveForward(float Value) {
+        // 控制器是否存在并且值不为0
+        if ((Controller != NULL) &amp;&amp; (Value != 0.0f)) {
+            // 获取Controller的旋转值
+            const FRotator Rotation = Controller->GetControlRotation();
+            // 获取我们双脚的那个平面的旋转值，也就是Yaw轴，即Y轴旋转值
+            const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+            // 通过这个旋转值向量的旋转矩阵，获得他X轴的方向，即前后方向（这里的方向是相对于模型自身的）
+            const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+            // 使用一个AddMovementInput函数，传入我们的方向，和我们的传入的值
+            AddMovementInput(Direction, Value);
+        }
+    }
+    // 左右移动函数同理
+    void AThirdProjectCharacter::MoveRight(float Value) {
+        // 控制器是否存在并且值不为0
+        if ((Controller != NULL) &amp;&amp; (Value != 0.0f)) {
+            // 获取Controller的旋转值
+            const FRotator Rotation = Controller->GetControlRotation();
+            // 获取我们双脚的那个平面的旋转值，也就是Yaw轴，即Y轴旋转值
+            const FRotator YawRotation(0, Rotation.Yaw, 0);
+
+            // 通过这个旋转值向量的旋转矩阵，获得他Y轴的方向，即左右方向（这里的方向是相对于模型自身的）
+            const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+            // 使用一个AddMovementInput函数，传入我们的方向，和我们的传入的值
+            AddMovementInput(Direction, Value);
+        }
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;这里的重点是AddMovementInput函数，我们可以通过Visual Studio来查看这个函数的源码，我们发现，这个函数是定义在Pawn类下的，并且定义如下：</p>
+						<pre><code class="language-c++">
+    void APawn::AddMovementInput(FVector WorldDirection, float ScaleValue, bool bForce /*=false*/){
+        // Pawn的移动控制组件
+        UPawnMovementComponent* MovementComponent = GetMovementComponent();
+        if (MovementComponent){
+            // 传入方向乘于轴值，获取前后方向
+            MovementComponent->AddInputVector(WorldDirection * ScaleValue, bForce);
+        }
+        else{
+            Internal_AddMovementInput(WorldDirection * ScaleValue, bForce);
+        }
+    }    
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们发现，他的原理就是通过传入一个方向向量，用这个方向向量来乘于一个轴的值，例如W为1，S为-1，那么通过这个简单的运算，我们就获取了移动的方向，我们通过AddInputVector这个函数，将这个方向传入我们的移动控制组件，并将角色进行移动，如果移动组件不存在，我们会直接调用Internal_AddMovementInput函数来移动，其传入参数一致，而我们的AddInputVector函数底层也是调用的Internal_AddMovementInput函数，其代码如下：</p>
+						<pre><code class="language-c++">
+    void UPawnMovementComponent::AddInputVector(FVector WorldAccel, bool bForce /*=false*/){
+        if (PawnOwner){
+            // 调用这个Pawn的Internal_AddMovementInput函数
+            PawnOwner->Internal_AddMovementInput(WorldAccel, bForce);
+        }
+    } 
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;也就代表着实际控制我们角色移动的是Internal_AddMovementInput函数，而再往底层就涉及到引擎本身Pawn的底层代码了，过于深入本人也看不懂，从字面上而言，Internal_AddMovementInput函数就是用于控制我们的移动的，传入的参数就是我们要移动的方向的方向向量。我们的Character就是通过这个方式来控制我们的移动的。</p>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </div>
+        </div>
+        <!-- InstanceEndEditable --><!-- /main area -->
+      </div>
+      <!-- /content panel -->
+    </div>
+
+    <!-- build:js({.tmp,app}) scripts/app.min.js --> 
+<script src="../../../vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
+<script src="../../../vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
+<script src="../../../scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
+<script src="../../../scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
+<script src="../../../vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
+<script language="javascript" type="text/javascript">hljs.initHighlightingOnLoad();</script>
+<!-- endbuild -->
+  </body>
+<!-- InstanceEnd --></html>
