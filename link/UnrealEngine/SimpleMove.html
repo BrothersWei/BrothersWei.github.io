@@ -229,7 +229,22 @@
 						</code></pre>
 						<p class="FontParagraph">&emsp;&emsp;编译后，我们继承于我们的MyPawn新建一个蓝图类，命名为BP_Pawn，打开并指定我们BP_Pawn蓝图，选中StaticMesh组件，并绑定StiticMesh组件的模型，如下图：</p>
 						<center><img src="img/SimpleMove/2.png" alt=""><img src="img/SimpleMove/3.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;然后我们编译保存，运行，我们按下W，S，A，D，就会发现我们的Pawn进行了最简单的移动。</p>
+						<p class="FontParagraph">&emsp;&emsp;然后我们编译保存，运行，我们按下W，S，A，D，就会发现我们的Pawn进行了最简单的移动。但是我们发现，我们拖入物体的时候如果对物体进行了旋转，那么物体的移动将会发生错乱。</p><br>
+						<p class="GoldFont">&emsp;&emsp;因为这种移动方式是以世界坐标为基准，当物体进行转向之后，物体自身的X轴于世界坐标的X轴不对应，换句话说，指向的方向不一样，而我们上述的移动以世界坐标为基准，那么这种移动方式将会出错，若需要使用物体自身坐标为基准进行移动，那么我们需要对移动函数做以下修改：</p>
+						<pre><code class="language-c++">
+    // 前后移动函数
+    void AMyPawn::MoveForward(float value) {
+        // 获取物体自身的向前方向的向量，乘于是否反向和速度，即可获得向前后移动的方向
+        CurrentVelocity = GetActorForwardVector() * value * MaxSpeed;
+    }
+	
+    // 左右移动的函数
+    void AMyPawn::MoveRight(float value) {
+        // 获取物体自身的向右方向的向量，乘于是否反向和速度，即可获得向左右移动的方向
+        CurrentVelocity = GetActorRightVector() * value * MaxSpeed;
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;通过以上的方式，我们就完成了简单的移动，并且物体无论如何转向，移动的方向都不会出错。</p><br>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
