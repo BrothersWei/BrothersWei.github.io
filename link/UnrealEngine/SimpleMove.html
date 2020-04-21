@@ -56,6 +56,7 @@
 						<li> <a href="LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
 						<li> <a href="Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
 						<li> <a href="SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
+						<li> <a href="SimpleTurn.html"> <span class="nav-buttontext">简单的视野转动</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -177,10 +178,9 @@
         CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
         CameraBoom->SetupAttachment(RootComponent);
         // 设置摄像机手臂的参数设置
-        CameraBoom->TargetArmLength = 300.f;
+        CameraBoom->TargetArmLength = 150.f;
         CameraBoom->TargetOffset = FVector(0.f, 0.f, 60.f);
-        // 摄像机手臂允许与Controller旋转
-        CameraBoom->bUsePawnControlRotation = true;
+        CameraBoom->SetRelativeLocation(FVector(0.f, 0.f, 90.f));
 
         // 实例化摄像机并绑定在摄像机手臂上
         FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
@@ -188,8 +188,6 @@
         // 摄像机的参数设置
         FollowCamera->AddLocalOffset(FVector(0.f, 0.f, 60.f));
         FollowCamera->SetRelativeRotation(FRotator(-45.0f, 0.0f, 0.0f));
-        // 由于父组件摄像机手臂已经和Controller一起旋转，所以我们的Camera没必要与Controller一起旋转
-        FollowCamera->bUsePawnControlRotation = false;
 	    
         // 初始化速度向量和速度的值
         CurrentVelocity = FVector(0);

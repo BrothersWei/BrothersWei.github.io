@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>GamePlay框架</title>
+<title>简单的视野转动</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -112,65 +112,82 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;GamePlay框架</spen>
+              <spen class="spenMenu">&ensp;简单的视野转动</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">GamePlay框架</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">简单的视野转动</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
         <!-- main area -->
         <!-- InstanceBeginEditable name="main" -->
         <div class="main-content">
-          <div class="content-view">
-			  <div class="row">
-  				<div class="col-xs-1"></div>
-  				<div class="col-xs-10">
-					<br><br>
-					<h3 class="FontTitle">什么是GameMode</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;GameMode指的是游戏模式，代表着游戏的类型，它指定了我们的玩家，我们控制的模型等等，相当于游戏的规则。而GameMode包括一下几类最基础的内容：</p>
-					<div class="row">
-						<div class="col-xs-1"></div>
-						<div class="col-xs-10">
-							<p><font class="GoldFont">1. Default Pwan Class，即默认的Pawn或Character</font></p>
-							<p><font class="GoldFont">2. HUD Class，即所显示的HUD类</font></p>
-							<p><font class="GoldFont">3. Player Controller Class，即玩家的控制器</font></p>
-							<p><font class="GoldFont">4. Game State Class，即游戏状态类</font></p>
-							<p><font class="GoldFont">5. Player State Class，即玩家状态类</font></p>
-							<p><font class="GoldFont">6. Spectator Class，即观众类</font></p>
-							
-						</div>
-					</div>
-					<p class="FontParagraph">&emsp;&emsp;我们可以在World Settings即世界设置里面指定我们这个游戏所运行的GameMode类，如下图</p>
-					<center><img src="img/GamePlay/1.jpg" alt=""></center>
-					<br><br>
-					<p class="FontParagraph">&emsp;&emsp;而在GameMode类的C++代码中，我们要先引用我们所创建的以上类型的头文件方可使用代码指定</p>
-		  			<p class="FontParagraph">&emsp;&emsp;例如：</p>
-		  			<p class="FontParagraph">&emsp;&emsp;我们有一个Controller类，它的名字为MyPlayerController，其在C++代码中指定的方法如下（滑动代码可以查看全部）：</p>
-		  			<pre><code class="language-c++">
-  引入这个类的头文件：#include "MyPlayerController.h"
-  在这个 GameMode 的构造函数内添加：PlayerControllerClass = AMyPlayerController::StaticClass();
-  这样我们就用C++代码将我们的 Controller 指定在我们这个 GameMode 内了
-  同理其他的类型也是这样指定进 GameMode 中的。
-					</code></pre>
-					<br><br>
-					<h3 class="FontTitle">什么是Pawn</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Pawn就是Actor的一个子类，这个类是可以由玩家或者AI控制，在我们在没有指定默认的Pawn时，UE4会自动帮我们生成一个Default Pawn，它包括了一个球体组件，即CollisionComponent和一个默认的模型组件，即StaticMeshComponent和一个控制移动的DefaultPawnMovementComponent组件和一个CameraComponent摄像机组件.</p>
-					<br><br>
-					<h3 class="FontTitle">什么是Charater</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Charater是一个特殊的Pawn ，其实也没有多特殊，无非就是在Pawn的基础上加上了CharacterMovementComponent，CapsuleComponent 和SkeletalMesh这三个组件。（官方文档的解释，实质上两者没有多大区别，无非就是Pawn是Charater的父类罢了，在组件合适的情况下，Pawn也可以完完全全属于Charater）习惯上，一般Charater用于类人形角色，而Pawn用于非人形角色</p>
-					<p class="FontParagraph">&emsp;&emsp;其中，SkeletalMesh为骨架网络物体，它与StaticMesh不同，StaticMesh为静态网络物体，是没有骨架的物体，而SkeletalMesh是绑定了骨骼骨架的物体。</p>
-					<br><br>
-					<h3 class="FontTitle">什么是Controller</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Controller就是控制器，它是用来控制Pawn的，并且，Controller可以允许操控一个Pawn或Charater并控制它，一般有两种控制器，一个是PlayerController，即玩家控制器，另外一个是AIController，即AI控制器。我们可以这样子去理解，Controller就是大脑，用于发出指令，而Pawn或Charater就是身体，用于接收指令并作出相应的动作。</p>
-					<br><br>
-					<h3 class="FontTitle">什么是HUD</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;HUD其实很简单，就是一种平面的信息显示，属于UI的一种，例如生命值，血条能量条，弹药数量，十字准星等UI相关的信息显示，都是HUD的范畴。换句话说，所有的UI界面都是绑定在HUD这个类上，由这个类进行显示的。</p>
-				  </div>
-				  <div class="col-xs-1"></div>
-			</div>
-				  
-          </div>
+            <div class="content-view">
+                <div class="row">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-10"> <br>
+                        <br>
+                        <h3 class="FontTitle">简单的视野转动</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们接着上一节简单移动的例子，我们这次来制作视野的移动，上下旋转我们的思路就是通过鼠标的轴输入，改变我们的摄像机手臂，因为我们的摄像机是绑定在摄像机手臂上的，所以转动我们的摄像机手臂就相当于转动我们的摄像机，同时也就完成了我们的视野上下转动功能。而左右旋转呢，那就很简单了，我们直接转动我们的Pawn自身即可，因为我们的组件是绑定在Pawn上的，那么转动Pawn的时候我们的摄像机也就会跟着一起转动了。</p>
+						<p class="FontParagraph">&emsp;&emsp;首先我们要设置我们的轴映射输入，如下图：</p>
+						<center><img src="img/SimpleTurn/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;然后我们需要在MyPawn.h中加入我们的定义：</p>
+						<pre><code class="language-c++">
+    public:
+        // 摄像机旋转值，因为只是屏幕，只需要两个轴即可，Z轴的值不变
+        FVector2D CameraInput;
+    private:
+        // 两个对应轴映射事件的函数
+        void Turn(float value);
+        void LookUp(float value);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;于是我们在MyPawn.cpp中写入：</p>
+						<pre><code class="language-c++">
+    构造函数中，我们要设置一个摄像机手臂的属性
+    // 非常重要，如果不为true，那么我们的摄像机手臂将不会进行平滑过渡，也就不会进行转动
+    CameraBoom->bEnableCameraLag = true;
+    /*
+        这里还可以设置CameraLagSpeed属性，这个速度将会设置我们平滑过渡的速度，
+        以这个速度由这个位置过渡到那个位置，也就有了我们镜头转动的动画，一般我们默认不改
+    */
+	
+	
+    // 左右看
+    void AMyPawn::Turn(float value) {
+        CameraInput.X = value;
+    }
+    // 上下看
+    void AMyPawn::LookUp(float value) {
+        CameraInput.Y = value;
+    }
+	
+    在Tick函数中加入：
+    void AMyPawn::Tick(float DeltaTime) {
+        ///......之前的东西
+		
+        // 设置一个新的旋转值，默认值为当前Pawn的旋转
+        FRotator NewRotator = GetActorRotation();
+        // 旋转的Yaw（Y轴旋转值）值加上我们鼠标X轴移动的值
+        NewRotator.Yaw += CameraInput.X;
+        // 设置Pwan新的旋转
+        SetActorRotation(NewRotator);
+
+        // 设置一个新的摄像机手臂的旋转值，默认为摄像机手臂的旋转值
+        FRotator NewSpringArmRotator = CameraBoom->GetComponentRotation();
+        // 旋转的Pitch（X轴旋转值）加上我们鼠标Y轴的移动值
+        NewSpringArmRotator.Pitch += CameraInput.Y;
+        // 设置范围为-85到-15，如果不设置，将会由于欧拉角的计算问题，导致修改Z轴旋转值，我们要避免修改那个值
+		NewSpringArmRotator.Pitch = FMath::Clamp(NewSpringArmRotator.Pitch,-85.f,-15.f);
+        // 设置摄像机手臂组件新的旋转
+        CameraBoom->SetWorldRotation(NewSpringArmRotator);
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;编译，运行，移动我们的鼠标，我们发现我们的视野也跟着变动了。</p>
+						<p class="FontParagraph">&emsp;&emsp;这样我们就完成了简单的视野的转动，基础功能已经完成，当然，实际项目中我们基本上不会这样子去做，因为无论是我们的移动还是视野的转动，UE4已经为我们写好了一套函数给我们直接调用，而且更加方便。</p>
+                    </div>
+                    <div class="col-xs-1"></div>
+                </div>
+            </div>
         </div>
         <!-- InstanceEndEditable --><!-- /main area -->
       </div>
