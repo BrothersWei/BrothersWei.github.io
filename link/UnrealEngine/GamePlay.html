@@ -158,8 +158,9 @@
 					<p class="FontParagraph">&emsp;&emsp;Pawn就是Actor的一个子类，这个类是可以由玩家或者AI控制，在我们在没有指定默认的Pawn时，UE4会自动帮我们生成一个Default Pawn，它包括了一个球体组件，即CollisionComponent和一个默认的模型组件，即StaticMeshComponent和一个控制移动的DefaultPawnMovementComponent组件和一个CameraComponent摄像机组件.</p>
 					<br><br>
 					<h3 class="FontTitle">什么是Charater</h3><br>
-					<p class="FontParagraph">&emsp;&emsp;Charater是一个特殊的Pawn ，其实也没有多特殊，无非就是在Pawn的基础上加上了CharacterMovementComponent，CapsuleComponent 和SkeletalMesh这三个组件。（官方文档的解释，实质上两者没有多大区别，无非就是Pawn是Charater的父类罢了，在组件合适的情况下，Pawn也可以完完全全属于Charater）习惯上，一般Charater用于类人形角色，而Pawn用于非人形角色</p>
+					<p class="FontParagraph">&emsp;&emsp;Charater是一个特殊的Pawn ，其实也没有多特殊，无非就是在Pawn的基础上加上了CapsuleComponent（胶囊体碰撞组件）SkeletalMesh（骨骼模型组件）和ArrowComponent（方向箭头组件）这三个组件。（实质上两者没有多大区别，无非就是Pawn是Charater的父类罢了，在组件合适的情况下，Pawn也可以完完全全属于Charater）由于使用的胶囊体组件，所以类人生物是可以包裹住的，所以习惯上，一般Charater用于类人形角色，而Pawn用于非人形角色</p>
 					<p class="FontParagraph">&emsp;&emsp;其中，SkeletalMesh为骨架网络物体，它与StaticMesh不同，StaticMesh为静态网络物体，是没有骨架的物体，而SkeletalMesh是绑定了骨骼骨架的物体。</p>
+					<p class="FontParagraph">&emsp;&emsp;而ArrowComponent这个组件将会为我们判断这个角色的正向方向是哪个方向。</p>
 					<br><br>
 					<h3 class="FontTitle">什么是Controller</h3><br>
 					<p class="FontParagraph">&emsp;&emsp;Controller就是控制器，它是用来控制Pawn的，并且，Controller可以允许操控一个Pawn或Charater并控制它，一般有两种控制器，一个是PlayerController，即玩家控制器，另外一个是AIController，即AI控制器。我们可以这样子去理解，Controller就是大脑，用于发出指令，而Pawn或Charater就是身体，用于接收指令并作出相应的动作。</p>
