@@ -135,30 +135,32 @@
 						<h3 class="FontTitle">在C++中添加力和扭矩</h3><br>
 						<p class="FontParagraph">&emsp;&emsp;以<font class="Class">UStaticMeshComponent</font>为例：</p>
 						<pre><code class="language-c++">
-	首先我们需要定义模型组件
-	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
-	    UStaticMeshComponent *STMesh;
+    首先我们需要定义模型组件
+    UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
+        UStaticMeshComponent *STMesh;
 		
-	在其CPP文件对应位置
-	// 添加力，传入一个Vector三维向量，分别对应X，Y，Z三个轴
-	STMesh->AddForce(FVector(0));
-	// 添加扭矩，传入一个Vector三维向量，分别对应X，Y，Z三个轴
-	STMesh->AddTorque(FVector(0));
+    在其CPP文件对应位置
+    // 添加力，传入一个Vector三维向量，分别对应X，Y，Z三个轴
+    STMesh->AddForce(FVector(0));
+    // 添加扭矩，传入一个Vector三维向量，分别对应X，Y，Z三个轴
+    STMesh->AddTorque(FVector(0));
 						</code></pre>
 						<p class="FontParagraph">&emsp;&emsp;无论是添加力还是扭矩，我们要注意打开模型组件的物理模拟，否则无论如何施加都不会起作用。将物体拖入场景中，选中物体的模型组件，在Physics下将模拟物理勾选上，如下图：</p>
 						<center><img src="img/ForceAndTorque/1.png" alt=""></center><br><br><hr>
 						<h3 class="FontTitle">AddTorque和AddLocalRotation的区别</h3><br>
 						<p class="FontParagraph">&emsp;&emsp;如果让物体旋转，我们有AddTorque和AddLocalRotation这两种方法，使用AddTorque，添加一个扭矩让其旋转起来，使用AddLocalRotation，如果我们每一帧都让Rotation值变化，那么物体也就旋转起来了，但是要注意，AddLocalRotation是修改旋转值，在Tick函数下是一直旋转的，而且是匀速旋转，例如：</p>
 						<pre><code class="language-c++">
-	Tick(float DeltaTime){
-	    Mesh->AddLocalRotation(FRotation(DeltaTime * 60.f,0.f,0.f));
-	}
+    Tick(float DeltaTime){
+        Super::Tick(DeltaTime);
+        Mesh->AddLocalRotation(FRotation(DeltaTime * 60.f,0.f,0.f));
+    }
 						</code></pre>
 						<p class="FontParagraph">&emsp;&emsp;但是如果使用的是AddTorque，在Tick函数下，那么这个物体会越转越快，这是模拟的物理，旋转的时候会出现惯性，而放在Tick函数下，那么我们每一帧都会对这个物体施加一个让它旋转的力，而由于惯性的存在，这个物体将会越转越快，代码示例如下：</p>
 						<pre><code class="language-c++">
-	Tick(float DeltaTime){
-	    Mesh->AddTorque(FVector(60.f,0.f,0.f));
-	}
+    Tick(float DeltaTime){
+        Super::Tick(DeltaTime);
+        Mesh->AddTorque(FVector(60.f,0.f,0.f));
+    }
 						</code></pre>
                     </div>
                     <div class="col-xs-1"></div>
