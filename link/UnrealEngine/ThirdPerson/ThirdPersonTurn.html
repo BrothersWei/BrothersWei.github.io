@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>我的学习笔记</title>
+<title>第三人称模板中的视野转动</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -119,10 +119,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;首页</spen>
+              <spen class="spenMenu">&ensp;第三人称模板中的视野转动功能</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板中的视野转动功能</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -134,8 +134,79 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;This is Hello World</p>
+                        <h3 class="FontTitle">视野转动功能介绍</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们之前的初始化已经设置了摄像机手臂和摄像机是跟随我们的Controller旋转的，那么我们视野转动的思路就是旋转我们的Controller，从而间接控制我们的摄像机手臂和摄像机进行旋转，完成视野转动的功能。最主要的就是如何合适的旋转我们的Controller，而第三人称模板给我们展示了两种旋转的方法，同样，我们要声明以下轴映射：</p>
+						<center><img src="img/ThirdPersonTurn/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;我们先设置ThirdProjectCharacter.cpp中的构造函数：</p>
+						<pre><code class="language-c++">
+    // 让模型不跟随Controller旋转
+    bUseControllerRotationPitch = false;
+    bUseControllerRotationYaw = false;
+    bUseControllerRotationRoll = false;
+    // 开启这个属性，让模型在转动移动的时候可以平滑的移动过去
+    GetCharacterMovement()->bOrientRotationToMovement = true;
+    // 这个是平滑过渡过去的速率
+    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;第一种方法的转动，我们直接绑定ThirdProjectCharacter.cpp中的输入函数：</p>
+						<pre><code class="language-c++">
+    PlayerInputComponent->BindAxis("Turn", this, &amp;APawn::AddControllerYawInput);
+    PlayerInputComponent->BindAxis("LookUp", this, &amp;APawn::AddControllerPitchInput);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;没错，简单粗暴的方法，我们直接绑定父类Pawn的AddControllerYawInput和AddControllerPitchInput方法即可，这里我们只看其中一个的源码，我们直接看AddControllerYawInput的源代码，在Pawn下</p>
+						<pre><code class="language-c++">
+    void APawn::AddControllerYawInput(float Val){
+        if (Val != 0.f &amp;&amp; Controller &amp;&amp; Controller->IsLocalPlayerController()){
+            // 获得控制器
+            APlayerController* const PC = CastChecked&lt;APlayerController&gt;(Controller);
+            // 更改控制器的Yaw值
+            PC->AddYawInput(Val);
+        }
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;然后我们再看AddYawInput的源码，在PlayerController下</p>
+						<pre><code class="language-c++">
+    void APlayerController::AddYawInput(float Val){
+        // 如果输入没有没锁住，增加当前的Yaw值，增加量为传入的val
+        RotationInput.Yaw += !IsLookInputIgnored() ? Val * InputYawScale : 0.f;
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;这种方法就是这样一步一步的修改Controller的旋转值，通过轴映射返回的参数。</p><br><hr>
+						<p class="FontParagraph">&emsp;&emsp;现在我们看第二种方法，在ThirdProjectCharacter.h中，我们声明以下内容</p>
+						<pre><code class="language-c++">
+    public:
+        // 两个方向上的旋转速率
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+            float BaseTurnRate;
+        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
+            float BaseLookUpRate;
+			
+    protected:
+        // 左右看的函数 
+        void TurnAtRate(float Rate);
+        // 上下看的函数
+        void LookUpAtRate(float Rate);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;在ThirdProjectCharacter.cpp中，我们定义以下内容</p>
+						<pre><code class="language-c++">
+    在构造函数下初始化两个旋转速率参数
+    BaseTurnRate = 45.f;
+    BaseLookUpRate = 45.f;
+	
+    void AThirdProjectCharacter::TurnAtRate(float Rate){
+        // 进行旋转，这种方式我们传入了旋转的速率，乘于我们传入的值然后再乘于我们的时间
+        AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
+    }
+    void AThirdProjectCharacter::LookUpAtRate(float Rate){
+        // 同上
+        AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+    }
+	
+	然后我们再进行绑定
+    PlayerInputComponent->BindAxis("TurnRate", this, &amp;AThirdProjectCharacter::TurnAtRate);
+    PlayerInputComponent->BindAxis("LookUpRate", this, &amp;AThirdProjectCharacter::LookUpAtRate);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;这种方式没有上面第一种的那么粗暴，我们传入了旋转的速率和世界的时间，对我们鼠标的控制是比较友好的，不会速率可控，而对于手柄而言，我们简单粗暴的传入摇杆返回的值即可，太快的话不易控制，而AddControllerYawInput方法我们上面已经解析过，这里不再解析。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
