@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>第三人称模板中的视野转动</title>
+<title>第三人称模板中的跳跃</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -120,10 +120,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;第三人称模板中的视野转动功能</spen>
+              <spen class="spenMenu">&ensp;第三人称模板中的跳跃功能</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板中的视野转动功能</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板中的跳跃功能</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -135,79 +135,89 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">视野转动功能介绍</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;我们之前的初始化已经设置了摄像机手臂和摄像机是跟随我们的Controller旋转的，那么我们视野转动的思路就是旋转我们的Controller，从而间接控制我们的摄像机手臂和摄像机进行旋转，完成视野转动的功能。最主要的就是如何合适的旋转我们的Controller，而第三人称模板给我们展示了两种旋转的方法，同样，我们要声明以下轴映射：</p>
-						<center><img src="img/ThirdPersonTurn/1.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;我们先设置ThirdProjectCharacter.cpp中的构造函数：</p>
+                        <h3 class="FontTitle">跳跃功能介绍</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;总所周知，跳跃功能的逻辑是很容易的，但是也是很难写的，因为跳跃会引发很多的bug，例如连跳，跳比走还快，卡进了模型里面等等等等，我们常见的跳跃逻辑就是单纯的在按下跳跃键的时候，给予物体一个向上方向上的力，这样物体就跳了起来，但是，在跳的过程中，如果同时按下了方向键，那么物体是会移动的，而且移动的速度是和我们在平面上移动的速度相同，而且跳跃过程中多次按下跳跃键会发生连跳，最简单的解决方案就是加一个bool变量，在跳跃过程中锁定输入，但是这样我们就无法往前跳，那么跳跃的意义就不存在了，同样，在上述思路的基础上，我们可以在跳跃的时候修改移动的速度，使其没有在平面上移动的那么快，这也是一种解决方案，不过，这些逻辑都不用我们去写，UE4已经为我们定义好了一套跳跃的逻辑，我们可以直接使用，也可以在其基础上进行二次开发。不过，UE4的跳跃逻辑比我上述的远要复杂很多，涉及的源码也很多，有些逻辑本人水平有限，暂时还没看懂。</p>
+						<p class="FontParagraph">&emsp;&emsp;首先，我们依然要设置输入，但是这次我们使用的是按键映射：</p>
+						<center><img src="img/ThirdPersonJump/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;我们在ThirdProjectCharacter.h中声明我们的跳跃函数：</p>
 						<pre><code class="language-c++">
-    // 让模型不跟随Controller旋转
-    bUseControllerRotationPitch = false;
-    bUseControllerRotationYaw = false;
-    bUseControllerRotationRoll = false;
-    // // Character自身会以鼠标的位置为正方向旋转，并且可以平滑的移动过去
-    GetCharacterMovement()->bOrientRotationToMovement = true;
-    // 这个是平滑过渡过去的速率
-    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
+    protected:
+        // 按下跳跃键瞬间开始跳跃
+        void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
+        // 弹起跳跃键瞬间停止跳跃
+        void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
 						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;第一种方法的转动，我们直接绑定ThirdProjectCharacter.cpp中的输入函数：</p>
+						<p class="FontParagraph">&emsp;&emsp;我们在ThirdProjectCharacter.cpp中写入以下定义：</p>
 						<pre><code class="language-c++">
-    PlayerInputComponent->BindAxis("Turn", this, &amp;APawn::AddControllerYawInput);
-    PlayerInputComponent->BindAxis("LookUp", this, &amp;APawn::AddControllerPitchInput);
+    构造函数中先设置和跳跃相关的属性
+    // 跳跃的高度
+    GetCharacterMovement()->JumpZVelocity = 600.f;
+    // 跳跃时可以进行横向移动控制，0为不能控制，1为以MaxWalkSpeed的最大速度进行完全控制
+    GetCharacterMovement()->AirControl = 0.2f;
+					
+    绑定输入函数
+    PlayerInputComponent->BindTouch(IE_Pressed, this, &amp;AThirdProjectCharacter::TouchStarted);
+    PlayerInputComponent->BindTouch(IE_Released, this, &amp;AThirdProjectCharacter::TouchStopped);
+
+    // 跳跃开始
+    void AThirdProjectCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location){
+        // 没错，直接调用Jump函数，这个函数是为我们定义好的
+        Jump();
+    }
+    // 跳跃停止
+    void AThirdProjectCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location){
+        // 同理，这个函数也是定义好的
+        StopJumping();
+    }
 						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;没错，简单粗暴的方法，我们直接绑定父类Pawn的AddControllerYawInput和AddControllerPitchInput方法即可，这里我们只看其中一个的源码，我们直接看AddControllerYawInput的源代码，在Pawn下</p>
+						<p class="FontParagraph">&emsp;&emsp;现在我们看看Jump函数的定义，在Character.cpp下</p>
 						<pre><code class="language-c++">
-    void APawn::AddControllerYawInput(float Val){
-        if (Val != 0.f &amp;&amp; Controller &amp;&amp; Controller->IsLocalPlayerController()){
-            // 获得控制器
-            APlayerController* const PC = CastChecked&lt;APlayerController&gt;(Controller);
-            // 更改控制器的Yaw值
-            PC->AddYawInput(Val);
+    void ACharacter::Jump(){
+        // 设置跳跃属性为true
+        bPressedJump = true;
+        // 这个是跳跃键可以持续的时间，就是这个跳跃在这个时间内会持续触发
+        JumpKeyHoldTime = 0.0f;
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们在Character.cpp查找bPressedJump这个属性，我们发现一断代码，这段代码很复杂，但是不难看出来，他调用了一个DoJump函数，而这个函数就是执行了我们的跳跃，于是我们查看DoJump函数源码，在CharacterMovementComponent下</p>
+						<pre><code class="language-c++">
+    bool UCharacterMovementComponent::DoJump(bool bReplayingMoves){
+        // 在这里调用了CanJump，用于判断是否可以跳跃
+        if ( CharacterOwner &amp;&amp; CharacterOwner->CanJump() ){
+            // 如果我们无法上下移动，就不跳
+            if (!bConstrainToPlane || FMath::Abs(PlaneConstraintNormal.Z) != 1.f){
+                // 添加一个向上方向上的速度，JumpZVelocity为跳跃时的初始速度
+                Velocity.Z = FMath::Max(Velocity.Z, JumpZVelocity);
+                // 设置移动（数值方向上的位移，即为跳跃）
+                SetMovementMode(MOVE_Falling);
+                return true;
+            }
+        }
+        return false;
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;对于停止跳跃的函数，在Character.cpp内的源码如下：</p>
+						<pre><code class="language-c++">
+    void ACharacter::StopJumping(){
+        bPressedJump = false;
+        ResetJumpState();
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们继续追踪ResetJumpState函数：</p>
+						<pre><code class="language-c++">
+    void ACharacter::ResetJumpState(){
+        bPressedJump = false;
+        bWasJumping = false;
+        JumpKeyHoldTime = 0.0f;
+        JumpForceTimeRemaining = 0.0f;
+
+        if (CharacterMovement &amp;&amp; !CharacterMovement->IsFalling()){
+            JumpCurrentCount = 0;
         }
     }
 						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;然后我们再看AddYawInput的源码，在PlayerController下</p>
-						<pre><code class="language-c++">
-    void APlayerController::AddYawInput(float Val){
-        // 如果输入没有没锁住，增加当前的Yaw值，增加量为传入的val
-        RotationInput.Yaw += !IsLookInputIgnored() ? Val * InputYawScale : 0.f;
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;这种方法就是这样一步一步的修改Controller的旋转值，通过轴映射返回的参数。</p><br><hr>
-						<p class="FontParagraph">&emsp;&emsp;现在我们看第二种方法，在ThirdProjectCharacter.h中，我们声明以下内容</p>
-						<pre><code class="language-c++">
-    public:
-        // 两个方向上的旋转速率
-        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-            float BaseTurnRate;
-        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-            float BaseLookUpRate;
-			
-    protected:
-        // 左右看的函数 
-        void TurnAtRate(float Rate);
-        // 上下看的函数
-        void LookUpAtRate(float Rate);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;在ThirdProjectCharacter.cpp中，我们定义以下内容</p>
-						<pre><code class="language-c++">
-    在构造函数下初始化两个旋转速率参数
-    BaseTurnRate = 45.f;
-    BaseLookUpRate = 45.f;
-	
-    void AThirdProjectCharacter::TurnAtRate(float Rate){
-        // 进行旋转，这种方式我们传入了旋转的速率，乘于我们传入的值然后再乘于我们的时间
-        AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
-    }
-    void AThirdProjectCharacter::LookUpAtRate(float Rate){
-        // 同上
-        AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
-    }
-	
-	然后我们再进行绑定
-    PlayerInputComponent->BindAxis("TurnRate", this, &amp;AThirdProjectCharacter::TurnAtRate);
-    PlayerInputComponent->BindAxis("LookUpRate", this, &amp;AThirdProjectCharacter::LookUpAtRate);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;这种方式没有上面第一种的那么粗暴，我们传入了旋转的速率和世界的时间，对我们鼠标的控制是比较友好的，不会速率可控，而对于手柄而言，我们简单粗暴的传入摇杆返回的值即可，太快的话不易控制，而AddControllerYawInput方法我们上面已经解析过，这里不再解析。</p>
+						<p class="FontParagraph">&emsp;&emsp;我们不难看出，它的作用就是将所有与跳跃相关的参数都进行了初始化。</p>
+						<p class="FontParagraph">&emsp;&emsp;对于与跳跃相关的另外一个东西，是否在空中的判断，在不使用UE4自带的IsAir属性的情况下，本人能想到的制作逻辑如下：设置碰撞这个碰撞只有地面的物体和角色，如果没有接触，就将IsAir设为flase，如果有接触，也就触发了事件，将IsAir设为true。至于UE4中的IsAir，本人并不清楚他定义在哪个文件，也没有去看，如果使用Visual Studio搜索整个项目，搜索时间过长，而且电脑负担也大，所以也没有进行搜索，后面有时间会去了解的。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
