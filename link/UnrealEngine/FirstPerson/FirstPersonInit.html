@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>第三人称模板中的视野转动</title>
+<title>第一人称模板项目初始化设置</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -61,15 +61,15 @@
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第三人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
-						<li> <a href="ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
-						<li> <a href="ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
                         
                     </ul>
                 </li>
@@ -126,10 +126,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;第三人称模板中的视野转动功能</spen>
+              <spen class="spenMenu">&ensp;项目初始化设置</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板中的视野转动功能</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">项目初始化设置</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -141,79 +141,84 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">视野转动功能介绍</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;我们之前的初始化已经设置了摄像机手臂和摄像机是跟随我们的Controller旋转的，那么我们视野转动的思路就是旋转我们的Controller，从而间接控制我们的摄像机手臂和摄像机进行旋转，完成视野转动的功能。最主要的就是如何合适的旋转我们的Controller，而第三人称模板给我们展示了两种旋转的方法，同样，我们要声明以下轴映射：</p>
-						<center><img src="img/ThirdPersonTurn/1.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;我们先设置ThirdProjectCharacter.cpp中的构造函数：</p>
+                        <h3 class="FontTitle">UE4的第一人称模板做了什么</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们的UE4为我们提供第一人称模板来让我们进行学习和二次开发，现在我们来看一下第一人称模板都做了什么。我们在新建第一人称模板的时候可以看到UE4官方对第一人称模板的解释，如下图：</p>
+						<center><img src="img/FirstPersonInit/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;不难看出，我们主要使用了Character来作为我们的主角，用了HUD显示我们的UI（准星）还运用了Actor的内容（生产发射物）</p>
+						<p class="FontParagraph">&emsp;&emsp;新建打开我们的第一人称项目，在这里我命名为FirstProject，打开我们的Visual Studio工程，打开我们的FirstProjectCharacter，这个就是我们的主角，而移动，视野，跳跃相关内容我们不再重复介绍，与第三人称模板大同小异。我们来看在FirstProjectCharacter.h中为我们定义了什么组件。</p>
 						<pre><code class="language-c++">
-    // 让模型不跟随Controller旋转
-    bUseControllerRotationPitch = false;
-    bUseControllerRotationYaw = false;
-    bUseControllerRotationRoll = false;
-    // // Character自身会以鼠标的位置为正方向旋转，并且可以平滑的移动过去
-    GetCharacterMovement()->bOrientRotationToMovement = true;
-    // 这个是平滑过渡过去的速率
-    GetCharacterMovement()->RotationRate = FRotator(0.0f, 540.0f, 0.0f);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;第一种方法的转动，我们直接绑定ThirdProjectCharacter.cpp中的输入函数：</p>
-						<pre><code class="language-c++">
-    PlayerInputComponent->BindAxis("Turn", this, &amp;APawn::AddControllerYawInput);
-    PlayerInputComponent->BindAxis("LookUp", this, &amp;APawn::AddControllerPitchInput);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;没错，简单粗暴的方法，我们直接绑定父类Pawn的AddControllerYawInput和AddControllerPitchInput方法即可，这里我们只看其中一个的源码，我们直接看AddControllerYawInput的源代码，在Pawn下</p>
-						<pre><code class="language-c++">
-    void APawn::AddControllerYawInput(float Val){
-        if (Val != 0.f &amp;&amp; Controller &amp;&amp; Controller->IsLocalPlayerController()){
-            // 获得控制器
-            APlayerController* const PC = CastChecked&lt;APlayerController&gt;(Controller);
-            // 更改控制器的Yaw值
-            PC->AddYawInput(Val);
-        }
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;然后我们再看AddYawInput的源码，在PlayerController下</p>
-						<pre><code class="language-c++">
-    void APlayerController::AddYawInput(float Val){
-        // 如果输入没有没锁住，增加当前的Yaw值，增加量为传入的val
-        RotationInput.Yaw += !IsLookInputIgnored() ? Val * InputYawScale : 0.f;
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;这种方法就是这样一步一步的修改Controller的旋转值，通过轴映射返回的参数。</p><br><hr>
-						<p class="FontParagraph">&emsp;&emsp;现在我们看第二种方法，在ThirdProjectCharacter.h中，我们声明以下内容</p>
-						<pre><code class="language-c++">
-    public:
-        // 两个方向上的旋转速率
-        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-            float BaseTurnRate;
-        UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
-            float BaseLookUpRate;
-			
-    protected:
-        // 左右看的函数 
-        void TurnAtRate(float Rate);
-        // 上下看的函数
-        void LookUpAtRate(float Rate);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;在ThirdProjectCharacter.cpp中，我们定义以下内容</p>
-						<pre><code class="language-c++">
-    在构造函数下初始化两个旋转速率参数
-    BaseTurnRate = 45.f;
-    BaseLookUpRate = 45.f;
+    // 摄像机组件
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
+        class UCameraComponent* FirstPersonCameraComponent;
+    // 人物模型组件
+    UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
+        class USkeletalMeshComponent* Mesh1P;
+    // 枪模型组件
+    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+        class USkeletalMeshComponent* FP_Gun;
+    // 相对于空组件，放在枪管位置，用于生成子弹
+    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+        class USceneComponent* FP_MuzzleLocation;
+    
+    // 移动跳跃视野转动相关内容省略......
 	
-    void AThirdProjectCharacter::TurnAtRate(float Rate){
-        // 进行旋转，这种方式我们传入了旋转的速率，乘于我们传入的值然后再乘于我们的时间
-        AddControllerYawInput(Rate * BaseTurnRate * GetWorld()->GetDeltaSeconds());
-    }
-    void AThirdProjectCharacter::LookUpAtRate(float Rate){
-        // 同上
-        AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
-    }
-	
-	然后我们再进行绑定
-    PlayerInputComponent->BindAxis("TurnRate", this, &amp;AThirdProjectCharacter::TurnAtRate);
-    PlayerInputComponent->BindAxis("LookUpRate", this, &amp;AThirdProjectCharacter::LookUpAtRate);
+    // 子弹生成位置的偏移量
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
+        FVector GunOffset;
 						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;这种方式没有上面第一种的那么粗暴，我们传入了旋转的速率和世界的时间，对我们鼠标的控制是比较友好的，不会速率可控，而对于手柄而言，我们简单粗暴的传入摇杆返回的值即可，太快的话不易控制，而AddControllerYawInput方法我们上面已经解析过，这里不再解析。</p>
+						<p class="FontParagraph">&emsp;&emsp;在FristProjectCharacter.cpp中的构造函数下</p>
+						<pre><code class="language-c++">
+    AFirstProjectCharacter::AFirstProjectCharacter(){
+        // 设置胶囊体的大小
+        GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
+
+        // 设置视野移动相关参数（详见第三人称模板的视野移动相关内容）
+        BaseTurnRate = 45.f;
+        BaseLookUpRate = 45.f;
+
+        // 实例化摄像机
+        FirstPersonCameraComponent = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT("FirstPersonCamera"));
+        // 绑定在胶囊体组件下
+        FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
+        // 位置偏移
+        FirstPersonCameraComponent->SetRelativeLocation(FVector(-39.56f, 1.75f, 64.f)); 
+        // 允许摄像机与Controller旋转
+        FirstPersonCameraComponent->bUsePawnControlRotation = true;
+
+        // 设置模型
+        Mesh1P = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT("CharacterMesh1P"));
+        // 设置模型显示
+        Mesh1P->SetOnlyOwnerSee(true);
+        // 绑定在摄像机下
+        Mesh1P->SetupAttachment(FirstPersonCameraComponent);
+        // 不产生阴影
+        Mesh1P->bCastDynamicShadow = false;
+        // 不投射阴影上去
+        Mesh1P->CastShadow = false;
+        // 位置和旋转属性的设置
+        Mesh1P->SetRelativeRotation(FRotator(1.9f, -19.19f, 5.2f));
+        Mesh1P->SetRelativeLocation(FVector(-0.5f, -4.4f, -155.7f));
+
+        // 设置枪模型
+        FP_Gun = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT("FP_Gun"));
+        FP_Gun->SetOnlyOwnerSee(true);		
+        FP_Gun->bCastDynamicShadow = false;
+        FP_Gun->CastShadow = false;
+        // 绑定在根组件下
+        FP_Gun->SetupAttachment(RootComponent);
+
+        // 实例化枪管发射标识组件
+        FP_MuzzleLocation = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT("MuzzleLocation"));
+        // 放在枪模型组件下
+        FP_MuzzleLocation->SetupAttachment(FP_Gun);
+        // 将这个组件移动到枪管位置
+        FP_MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
+
+        // 设置发射物的偏移量
+        GunOffset = FVector(100.0f, 0.0f, 10.0f);
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们看到，他的大致思路是有一个角色的模型，枪的模型，在枪的模型下实例化一个虚的组件，在这个组件的位置生成子弹。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
