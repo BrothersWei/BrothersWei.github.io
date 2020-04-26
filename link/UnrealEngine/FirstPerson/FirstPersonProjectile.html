@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>第三人称模板中的跳跃</title>
+<title>第一人称模板发射物设计</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -61,17 +61,17 @@
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第三人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
-						<li> <a href="ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
-						<li> <a href="ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="../FirstPerson/FirstPersonFrontSight.html"> <span class="nav-buttontext">HUD创建准星</span> </a> </li>
-						<li> <a href="../FirstPerson/FirstPersonProjectile.html"> <span class="nav-buttontext">发射物设计</span> </a> </li>
+                        <li> <a href="FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="FirstPersonFrontSight.html"> <span class="nav-buttontext">HUD创建准星</span> </a> </li>
+						<li> <a href="FirstPersonProjectile.html"> <span class="nav-buttontext">发射物设计</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -127,10 +127,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;第三人称模板中的跳跃功能</spen>
+              <spen class="spenMenu">&ensp;第一人称模板发射物设计</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第三人称模板中的跳跃功能</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第一人称模板发射物设计</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -142,89 +142,78 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">跳跃功能介绍</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;总所周知，跳跃功能的逻辑是很容易的，但是也是很难写的，因为跳跃会引发很多的bug，例如连跳，跳比走还快，卡进了模型里面等等等等，我们常见的跳跃逻辑就是单纯的在按下跳跃键的时候，给予物体一个向上方向上的力，这样物体就跳了起来，但是，在跳的过程中，如果同时按下了方向键，那么物体是会移动的，而且移动的速度是和我们在平面上移动的速度相同，而且跳跃过程中多次按下跳跃键会发生连跳，最简单的解决方案就是加一个bool变量，在跳跃过程中锁定输入，但是这样我们就无法往前跳，那么跳跃的意义就不存在了，同样，在上述思路的基础上，我们可以在跳跃的时候修改移动的速度，使其没有在平面上移动的那么快，这也是一种解决方案，不过，这些逻辑都不用我们去写，UE4已经为我们定义好了一套跳跃的逻辑，我们可以直接使用，也可以在其基础上进行二次开发。不过，UE4的跳跃逻辑比我上述的远要复杂很多，涉及的源码也很多，有些逻辑本人水平有限，暂时还没看懂。</p>
-						<p class="FontParagraph">&emsp;&emsp;首先，我们依然要设置输入，但是这次我们使用的是按键映射：</p>
-						<center><img src="img/ThirdPersonJump/1.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;我们在ThirdProjectCharacter.h中声明我们的跳跃函数：</p>
+                        <h3 class="FontTitle">发射物设计思路</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们要想我们的发射物也就是我们的子弹要拥有什么，首先生成的时候我们要给它一个初始的速度，然后要让它有碰撞的反馈，既然要有速度，那么就要有移动组件，而且我们的发射物也可以绑定一个模型上去，于是我们就有了以下FirstProjectProjectile.h的代码</p>
 						<pre><code class="language-c++">
-    protected:
-        // 按下跳跃键瞬间开始跳跃
-        void TouchStarted(ETouchIndex::Type FingerIndex, FVector Location);
-        // 弹起跳跃键瞬间停止跳跃
-        void TouchStopped(ETouchIndex::Type FingerIndex, FVector Location);
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;我们在ThirdProjectCharacter.cpp中写入以下定义：</p>
-						<pre><code class="language-c++">
-    构造函数中先设置和跳跃相关的属性
-    // 跳跃的高度
-    GetCharacterMovement()->JumpZVelocity = 600.f;
-    // 跳跃时可以进行横向移动控制，0为不能控制，1为以MaxWalkSpeed的最大速度进行完全控制
-    GetCharacterMovement()->AirControl = 0.2f;
-					
-    绑定输入函数
-    PlayerInputComponent->BindTouch(IE_Pressed, this, &amp;AThirdProjectCharacter::TouchStarted);
-    PlayerInputComponent->BindTouch(IE_Released, this, &amp;AThirdProjectCharacter::TouchStopped);
+    // 球形碰撞组件
+    UPROPERTY(VisibleDefaultsOnly, Category=Projectile)
+        class USphereComponent* CollisionComp;
+    // 物体的移动组件
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement, meta = (AllowPrivateAccess = "true"))
+        class UProjectileMovementComponent* ProjectileMovement;
 
-    // 跳跃开始
-    void AThirdProjectCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location){
-        // 没错，直接调用Jump函数，这个函数是为我们定义好的
-        Jump();
-    }
-    // 跳跃停止
-    void AThirdProjectCharacter::TouchStopped(ETouchIndex::Type FingerIndex, FVector Location){
-        // 同理，这个函数也是定义好的
-        StopJumping();
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;现在我们看看Jump函数的定义，在Character.cpp下</p>
-						<pre><code class="language-c++">
-    void ACharacter::Jump(){
-        // 设置跳跃属性为true
-        bPressedJump = true;
-        // 这个是跳跃键可以持续的时间，就是这个跳跃在这个时间内会持续触发
-        JumpKeyHoldTime = 0.0f;
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;我们在Character.cpp查找bPressedJump这个属性，我们发现一断代码，这段代码很复杂，但是不难看出来，他调用了一个DoJump函数，而这个函数就是执行了我们的跳跃，于是我们查看DoJump函数源码，在CharacterMovementComponent下</p>
-						<pre><code class="language-c++">
-    bool UCharacterMovementComponent::DoJump(bool bReplayingMoves){
-        // 在这里调用了CanJump，用于判断是否可以跳跃
-        if ( CharacterOwner &amp;&amp; CharacterOwner->CanJump() ){
-            // 如果我们无法上下移动，就不跳
-            if (!bConstrainToPlane || FMath::Abs(PlaneConstraintNormal.Z) != 1.f){
-                // 添加一个向上方向上的速度，JumpZVelocity为跳跃时的初始速度
-                Velocity.Z = FMath::Max(Velocity.Z, JumpZVelocity);
-                // 设置移动（数值方向上的位移，即为跳跃）
-                SetMovementMode(MOVE_Falling);
-                return true;
-            }
-        }
-        return false;
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;对于停止跳跃的函数，在Character.cpp内的源码如下：</p>
-						<pre><code class="language-c++">
-    void ACharacter::StopJumping(){
-        bPressedJump = false;
-        ResetJumpState();
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;我们继续追踪ResetJumpState函数：</p>
-						<pre><code class="language-c++">
-    void ACharacter::ResetJumpState(){
-        bPressedJump = false;
-        bWasJumping = false;
-        JumpKeyHoldTime = 0.0f;
-        JumpForceTimeRemaining = 0.0f;
+public:
+    // 构造函数
+    AFirstProjectProjectile();
 
-        if (CharacterMovement &amp;&amp; !CharacterMovement->IsFalling()){
-            JumpCurrentCount = 0;
+    // 碰撞函数
+    UFUNCTION()
+        void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult&amp; Hit);
+
+    // 返回球形组件
+    FORCEINLINE class USphereComponent* GetCollisionComp() const { return CollisionComp; }
+    // 返回移动组件
+    FORCEINLINE class UProjectileMovementComponent* GetProjectileMovement() const { return ProjectileMovement; }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;在FirstProjectProjectile.cpp中：</p>
+						<pre><code class="language-c++">
+    // 构造函数
+    AFirstProjectProjectile::AFirstProjectProjectile() {
+        // 生成球形碰撞组件
+        CollisionComp = CreateDefaultSubobject&lt;USphereComponent&gt;(TEXT("SphereComp"));
+        // 设置组件的半径
+        CollisionComp->InitSphereRadius(5.0f);
+        // 设置碰撞的文件
+        CollisionComp->BodyInstance.SetCollisionProfileName("Projectile");
+        // 绑定碰撞后调用的函数
+        CollisionComp->OnComponentHit.AddDynamic(this, &amp;AFirstProjectProjectile::OnHit);
+
+        // 不允许任何角色在这个物体上行走（避免Bug）
+        CollisionComp->SetWalkableSlopeOverride(FWalkableSlopeOverride(WalkableSlope_Unwalkable, 0.f));
+        CollisionComp->CanCharacterStepUpOn = ECB_No;
+
+        // 设置碰撞球形组件为根组件
+        RootComponent = CollisionComp;
+
+        // 实例化移动组件
+        ProjectileMovement = CreateDefaultSubobject&lt;UProjectileMovementComponent&gt;(TEXT("ProjectileComp"));
+        // 设置组件调用的是球形碰撞组件
+        ProjectileMovement->UpdatedComponent = CollisionComp;
+        // 设置生成后的初始速度
+        ProjectileMovement->InitialSpeed = 3000.f;
+        // 设置移动过程中的最大速度
+        ProjectileMovement->MaxSpeed = 3000.f;
+        // 设置在移动过程中弹丸会旋转
+        ProjectileMovement->bRotationFollowsVelocity = true;
+        // 模拟碰撞，开启这个属性碰到墙壁会反弹
+        ProjectileMovement->bShouldBounce = true;
+
+        // 3秒后销毁自己
+        InitialLifeSpan = 3.0f;
+    }
+	
+    // 碰撞函数
+    void AFirstProjectProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult&amp; Hit){
+        // 如果碰撞物体存在且不是自己并且移动组件存在
+        if ((OtherActor != NULL) &amp;&amp; (OtherActor != this) &amp;&amp; (OtherComp != NULL) &amp;&amp; OtherComp->IsSimulatingPhysics()){
+            // 给予碰撞物体一个冲量（一个冲击的力），传入参数为力的大小和给予的力的位置
+            OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+            // 销毁自己
+            Destroy(this);
         }
     }
 						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;我们不难看出，它的作用就是将所有与跳跃相关的参数都进行了初始化。</p>
-						<p class="FontParagraph">&emsp;&emsp;对于与跳跃相关的另外一个东西，是否在空中的判断，在不使用UE4自带的IsAir属性的情况下，本人能想到的制作逻辑如下：设置碰撞这个碰撞只有地面的物体和角色，如果没有接触，就将IsAir设为flase，如果有接触，也就触发了事件，将IsAir设为true。至于UE4中的IsAir，本人并不清楚他定义在哪个文件，也没有去看，如果使用Visual Studio搜索整个项目，搜索时间过长，而且电脑负担也大，所以也没有进行搜索，后面有时间会去了解的。</p>
+						<p class="FontParagraph">&emsp;&emsp;这样我们就做好了我们的发射物，现在就剩下如何“开火”，即如何在枪口生成。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
