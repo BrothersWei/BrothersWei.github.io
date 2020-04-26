@@ -13,14 +13,14 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>OpenGL环境搭建</title>
+<title>第一人称模板HUD创建准星</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
-<link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
-<link rel="stylesheet" href="../../styles/app.css" id="load_styles_before" runat="server"/>
-<link rel="stylesheet" href="../../styles/app.skins.css" runat="server"/>
-<link rel="stylesheet" href="../../styles/Myhighlight.css" runat="server"/>
-<link rel="stylesheet" href="../../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
+<link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.css" id="load_styles_before" runat="server"/>
+<link rel="stylesheet" href="../../../styles/app.skins.css" runat="server"/>
+<link rel="stylesheet" href="../../../styles/Myhighlight.css" runat="server"/>
+<link rel="stylesheet" href="../../../vendor/highlight/styles/monokai-sublime.css" runat="server"/>
 <!-- endbuild -->
 </head>
   <body>
@@ -31,7 +31,7 @@
         <div class="brand"> 
             <!-- /toggle offscreen menu --> 
             <!-- logo --> 
-            <a class="brand-logo" href="../../index.html"> <img class="expanding-hidden" src="../../images/logo-dark.png" alt=""/> </a> 
+            <a class="brand-logo" href="../../../index.html"> <img class="expanding-hidden" src="../../../images/logo-dark.png" alt=""/> </a> 
             <!-- /logo --> 
         </div>
         <!-- main navigation -->
@@ -40,37 +40,37 @@
             <ul class="nav">
                 <!-- 主页 -->
                 <p class="nav-title">主页</p>
-                <li> <a href="../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
+                <li> <a href="../../../index.html"> <span class="nav-menutext">&emsp;&emsp;首页</span> </a> </li>
                 <hr>
                 <p class="nav-title">UnrealEngine 4</p>
                 <!-- /主页 --> 
                 <!-- UnrealEngine4 -->
                 <li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4基础</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
-                        <li> <a href="../UnrealEngine/InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
-                        <li> <a href="../UnrealEngine/GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
-                        <li> <a href="../UnrealEngine/UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
-						<li> <a href="../UnrealEngine/ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
-						<li> <a href="../UnrealEngine/Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
-						<li> <a href="../UnrealEngine/LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
-						<li> <a href="../UnrealEngine/Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
-						<li> <a href="../UnrealEngine/SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
-						<li> <a href="../UnrealEngine/SimpleTurn.html"> <span class="nav-buttontext">简单的视野转动</span> </a> </li>
+                        <li> <a href="../Actor.html"> <span class="nav-buttontext">什么是Actor</span> </a> </li>
+                        <li> <a href="../InputComponent.html"> <span class="nav-buttontext">输入组件</span> </a> </li>
+                        <li> <a href="../GamePlay.html"> <span class="nav-buttontext">UE4中的GamePlay框架</span> </a> </li>
+                        <li> <a href="../UnrealMacro.html"> <span class="nav-buttontext">UE4中的宏定义</span> </a> </li>
+						<li> <a href="../ForceAndTorque.html"> <span class="nav-buttontext">力和扭矩</span> </a> </li>
+						<li> <a href="../Collision.html"> <span class="nav-buttontext">UE4中的碰撞</span> </a> </li>
+						<li> <a href="../LineTrace.html"> <span class="nav-buttontext">射线绘制和射线检测</span> </a> </li>
+						<li> <a href="../Delegates.html"> <span class="nav-buttontext">UE4中的委托</span> </a> </li>
+						<li> <a href="../SimpleMove.html"> <span class="nav-buttontext">简单的移动</span> </a> </li>
+						<li> <a href="../SimpleTurn.html"> <span class="nav-buttontext">简单的视野转动</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第三人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/ThirdPerson/ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="../UnrealEngine/ThirdPerson/ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
-						<li> <a href="../UnrealEngine/ThirdPerson/ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
-						<li> <a href="../UnrealEngine/ThirdPerson/ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="../ThirdPerson/ThirdPersonMove.html"> <span class="nav-buttontext">模板中的移动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonTurn.html"> <span class="nav-buttontext">模板中的视野转动功能</span> </a> </li>
+						<li> <a href="../ThirdPerson/ThirdPersonJump.html"> <span class="nav-buttontext">模板中的跳跃功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../UnrealEngine/FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="../UnrealEngine/FirstPerson/FirstPersonFrontSight.html"> <span class="nav-buttontext">HUD创建准星</span> </a> </li>
+                        <li> <a href="FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="FirstPersonFrontSight.html"> <span class="nav-buttontext">HUD创建准星</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
@@ -89,7 +89,7 @@
                 <!-- 设计模式 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
+                        <li> <a href="../../DesignPatterns/Singleton.html"> <span class="nav-buttontext">单例模式</span> </a> </li>
                         <!--<li> <a href="../link/DesignPatterns/Factory.html"> <span class="nav-buttontext">工厂模式</span> </a> </li>-->
                     </ul>
                 </li>
@@ -107,7 +107,7 @@
                 <!-- static -->
                 <p class="nav-title">关于我</p>
                 <li> <a href="#"> <span class="nav-menutext">&emsp;&emsp;个人简历</span> </a> </li>
-				<li> <a href="../AboutMe/AboutBlog.html"> <span class="nav-menutext">&emsp;&emsp;关于博客</span> </a> </li>
+				<li> <a href="../../AboutMe/AboutBlog.html"> <span class="nav-menutext">&emsp;&emsp;关于博客</span> </a> </li>
                 <!-- /static -->
             </ul>
         </nav>
@@ -122,14 +122,14 @@
             <div class="navbar-item navbar-spacer-right brand hidden-lg-up">
               <!-- toggle offscreen menu -->
               <a href="javascript:;" data-toggle="sidebar" class="toggle-offscreen">
-                <i class="material-icons"><img src="../../images/button-1.png"></i>
+                <i class="material-icons"><img src="../../../images/button-1.png"></i>
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;OpenGL环境搭建</spen>
+              <spen class="spenMenu">&ensp;第一人称模板HUD创建准星</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">OpenGL环境搭建</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第一人称模板HUD创建准星</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -141,8 +141,47 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3>
-                        <p class="FontParagraph">This is Hello World</p>
+                        <h3 class="FontTitle">使用HUD创建准星UI</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们的第一人称模板UI上最基础的就是我们的瞄准用的准星，而这个准星的创建我们使用了HUD类，而在这个HUD中，我们需要重写一个DrawHUD绘制函数。</p>
+						<p class="FontParagraph">&emsp;&emsp;在FirstProjectHUD.h中：</p>
+						<pre><code class="language-c++">
+    public:
+        // 构造函数
+        AFirstProjectHUD();
+
+        // 重写绘制函数
+        virtual void DrawHUD() override;
+
+    private:
+        // 准星图片资源
+        class UTexture2D* CrosshairTex;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;在FirstProjectHUD.cpp中：</p>
+						<pre><code class="language-c++">
+    AFirstProjectHUD::AFirstProjectHUD(){
+        // 设置准星图片
+        static ConstructorHelpers::FObjectFinder<UTexture2D> CrosshairTexObj(TEXT("/Game/FirstPerson/Textures/FirstPersonCrosshair"));
+        CrosshairTex = CrosshairTexObj.Object;
+    }
+
+    void AFirstProjectHUD::DrawHUD(){
+        Super::DrawHUD();
+
+        // 绘制在屏幕中心位置
+        const FVector2D Center(Canvas->ClipX * 0.5f, Canvas->ClipY * 0.5f);
+
+        // 相对于中心位置的偏移量，即Y轴向上偏移20像素
+        const FVector2D CrosshairDrawPosition( (Center.X),(Center.Y + 20.0f));
+
+        // 开始绘制，传入的参数为绘制的位置，绘制的贴图资源，颜色
+        FCanvasTileItem TileItem( CrosshairDrawPosition, CrosshairTex->Resource, FLinearColor::White);
+        // 设置为半透明
+        TileItem.BlendMode = SE_BLEND_Translucent;
+        将这个“绘制”显示出来
+        Canvas->DrawItem( TileItem );
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;最后，我们只需在GameMode下指定这个HUD即可。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
@@ -154,11 +193,11 @@
     </div>
 
     <!-- build:js({.tmp,app}) scripts/app.min.js --> 
-<script src="../../vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
-<script src="../../vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
-<script src="../../scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
-<script src="../../scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
-<script src="../../vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
+<script src="../../../vendor/jquery/dist/jquery.js" src='<% = ResolveUrl("../vendor/jquery/dist/jquery.js") %>'></script> 
+<script src="../../../vendor/bootstrap/dist/js/bootstrap.js" src='<% = ResolveUrl("../vendor/bootstrap/dist/js/bootstrap.js") %>'></script> 
+<script src="../../../scripts/constants.js" src='<% = ResolveUrl("../scripts/constants.js") %>'></script> 
+<script src="../../../scripts/main.js" src='<% = ResolveUrl("../scripts/main.js") %>'></script> 
+<script src="../../../vendor/highlight/highlight.pack.js" src='<% = ResolveUrl("../vendor/highlight/highlight.pack.js") %>'></script>
 <script language="javascript" type="text/javascript">hljs.initHighlightingOnLoad();</script>
 <!-- endbuild -->
   </body>

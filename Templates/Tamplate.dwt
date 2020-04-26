@@ -70,7 +70,7 @@
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
                         <li> <a href="../link/UnrealEngine/FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        
+                        <li> <a href="../link/UnrealEngine/FirstPerson/FirstPersonFrontSight.html"> <span class="nav-buttontext">HUD创建准星</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /UnrealEngine4 -->
