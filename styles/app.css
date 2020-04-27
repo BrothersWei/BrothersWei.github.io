@@ -9956,7 +9956,7 @@ img{
   display: flex;
   align-items: center;
   height: 90px;
-  width: auto;
+  width: 95%;
 }
 .program.program-schedule img {
   padding-left: 2px;
