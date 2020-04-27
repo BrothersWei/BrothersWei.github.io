@@ -81,12 +81,11 @@
             <p class="nav-title">其他</p>
             <ul class="nav">
                 <!-- OpenGL -->
-                <!--<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
+                <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../link/OpenGL/EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
-                        <li> <a href="../link/OpenGL/GLFWandGLEW.html"> <span class="nav-buttontext">GLFW与GLEW</span> </a> </li>
+                        <li> <a href="EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
                     </ul>
-                </li>-->
+                </li>
                 <!-- /OpenGL --> 
                 <!-- 设计模式 -->
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;设计模式</span> </a>
@@ -143,8 +142,32 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3>
-                        <p class="FontParagraph">This is Hello World</p>
+                        <h3 class="FontTitle">GLFW和GLAD</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们使用的OpenGL环境使用的是GLFW和GLAD来搭建，是用的软件为Visual Studio 2017版。</p><br>
+						<h5 class="FontLiftTitle">&emsp;&emsp;什么是GLFW：</h5>
+						<p class="FontParagraph">&emsp;&emsp;GLFW相对于我们的阅读器，用于处理一个叫做“上下文”（context）的概念，而处理了这个上下文，那么我们就可以绘制出我们需要的形状，那么如何去理解这个上下文呢？打个比方，你看一本小说，如果从中间看起，那么你是看不懂的，因为你没有联立上下文，但是如果你从第一页看起，那么这本小说所讲的内容你是完完全全可以看懂的，因为你看过前文，联立过上下文，就像我们以前语文考试做阅读理解一样，要联立上下文来作答。那么我们的图形学也是如此，如果我们单单告诉程序，我这里有一个点，那里有一个点，现在你给我在这两点中间画一条线，那么程序是看不懂的，他无法画出来，因为缺少了“上下文”，那么GLFW就是用于帮我们来处理这个上下文，让我们的程序能够看懂我们所标注的点，并把我们的图形处理出来，而且还具有跨平台的功能，它会根据我们的开发环境的不同，来调用不同的API，如果我们不使用GLFW，那么我们就要自己去调用相对于的系统的API来帮我们处理这些内容，那么，GLFW负责的就是处理上下文，然后在程序窗口内把我们的图形绘制出来。</p><br>
+						<h5 class="FontLiftTitle">&emsp;&emsp;什么是GLAD：</h5>
+						<p class="FontParagraph">&emsp;&emsp;我们绘制了图形之后，对不同的软硬件，我们所的出来的结果或许是不一样的，那么我们在渲染的时候就要针对不同的软硬件来写对应的兼容适配，这显然是很麻烦的，那么，GLAD就负责帮助我们去适配不同的软硬件环境，减轻我们的开发负担。</p><br>
+						<h3 class="FontTitle">搭建GLFW</h3>
+						<p class="FontParagraph">&emsp;&emsp;首先我们需要在 glfw.org（<a href="https://www.glfw.org" target="_black"><font class="preclass">网页链接</font></a>）这个网址下载我们的GLFW环境包，进入后我们点击右上方的Download，由于我们使用的是Windows系统，所以我们选择Windows binaries版本下载，下载好以后得到一个压缩包，我们将这个压缩包解压。</p>
+						<p class="FontParagraph">&emsp;&emsp;打开我们的Visual Studio 2017，新建一个C++空项目，然后我们需要进入我们解压出来的GLFW的文件夹，将include文件夹和lib-vc2017文件夹复制到项目文件夹下（如果是其他VS版本请拷贝其他的lib-vc文件夹），然后我们右键项目设置，配置选为所有配置，平台选择所有平台，然后我们打开VC++目录选项，如下图：</p>
+						<center><img src="img/EnvironmentBuilding/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;现在我们要链接GLFW的.h头文件，在包含目录里面添加$(SolutionDir)GLFW\include，在这里，我在项目文件夹下新建了一个GLFW文件夹，将GLFW的内容全部放入这个文件夹下，所以我的路径为GLFW\include，这里其实要添加我们GLFW的include文件夹，而$(SolutionDir)是Visual Studio的一个宏定义，代表我们这个项目文件夹路径。</p>
+						<p class="FontParagraph">&emsp;&emsp;现在我们要链接lib文件，在库目录里面添加$(SolutionDir)GLFW\lib-vc2017。然后点击应用，确定。</p>
+						<p class="FontParagraph">&emsp;&emsp;然后我们在链接器目录选项，在输入子菜单的附加依赖项下添加glfw3.lib和opengl32.lib，如下图：</p>
+						<center><img src="img/EnvironmentBuilding/2.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;现在，我们可以引入头文件#include "GLFW/glfw3.h"</p><br>
+						<h3 class="FontTitle">搭建GLAD</h3>
+						<p class="FontParagraph">&emsp;&emsp;首先我们需要在 glad.dav1d.de（<a href="https://glad.dav1d.de" target="_black"><font class="preclass">网页链接</font></a>）这个网址下载我们的GLAD，进入后如下图：</p>
+						<div class="row">
+						<div class="col-xs-3"></center></div>
+						<div class="col-xs-6"><center><img src="img/EnvironmentBuilding/3.png" alt=""></center><br></div>
+						<div class="col-xs-3"></center></div>
+						</div>
+						<p class="FontParagraph">&emsp;&emsp;我们Language选择C/C++，Specification为OpenGL，API选择我们使用的OpenGL版本,这里我选择OpenGL4.0，Profile选择Core，勾上Generate a loader选项，点击GENERATE，然后进入另外一个页面，如下图：</p>
+						<center><img src="img/EnvironmentBuilding/4.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;我们点击glad.zip即可下载这个压缩包。下载好以后，在项目文件夹下新建GLAD文件夹，将压缩包解压进去，同样，我们在项目属性的VC++目录添加包含目录$(SolutionDir)GLAD\include，然后我们在项目的源文件右键，选择添加现有项，将GLAD\src下的glad.c添加到项目下，这个时候我们就可以引入头文件#include "glad/glad.h"</p>
+						<p class="FontParagraph">&emsp;&emsp;这样我们就完成了OpenGL的环境搭建。</p>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
