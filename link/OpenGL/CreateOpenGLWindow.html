@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>GLFW和GLEW</title>
+<title>新建OpenGL窗口</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -84,6 +84,7 @@
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
                         <li> <a href="EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+						<li> <a href="CreateOpenGLWindow.html"> <span class="nav-buttontext">新建窗口</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /OpenGL --> 
@@ -127,10 +128,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;GLFW和GLEW</spen>
+              <spen class="spenMenu">&ensp;新建OpenGL窗口</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">GLFW和GLEW</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">新建OpenGL窗口</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -142,8 +143,159 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3>
-                        <p class="FontParagraph">This is Hello World</p>
+                        <h3 class="FontTitle">新建OpenGL窗口</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们搭建好了环境以后，我们需要新建一个窗口，这个窗口用于承载我们所话的图形，否则我们画出来的图形是无法显示的。首先，我们需要新建一个CPP文件，然后导入我们所需要的头文件：</p>
+						<pre><code class="language-c++">
+    #include "glad/glad.h"
+    #include "GLFW/glfw3.h"
+    #include "iostream"
+    using namespace std;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;然后我们需要在main函数内初始化GLFW：</p>
+						<pre><code class="language-c++">
+    int main(){
+        // 初始化GLFW
+        glfwInit();
+        // 将OpenGL的版本设置为4.0
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+        // 配置GLFW，如果是Mac系统使用注释语句
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+        //glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+        return 0;
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;现在，我们要在main函数下新建窗口：</p>
+						<pre><code class="language-c++">
+    // 使用GLFW创建窗口，传入的参数为窗口的长宽，字符串为这个窗口的名字
+    GLFWwindow* window = glfwCreateWindow(800, 600, "HelloOpenGL", NULL, NULL);
+    // 如果初始化不成功
+    if (window == NULL) {
+        cout &lt;&lt; "Failed to create GLFW window" &lt;&lt; endl;
+        glfwTerminate();
+        return -1;
+    }
+    // 使用上下文初始化窗口
+    glfwMakeContextCurrent(window);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们配好了GLFW，也建了窗口，现在我们要在main函数下配置GLAD：</p>
+						<pre><code class="language-c++">
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cout &lt;&lt; "Failed to initialize GLAD" &lt;&lt; std::endl;
+        return -1;
+    }
+    // 设置渲染窗口，前两个参数为渲染窗口的初始点（左下角）后两个参数为渲染窗口的宽高
+    glViewport(0, 0, 800, 600);
+						</code></pre>
+						<p><font class="GoldFont">&emsp;&emsp;注意，在glViewport渲染窗口内，我们的OpenGL坐标的值只是-1~1之间的值，即使我们的中心点坐标为(400,300)，在OpenGL中这个中心点的坐标都为(-0.5,0.5)在OpenGL的坐标中，无论是X轴还是Y轴，它的值都是映射为-1~1的范围之间。</font></p>
+						<p class="FontParagraph">&emsp;&emsp;我们配置好了GLFW和GLAD，也建了窗口和渲染窗口，但是我们的窗口是可以拖动改变其大小的，那么我们就需要一个函数来当我们改变窗口大小的时候改变我们的渲染窗口的大小：</p>
+						<pre><code class="language-c++">
+    void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    }
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;然后我们在main函数下进行绑定，这个绑定将会在我们更改窗口大小的时候调用，从而更改我们的渲染范围</p>
+						<pre><code class="language-c++">
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;现在我们可以在main函数下写入渲染相关内容了：</p>
+						<pre><code class="language-c++">
+    while (!glfwWindowShouldClose(window)) {
+        // 绑定输入设置
+        processInput(window);
+
+        // ......画图相关内容写在这个位置......
+		
+        // 检查并调用事件
+        glfwSwapBuffers(window);
+        // 交换缓冲区域
+        glfwPollEvents();
+    }
+    // 释放资源
+    glfwTerminate();
+    return 0;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;我们现在运行就可以看到我们的窗口了，如下图：</p>
+						<center><img src="img/CreateOpenGLWindow/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;同样，我们可以在渲染内的画图相关位置写入以下内容来修改我们的背景颜色，来验证画图相关的内容是否写在这个位置：</p>
+						<pre><code class="language-c++">
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;运行效果如下：</p>
+						<center><img src="img/CreateOpenGLWindow/2.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;可以看到，我们将RBGA值为(0.2,0.3,0.3,1.0)的颜色填充进了我们的窗口，现在，我们完成了项目的初始化设置，我们搭配了GLFW，GLAD，并成功的创建了渲染窗口并且成功的画出了我们的背景。</p><br><hr>
+						<p class="FontParagraph">&emsp;&emsp;本篇完整代码如下：</p>
+						<pre><code class="language-c++">
+    #include "glad/glad.h"
+    #include "GLFW/glfw3.h"
+    #include "iostream"
+    using namespace std;
+
+    // 函数的声明
+    void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+    void processInput(GLFWwindow* window);
+
+    int main() {
+        // 初始化GLFW
+        glfwInit();
+        // 设置OpenGL版本号为4.0
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+        glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+        // 配置GLFW
+        glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+        // 使用GLFW创建窗口，传入的参数为窗口的长宽，字符串为这个窗口的名字
+        GLFWwindow* window = glfwCreateWindow(400, 300, "HelloOpenGL", NULL, NULL);
+        if (window == NULL) {
+            cout &lt;&lt; "Failed to create GLFW window" &lt;&lt; endl;
+            glfwTerminate();
+            return -1;
+        }
+        // 使用上下文初始化窗口
+        glfwMakeContextCurrent(window);
+
+        // 初始化GLAD
+        if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+            std::cout &lt;&lt; "Failed to initialize GLAD" &lt;&lt; std::endl;
+            return -1;
+        }
+        // 设置渲染窗口，前两个参数为渲染窗口的初始点，后两个参数为渲染窗口的宽高
+        glViewport(0, 0, 400, 300);
+
+        // 绑定函数当窗口大小发生变化时重新设置渲染窗口大小
+        glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+
+        // 渲染
+        while (!glfwWindowShouldClose(window)) {
+            // 绑定输入设置
+            processInput(window);
+
+            // 设置颜色
+            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+
+            // 检查并调用事件
+            glfwSwapBuffers(window);
+            // 交换缓冲区域
+            glfwPollEvents();
+        }
+
+        glfwTerminate();
+        return 0;
+    }
+
+    // 修改渲染窗口大小函数
+    void framebuffer_size_callback(GLFWwindow* window, int width, int height) {
+        glViewport(0, 0, width, height);
+    }
+
+    // 配置输入相关函数
+    void processInput(GLFWwindow* window) {
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window, true);
+    }
+						</code></pre>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>

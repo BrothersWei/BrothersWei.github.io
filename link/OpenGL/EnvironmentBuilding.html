@@ -84,6 +84,7 @@
                 <li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;OpenGL笔记</span> </a>
                     <ul class="sub-menu">
                         <li> <a href="EnvironmentBuilding.html"> <span class="nav-buttontext">环境搭建</span> </a> </li>
+						<li> <a href="CreateOpenGLWindow.html"> <span class="nav-buttontext">新建窗口</span> </a> </li>
                     </ul>
                 </li>
                 <!-- /OpenGL --> 
@@ -166,7 +167,7 @@
 						</div>
 						<p class="FontParagraph">&emsp;&emsp;我们Language选择C/C++，Specification为OpenGL，API选择我们使用的OpenGL版本,这里我选择OpenGL4.0，Profile选择Core，勾上Generate a loader选项，点击GENERATE，然后进入另外一个页面，如下图：</p>
 						<center><img src="img/EnvironmentBuilding/4.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;我们点击glad.zip即可下载这个压缩包。下载好以后，在项目文件夹下新建GLAD文件夹，将压缩包解压进去，同样，我们在项目属性的VC++目录添加包含目录$(SolutionDir)GLAD\include，然后我们在项目的源文件右键，选择添加现有项，将GLAD\src下的glad.c添加到项目下，这个时候我们就可以引入头文件#include "glad/glad.h"</p>
+						<p class="FontParagraph">&emsp;&emsp;我们点击glad.zip即可下载这个压缩包。下载好以后，在项目文件夹下新建GLAD文件夹，将压缩包解压进去，同样，我们在项目属性的VC++目录添加包含目录$(SolutionDir)GLAD\include，然后我们在项目的源文件右键，选择添加现有项，将GLAD\src下的glad.c添加到项目下，这个时候我们就可以引入头文件#include "glad/glad.h"<font class="GoldFont">（注意，这个头文件要放在最上面）</font></p>
 						<p class="FontParagraph">&emsp;&emsp;这样我们就完成了OpenGL的环境搭建。</p>
                     </div>
                     <div class="col-xs-1"></div>
