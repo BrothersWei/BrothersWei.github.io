@@ -162,6 +162,7 @@
 						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindRaw()：</font>绑定原始的C++指针，需要传入绑定的类的指针和这个类下要绑定的方法的引用。</p>
 						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindUObject()：</font>绑定UObject对象指针，即任何一个UE4类的指针，需要传入绑定的类的指针和这个类下要绑定的方法的引用。</p>
 						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindUFunction()：</font>当绑定的方法是由<font class="PreprocessorMacros">UFUNCTION()</font>声明的时候，我们可以使用UE4的反射机制来绑定这个委托，这个时候需要传入任何一个UE4类的指针和方法的名称(FName)进行反射机制的调用。</p>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">BindSP()：</font>绑定一个UE4封装好的智能指针，如TSharedRef。</p>
 						<br><hr>
 						<h5 class="FontLiftTitle">如何去调用一个委托：</h5>
 						<p class="FontParagraph">&emsp;&emsp;<font class="Function">Execute()：</font>不进行检测是否绑定，直接调用，括号内传入的参数要与委托绑定的参数类型和数量一致。</p>
