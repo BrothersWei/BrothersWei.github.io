@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>第一人称模板项目初始化设置</title>
+<title>我的学习笔记</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -69,15 +69,15 @@
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="FirstPersonFrontSight.html"> <span class="nav-buttontext">模板中的HUD创建准星</span> </a> </li>
-						<li> <a href="FirstPersonProjectile.html"> <span class="nav-buttontext">模板中的发射物设计</span> </a> </li>
-						<li> <a href="FirstPersonFire.html"> <span class="nav-buttontext">模板中的开火功能</span> </a> </li>
+                        <li> <a href="../FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="../FirstPerson/FirstPersonFrontSight.html"> <span class="nav-buttontext">模板中的HUD创建准星</span> </a> </li>
+						<li> <a href="../FirstPerson/FirstPersonProjectile.html"> <span class="nav-buttontext">模板中的发射物设计</span> </a> </li>
+						<li> <a href="../FirstPerson/FirstPersonFire.html"> <span class="nav-buttontext">模板中的开火功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4材质</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Materials/MaterialsNodes.html"> <span class="nav-buttontext">常用节点</span> </a> </li>
+                        <li> <a href="MaterialsNodes.html"> <span class="nav-buttontext">常用节点</span> </a> </li>
                         
                     </ul>
                 </li>
@@ -134,10 +134,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;项目初始化设置</spen>
+              <spen class="spenMenu">&ensp;材质常用节点</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">项目初始化设置</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">材质常用节点</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -149,84 +149,18 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">UE4的第一人称模板做了什么</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;我们的UE4为我们提供第一人称模板来让我们进行学习和二次开发，现在我们来看一下第一人称模板都做了什么。我们在新建第一人称模板的时候可以看到UE4官方对第一人称模板的解释，如下图：</p>
-						<center><img src="img/FirstPersonInit/1.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;不难看出，我们主要使用了Character来作为我们的主角，用了HUD显示我们的UI（准星）还运用了Actor的内容（生产发射物）</p>
-						<p class="FontParagraph">&emsp;&emsp;新建打开我们的第一人称项目，在这里我命名为FirstProject，打开我们的Visual Studio工程，打开我们的FirstProjectCharacter，这个就是我们的主角，而移动，视野，跳跃相关内容我们不再重复介绍，与第三人称模板大同小异。我们来看在FirstProjectCharacter.h中为我们定义了什么组件。</p>
-						<pre><code class="language-c++">
-    // 摄像机组件
-    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
-        class UCameraComponent* FirstPersonCameraComponent;
-    // 人物模型组件
-    UPROPERTY(VisibleDefaultsOnly, Category=Mesh)
-        class USkeletalMeshComponent* Mesh1P;
-    // 枪模型组件
-    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-        class USkeletalMeshComponent* FP_Gun;
-    // 相对于空组件，放在枪管位置，用于生成子弹
-    UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-        class USceneComponent* FP_MuzzleLocation;
-    
-    // 移动跳跃视野转动相关内容省略......
-	
-    // 子弹生成位置的偏移量
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
-        FVector GunOffset;
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;在FristProjectCharacter.cpp中的构造函数下</p>
-						<pre><code class="language-c++">
-    AFirstProjectCharacter::AFirstProjectCharacter(){
-        // 设置胶囊体的大小
-        GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
-
-        // 设置视野移动相关参数（详见第三人称模板的视野移动相关内容）
-        BaseTurnRate = 45.f;
-        BaseLookUpRate = 45.f;
-
-        // 实例化摄像机
-        FirstPersonCameraComponent = CreateDefaultSubobject&lt;UCameraComponent&gt;(TEXT("FirstPersonCamera"));
-        // 绑定在胶囊体组件下
-        FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
-        // 位置偏移
-        FirstPersonCameraComponent->SetRelativeLocation(FVector(-39.56f, 1.75f, 64.f)); 
-        // 允许摄像机与Controller旋转
-        FirstPersonCameraComponent->bUsePawnControlRotation = true;
-
-        // 设置模型
-        Mesh1P = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT("CharacterMesh1P"));
-        // 设置模型显示
-        Mesh1P->SetOnlyOwnerSee(true);
-        // 绑定在摄像机下
-        Mesh1P->SetupAttachment(FirstPersonCameraComponent);
-        // 不产生阴影
-        Mesh1P->bCastDynamicShadow = false;
-        // 不投射阴影上去
-        Mesh1P->CastShadow = false;
-        // 位置和旋转属性的设置
-        Mesh1P->SetRelativeRotation(FRotator(1.9f, -19.19f, 5.2f));
-        Mesh1P->SetRelativeLocation(FVector(-0.5f, -4.4f, -155.7f));
-
-        // 设置枪模型
-        FP_Gun = CreateDefaultSubobject&lt;USkeletalMeshComponent&gt;(TEXT("FP_Gun"));
-        FP_Gun->SetOnlyOwnerSee(true);		
-        FP_Gun->bCastDynamicShadow = false;
-        FP_Gun->CastShadow = false;
-        // 绑定在根组件下
-        FP_Gun->SetupAttachment(RootComponent);
-
-        // 实例化枪管发射标识组件
-        FP_MuzzleLocation = CreateDefaultSubobject&lt;USceneComponent&gt;(TEXT("MuzzleLocation"));
-        // 放在枪模型组件下
-        FP_MuzzleLocation->SetupAttachment(FP_Gun);
-        // 将这个组件移动到枪管位置
-        FP_MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
-
-        // 设置发射物的偏移量
-        GunOffset = FVector(100.0f, 0.0f, 10.0f);
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;我们看到，他的大致思路是有一个角色的模型，枪的模型，在枪的模型下实例化一个虚的组件，在这个组件的位置生成子弹。</p>
+                        <h3 class="FontTitle">材质球常用节点</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;<font class="Function">Constant类型节点</font>（快捷键1-4加鼠标左键点击）</p>
+						<p class="FontParagraph">&emsp;&emsp;Ccnstant类型节点都是输出数值的节点，包括Constant,Constant2Vector,Constant3Vector和Constant4Vector四种，分别输出四种类型的数值，同时该类型的节点还可以着色和获取坐标信息。</p><br>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">Add节点</font></p>
+						<p class="FontParagraph">&emsp;&emsp;进行加法运算的节点，例如有两个Constant3Vector节点相加，RGB的值分别为[0.3,0
+							5,0.0]，[0.7,0.7,0.7]，则输出的结果为[1.0,1.2,0.7]。</p><br>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">Multiply,Subtract,Divide节点</font></p>
+						<p class="FontParagraph">&emsp;&emsp;Multiply为乘法，Subtract为减法，Divide为除法，计算方式与Add节点类似。</p>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">TextureSample节点</font>（快捷键T加鼠标左键点击）</p>
+						<p class="FontParagraph">&emsp;&emsp;用于存放各种贴图的节点，其细节面板下的Sampler Color(采样器类型)默认的值为Color(颜色)，根据情况也可以为Normal(法线)等，其输出的五个节点分别为RGBA通道，R通道，G通道和A通道。</p><br>
+						<p class="FontParagraph">&emsp;&emsp;<font class="Function">TextureCoordinate节点</font>（快捷键U加鼠标左键点击）</p>
+						<p class="FontParagraph">&emsp;&emsp;用于指定UV坐标的平铺次数，在该节点的细节面板修改U,V的数值即可观察到效果。</p><br>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
