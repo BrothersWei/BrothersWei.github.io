@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-title" content="Milestone">
 <meta name="theme-color" content="#4C7FF0">
 <!-- InstanceBeginEditable name="doctitle" -->
-<title>第一人称模板的开火功能</title>
+<title>瞄准与奔跑</title>
 <!-- InstanceEndEditable -->
 <!-- build:css({.tmp,app}) styles/app.min.css -->
 <link rel="stylesheet" href="../../../vendor/bootstrap/dist/css/bootstrap.css" runat="server"/>
@@ -69,16 +69,16 @@
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;解析第一人称模板</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
-                        <li> <a href="FirstPersonFrontSight.html"> <span class="nav-buttontext">模板中的HUD创建准星</span> </a> </li>
-						<li> <a href="FirstPersonProjectile.html"> <span class="nav-buttontext">模板中的发射物设计</span> </a> </li>
-						<li> <a href="FirstPersonFire.html"> <span class="nav-buttontext">模板中的开火功能</span> </a> </li>
+                        <li> <a href="../FirstPerson/FirstPersonInit.html"> <span class="nav-buttontext">项目初始化设置</span> </a> </li>
+                        <li> <a href="../FirstPerson/FirstPersonFrontSight.html"> <span class="nav-buttontext">模板中的HUD创建准星</span> </a> </li>
+						<li> <a href="../FirstPerson/FirstPersonProjectile.html"> <span class="nav-buttontext">模板中的发射物设计</span> </a> </li>
+						<li> <a href="../FirstPerson/FirstPersonFire.html"> <span class="nav-buttontext">模板中的开火功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4蓝图库</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Blueprint/SimpleMoveAndTurn.html"> <span class="nav-buttontext">角色简单的控制</span> </a> </li>
-                        li> <a href="../Blueprint/ZoomAndRun.html"> <span class="nav-buttontext">瞄准与奔跑功能</span> </a> </li>
+                        <li> <a href="SimpleMoveAndTurn.html"> <span class="nav-buttontext">角色简单的控制</span> </a> </li>
+                        li> <a href="ZoomAndRun.html"> <span class="nav-buttontext">瞄准与奔跑功能</span> </a> </li>
                     </ul>
                 </li>
 				<li><a href="javascript:;"> <span class="menu-caret"> <em class="material-icons">arrow_drop_down</em> </span> <span class="nav-menutext">&emsp;&emsp;UE4材质</span> </a>
@@ -140,10 +140,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;第一人称模板的开火功能</spen>
+              <spen class="spenMenu">&ensp;瞄准与奔跑</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">第一人称模板的开火功能</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">瞄准与奔跑</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -155,77 +155,16 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">开火功能思路介绍</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;对于开火功能，我们需要一个按键事件，这个事件是绑定的鼠标左键，如下图：</p>
-						<center><img src="img/FirstPersonFire/1.png" alt=""></center><br>
-						<p class="FontParagraph">&emsp;&emsp;对于这个功能的思路就是，我们触发了我们的开火事件，然后在我们的枪口位置动态生成我们的发射物，而我们的发射物已经设置了初速度，然后以这个速度往前发射，进行物理模拟。根据以上思路我们来看FirstProjectCharacter.h中所定义的内容</p>
-						<pre><code class="language-c++">
-public:
-    // 发射物的模板
-    UPROPERTY(EditDefaultsOnly, Category=Projectile)
-        TSubclassOf&lt;class AFirstProjectProjectile&gt; ProjectileClass;
-    // 开火音效资源指针
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category=Gameplay)
-        class USoundBase* FireSound;
-    // 开火动画资源指针
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
-        class UAnimMontage* FireAnimation;
-		
-protected:
-    // 开火事件
-    void OnFire();
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;于是在FirstProjectCharacter.cpp中：</p>
-						<pre><code class="language-c++">
-    // SetupPlayerInputComponent()绑定输入事件
-    PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &amp;AFirstProjectCharacter::OnFire);
-	
-    void AFirstProjectCharacter::OnFire(){
-        // 发射物是否为空
-        if (ProjectileClass != NULL){
-            // 获得世界
-            UWorld* const World = GetWorld();
-            // 世界不为空
-            if (World != NULL){
-                // 获得控制器的旋转
-                const FRotator SpawnRotation = GetControlRotation();
-                // 获得发射位置
-                const FVector SpawnLocation = ((FP_MuzzleLocation != nullptr) ? FP_MuzzleLocation->GetComponentLocation() : GetActorLocation()) + SpawnRotation.RotateVector(GunOffset);
-
-                // 设置碰撞相关
-                FActorSpawnParameters ActorSpawnParams;
-                ActorSpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
-
-                // 动态生成发射物，传入的参数分别为发射物的类型，初始位置，旋转，发射物碰撞参数
-                World->SpawnActor&lt;AFirstProjectProjectile&gt;(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
-            }
-        }
-        // 播放音效
-        if (FireSound != NULL){
-            UGameplayStatics::PlaySoundAtLocation(this, FireSound, GetActorLocation());
-        }
-
-        // 播放动画
-        if (FireAnimation != NULL){
-            // 获取动画蓝图
-            UAnimInstance* AnimInstance = Mesh1P->GetAnimInstance();
-            if (AnimInstance != NULL){
-                AnimInstance->Montage_Play(FireAnimation, 1.f);
-            }
-        }
-    }
-						</code></pre>
-						<p class="FontParagraph">&emsp;&emsp;其最主要的是SpawnActor方法动态生成物体，它的用法如下：</p>
-						<pre><code class="language-c++">
-    /*
-    AFirstProjectProjectile：生成物的类型
-    ProjectileClass：生成物的模板类
-    SpawnLocation：生成的位置
-    SpawnRotation：物体生成后的旋转属性
-    ActorSpawnParams：碰撞相关参数
-    */
-    World->SpawnActor&lt;AFirstProjectProjectile&gt;(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);   
-						</code></pre>
+                        <h3 class="FontTitle">瞄准与奔跑</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;我们添加如下图的按键事件</p>
+						<center><img src="img/ZoomAndRun/1.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;瞄准功能的蓝图如下：</p>
+						<center><img src="img/ZoomAndRun/2.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;我们双击Timeline_0节点，修改如下曲线</p>
+						<center><img src="img/ZoomAndRun/3.png" alt=""></center><br>
+						<p class="FontParagraph">&emsp;&emsp;这两个点的坐标分别为：[0,90]，[0.3,45]</p><br>
+						<p class="FontParagraph">&emsp;&emsp;奔跑功能的蓝图如下：</p>
+						<center><img src="img/ZoomAndRun/4.png" alt=""></center><br>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
