@@ -94,12 +94,12 @@
 				<!-- 指针 -->
 				<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;指针</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Pointer/WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
-						<li> <a href="../Pointer/PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
-						<li> <a href="../Pointer/ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
-						<li> <a href="../Pointer/ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
+                        <li> <a href="WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
+						<li> <a href="PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
+						<li> <a href="ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
+						<li> <a href="PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
+						<li> <a href="ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
+						<li> <a href="PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
                     </ul>
                 </li>
 				<!-- /指针 -->
@@ -151,10 +151,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;首页</spen>
+              <spen class="spenMenu">&ensp;指针和数组</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">指针和数组</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -166,8 +166,35 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;This is Hello World</p>
+                        <p class="FontParagraph">&emsp;&emsp;我们知道，数组是一串内存连续的集合，当我们的指针指向数组的时候，这个指针则指向该数组的第一个元素的地址，例如：</p>
+						<pre><code class="language-c++">
+    int main(){
+        int A[5] = {2,4,5,8,1};
+        int* p;
+        p = &A[0]  // 或者p = A;(因为是数组，数组的名称相当于数组的地址，所以此处不用取地址符&)
+
+        printf("%d", p);     // 数组会以第一个元素的地址作为整个数组的地址，所以为A[0]的地址
+        printf("%d", *p);    // 对数组进行解引用，输出第一个数组元素的值，输出2
+        printf("%d", p+1);   // 输出第1+1元素的地址，则输出A[1]的地址
+        printf("%d", *(p+1));// 对第1+1元素进行解引用，输出这个元素的值，即为A[1]的值，即为4
+        return 0;
+    }
+								</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;注意：</p>
+						<p class="FontParagraph">&emsp;&emsp;数组可以用&A[i]或(A+i)来获取对应元素的地址，</p>
+						<p class="FontParagraph">&emsp;&emsp;同时可以用A[i]或*(A+i)来获取对应元素的值。</p>
+						<p class="FontParagraph">&emsp;&emsp;例如我们对数组进行以下操作：</p>
+						<pre><code class="language-c++">
+    int main(){
+        int A[] = {2,4,5,8,1};
+
+        printf("%d", A);     // 输出数组的地址，即A[0]的地址
+        printf("%d", &A[0]); // 输出元素A[0]的地址
+        printf("%d", A[0]);  // 输出元素A[0]的值
+        printf("%d", *A;     // 输出数组A的地址的值，即A[0]的值
+        return 0;
+    }
+								</code></pre>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>

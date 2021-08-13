@@ -94,12 +94,12 @@
 				<!-- 指针 -->
 				<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;指针</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Pointer/WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
-						<li> <a href="../Pointer/PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
-						<li> <a href="../Pointer/ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
-						<li> <a href="../Pointer/ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
+                        <li> <a href="WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
+						<li> <a href="PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
+						<li> <a href="ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
+						<li> <a href="PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
+						<li> <a href="ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
+						<li> <a href="PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
                     </ul>
                 </li>
 				<!-- /指针 -->
@@ -151,10 +151,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;首页</spen>
+              <spen class="spenMenu">&ensp;void指针</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">void指针</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -166,8 +166,36 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;This is Hello World</p>
+                        <p class="FontParagraph">&emsp;&emsp;void指针是一种特殊的指针。例如：void *vp;</p>
+						<p class="FontParagraph">&emsp;&emsp;且任何类型的指针都可以赋值给void指针，例如：</p>
+						<pre><code class="language-c++">
+    void* vp;
+    type* p;  // type指任意非void的类型
+    vp = p;  // 无需转换
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;但是void指针赋值给其他类型的指针时都需要进行转换，例如：</p>
+						<pre><code class="language-c++">
+    void* vp;
+    type* p;  // type指任意非void的类型
+    p = (type*)vp;
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;注意，void指针不能复引用，例如：</p>
+						<pre><code class="language-c++">
+    void* vp;
+    *vp  // 错误，void指针不能复引用
+	
+    type* p;// type指任意非void的类型
+    *p      // 正确，普通指针可以复引用
+						</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;因为void指针只知道所指向的变量（对象）的起始地址，而不知道所指变量（对象）的大小，所以是无法正确引用的。</p>
+						<hr><p class="FontParagraph">&emsp;&emsp;void指针不能参与指针运算，除非进行强制转换，例如：</p>
+						<pre><code class="language-c++">
+    void* vp;
+    int i = 0;
+    vp = &i;
+    vp++;      // 错误，void指针不能参与指针运算
+    (int*)vp++;// 正确，已对void指针进行强制转换
+						</code></pre>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>

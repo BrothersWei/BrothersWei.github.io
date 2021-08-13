@@ -94,12 +94,12 @@
 				<!-- 指针 -->
 				<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;指针</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Pointer/WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
-						<li> <a href="../Pointer/PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
-						<li> <a href="../Pointer/ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
-						<li> <a href="../Pointer/ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
+                        <li> <a href="WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
+						<li> <a href="PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
+						<li> <a href="ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
+						<li> <a href="PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
+						<li> <a href="ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
+						<li> <a href="PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
                     </ul>
                 </li>
 				<!-- /指针 -->
@@ -151,10 +151,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;首页</spen>
+              <spen class="spenMenu">&ensp;数组作为函数的参数</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">数组作为函数的参数</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -166,8 +166,41 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;This is Hello World</p>
+                        <p class="FontParagraph">&emsp;&emsp;当数组作为函数参数时，并不是复制整个数组作为参数，而是以指针的方式指向数组，即：void Fun(int a[]);等同于void Fun(int* A);</p>
+						<p class="FontParagraph">&emsp;&emsp;例如：</p>
+						<pre><code class="language-c++">
+    int ArraysAsFun(int A[]){
+        int i;
+        int sum = 0;
+        int size = sizeof(A)/sizeif(A[0]); // 此处sizeof(A)因为是指针，所以值为4，所以size的值为1
+        return size;
+    }
+    int main(){
+        int A[] = {1,2,3,4,5};
+        int size = sizeof(A)/sizeif(A[0]); // 此处sizeof(A)为数组，所以值为4*5=20，所以size的值为5
+        return 0;
+    }
+								</code></pre>
+						<p class="FontParagraph">&emsp;&emsp;再例如：</p>
+						<pre><code class="language-c++">
+    void Double(int A[], int size){ // 此处int A[]相当于int* A
+        int i;
+        int sum = 0;
+        for(i = 0; i < size; i++){
+            A[i] = 2 * A[i];
+        }
+    }
+    int main(){
+        int A[] = {1,2,3,4,5};
+        int size = sizeof(A)/sizeif(A[0]); 
+        int i;
+        Double(A, size); // 此处因为A为指针，故数组内各元素均乘以2
+        for(i = 0; i < size; i++){
+            printf(" %d", A[i]);  // 输出结果为 2 4 6 8 10
+        }
+        return 0;
+    }
+								</code></pre>
                     </div>
                     <div class="col-xs-1"></div>
                 </div>

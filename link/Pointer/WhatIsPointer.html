@@ -94,12 +94,12 @@
 				<!-- 指针 -->
 				<li> <a href="javascript:;"> <span class="menu-caret"> <i class="material-icons">arrow_drop_down</i> </span> <span class="nav-menutext">&emsp;&emsp;指针</span> </a>
                     <ul class="sub-menu">
-                        <li> <a href="../Pointer/WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
-						<li> <a href="../Pointer/PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
-						<li> <a href="../Pointer/ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
-						<li> <a href="../Pointer/ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
-						<li> <a href="../Pointer/PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
+                        <li> <a href="WhatIsPointer.html"> <span class="nav-buttontext">指针简介</span> </a> </li>
+						<li> <a href="PointerToPointer.html"> <span class="nav-buttontext">多级指针</span> </a> </li>
+						<li> <a href="ViodPointer.html"> <span class="nav-buttontext">void指针</span> </a> </li>
+						<li> <a href="PointerAndArrays.html"> <span class="nav-buttontext">指针和数组</span> </a> </li>
+						<li> <a href="ArraysAsFun.html"> <span class="nav-buttontext">数组作为函数的参数</span> </a> </li>
+						<li> <a href="PointerAndTwoDimensionalArrays.html"> <span class="nav-buttontext">指针和二维数组</span> </a> </li>
                     </ul>
                 </li>
 				<!-- /指针 -->
@@ -151,10 +151,10 @@
               </a>
               <!-- /toggle offscreen menu -->
               <!-- logo --><!-- InstanceBeginEditable name="title1" -->
-              <spen class="spenMenu">&ensp;首页</spen>
+              <spen class="spenMenu">&ensp;什么是指针</spen>
               <!-- InstanceEndEditable --><!-- /logo -->
             </div>
-            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">首页</span><!-- InstanceEndEditable --></div>
+            <!-- InstanceBeginEditable name="title2" --><span class="navbar-item navbar-spacer-right navbar-heading hidden-md-down">什么是指针</span><!-- InstanceEndEditable --></div>
         </nav>
         <!-- /top header -->
 
@@ -166,11 +166,29 @@
                     <div class="col-xs-1"></div>
                     <div class="col-xs-10"> <br>
                         <br>
-                        <h3 class="FontTitle">简介</h3><br>
-                        <p class="FontParagraph">&emsp;&emsp;This is Hello World</p>
+                        <h3 class="FontTitle">什么是指针</h3><br>
+                        <p class="FontParagraph">&emsp;&emsp;指针：是一个特殊的变量，用于存放所指向的变量的地址值。</p>
+						<p class="FontParagraph">&emsp;&emsp;例如下列例子中：</p>
+						<pre><code class="language-c++">
+    int main(){
+        int a;
+        int* p;
+        a = 5;
+        p = &a;
+        // 输出以下的值
+        printf("%d", p);  // 输出p的值，即a的地址
+        printf("%d", &a);  // 输出a的地址
+        printf("%d", &p);  // 输出p的地址
+        printf("%d", *p);  // 输出p所指向的变量的值，即a的值
+        return 0;
+    }
+								</code></pre>
+						
+						
                     </div>
                     <div class="col-xs-1"></div>
                 </div>
+				
             </div>
         </div>
         <!-- InstanceEndEditable --><!-- /main area -->
